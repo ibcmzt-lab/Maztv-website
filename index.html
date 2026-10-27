@@ -3,273 +3,1079 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MazTV | Cut The Cable & Cancel Subscriptions</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>MazTV — Premium Live TV, Sports & VOD</title>
+  <meta name="description" content="MazTV powered by Mazatlan Media Services. 25,000+ Channels, 4K Live Sports, and 120,000+ Movies with White-Glove Setup Assistance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-dark: #0b0f19;
+      --bg-card: #131b2e;
+      --bg-card-hover: #1c2742;
+      --accent-red: #e50914;
+      --accent-red-hover: #f40612;
+      --accent-glow: rgba(229, 9, 20, 0.35);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --border-color: #2a3859;
+      --green-glow: #10b981;
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      background-color: #0B0F19;
-      color: #F3F4F6;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    .text-glow {
-      text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
-    .btn-glow {
-      box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
-    .btn-glow:hover {
-      box-shadow: 0 0 35px rgba(6, 182, 212, 0.7);
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 15, 25, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 16px 0;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo img {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .brand-tagline {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 24px;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--text-main);
+    }
+
+    .toggle-group {
+      display: flex;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 30px;
+      padding: 3px;
+    }
+
+    .toggle-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      font-size: 0.825rem;
+      font-weight: 700;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .toggle-btn.active {
+      background: var(--accent-red);
+      color: #fff;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 90px 0 60px;
+      position: relative;
+      background: radial-gradient(circle at 50% 20%, rgba(229, 9, 20, 0.15), transparent 60%);
+      text-align: center;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(229, 9, 20, 0.12);
+      border: 1px solid var(--accent-red);
+      color: #ff4d4d;
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 32px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent-red);
+      color: #fff;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-red-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+      border-color: #3f527e;
+    }
+
+    .hero-graphic {
+      margin-top: 50px;
+      position: relative;
+    }
+
+    .mockup-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      text-align: left;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* SECTION LAYOUT */
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* PILLARS GRID */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 30px 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-red);
+    }
+
+    .feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+    }
+
+    /* PRICING TOGGLES & CARDS */
+    .duration-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 10px 20px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: var(--accent-red);
+      color: #fff;
+      border-color: var(--accent-red);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card.popular {
+      border-color: var(--accent-red);
+      box-shadow: 0 0 30px rgba(229, 9, 20, 0.2);
+      transform: scale(1.02);
+    }
+
+    .pop-badge {
+      position: absolute;
+      top: -14px;
+      right: 24px;
+      background: var(--accent-red);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .pricing-card h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .price-main {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      margin: 16px 0 6px;
+    }
+
+    .price-equiv {
+      font-size: 0.9rem;
+      color: var(--green-glow);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin-bottom: 30px;
+      flex-grow: 1;
+    }
+
+    .feature-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.925rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-muted);
+    }
+
+    .feature-list li strong {
+      color: var(--text-main);
+    }
+
+    /* HOUSEHOLD MATRIX */
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .matrix-table th, .matrix-table td {
+      padding: 18px 20px;
+      text-align: left;
+    }
+
+    .matrix-table th {
+      background: rgba(255, 255, 255, 0.03);
+      font-weight: 700;
+      border-bottom: 1px solid var(--border-color);
+      color: #fff;
+    }
+
+    .matrix-table tr:not(:last-child) td {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* SETUP STEPS */
+    .setup-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .step-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      border: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .step-num {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-red);
+      color: #fff;
+      font-weight: 800;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #070a12;
+      padding: 60px 0 30px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* FLOATING WHATSAPP & OVERLAYS */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #25d366;
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      z-index: 1000;
+      font-size: 1.8rem;
+      transition: transform 0.2s;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    .toast-notif {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 12px 18px;
+      border-radius: var(--radius-md);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 999;
+      transform: translateY(150%);
+      transition: transform 0.4s ease;
+      max-width: 320px;
+    }
+
+    .toast-notif.show {
+      transform: translateY(0);
+    }
+
+    /* EXIT MODAL */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--accent-red);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: #0b0f19;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      color: #fff;
+      margin: 16px 0;
+      font-family: inherit;
+    }
+
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .pricing-card.popular { transform: none; }
+      .matrix-table { display: block; overflow-x: auto; }
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500 selection:text-black">
+<body>
 
-  <!-- HEADER / NAVIGATION -->
-  <header class="w-full bg-[#0B0F19] border-b border-slate-800 sticky top-0 z-50 px-4 py-4 md:px-8">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <!-- LOGO -->
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-          <svg class="w-6 h-6 text-black fill-current" viewBox="0 0 24 24">
-            <path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/>
-          </svg>
-        </div>
-        <span class="text-3xl font-black tracking-wider text-white">MAZ<span class="text-cyan-400">TV</span></span>
+  <!-- HEADER -->
+  <header>
+    <div class="container nav-wrapper">
+      <div class="brand-logo">
+        <img src="mztlogo.png" alt="MazTV Logo" onerror="this.src='https://via.placeholder.com/140x40/0b0f19/ffffff?text=MazTV'">
+        <span class="brand-tagline">powered by Mazatlan Media Services</span>
       </div>
-
-      <!-- LANGUAGE TOGGLE & WHATSAPP HEADER LINK -->
-      <div class="flex items-center gap-4">
-        <button id="langToggle" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2 rounded-lg text-lg border border-slate-700 flex items-center gap-2 transition">
-          <span id="langFlag">🇺🇸</span> <span id="langText">EN</span>
-        </button>
-        <a href="https://wa.me/526692448788?text=Hola!%20I%20have%20a%20question%20about%20MazTV." target="_blank" class="hidden sm:inline-flex bg-green-600 hover:bg-green-500 text-white font-bold px-4 py-2 rounded-lg text-base transition items-center gap-2">
-          <span>💬</span> Chat Direct
-        </a>
+      <nav>
+        <ul>
+          <li><a href="#features" data-en="Features" data-es="Características">Features</a></li>
+          <li><a href="#plans" data-en="Plans" data-es="Planes">Plans</a></li>
+          <li><a href="#matrix" data-en="Household Matrix" data-es="Guía de Pantallas">Household Matrix</a></li>
+          <li><a href="#setup" data-en="Setup Guide" data-es="Guía de Instalación">Setup Guide</a></li>
+        </ul>
+      </nav>
+      <div class="toggle-group">
+        <button class="toggle-btn active" id="btn-usd" onclick="setCurrency('USD')">EN | $ USD</button>
+        <button class="toggle-btn" id="btn-mxn" onclick="setCurrency('MXN')">ES | $ MXN</button>
       </div>
     </div>
   </header>
 
   <!-- HERO SECTION -->
-  <section class="relative px-4 py-12 md:py-20 max-w-7xl mx-auto text-center">
-    <!-- BADGE -->
-    <div class="inline-flex items-center gap-2 bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 px-5 py-2 rounded-full text-lg md:text-xl font-bold mb-8">
-      <span>⚡ NO VPN REQUIRED</span>
-      <span class="text-slate-500">•</span>
-      <span>100% BUFFER-FREE SERVERS</span>
-    </div>
-
-    <!-- MAIN HEADLINE -->
-    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-8">
-      CUT THE CABLE.<br>
-      <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-200 text-glow">
-        CANCEL EVERY SUBSCRIPTION.
-      </span>
-    </h1>
-
-    <!-- SUBHEADLINE (EXTRA LARGE FOR ACCESSIBILITY) -->
-    <p class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-100 max-w-5xl mx-auto leading-relaxed mb-10">
-      INSTANT ACCESS TO <span class="text-cyan-400 font-black underline decoration-cyan-500">9,000+ LIVE HD & 4K CHANNELS</span>, LOCAL US/CANADA/MEXICO FEEDS, & EVERY ON-DEMAND MOVIE & SHOW FROM NETFLIX, HULU, HBO MAX, & APPLE TV+.
-    </p>
-
-    <!-- MAIN CALL TO ACTION BUTTON (GLOWING & PROMINENT) -->
-    <div class="flex flex-col items-center gap-4 mb-12">
-      <button onclick="openTrialModal()" class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black text-2xl sm:text-3xl px-10 py-6 rounded-2xl btn-glow transition transform hover:-translate-y-1 active:translate-y-0">
-        🚀 GET FREE 24-HOUR TRIAL
-      </button>
-      <p class="text-xl sm:text-2xl font-bold text-slate-300">
-        No Credit Card Required • Setup Takes Under 3 Minutes
+  <section class="hero">
+    <div class="container">
+      <div class="badge-pill" data-en="⚡ Next-Gen Anti-Freeze™ Servers" data-es="⚡ Servidores Anti-Freeze™ de Última Generación">
+        ⚡ Next-Gen Anti-Freeze™ Servers
+      </div>
+      <h1 data-en="Premium Live TV, Sports & VOD That Simply Works." data-es="TV en Vivo, Deportes y Películas Premium que Simplemente Funciona.">
+        Premium Live TV, Sports & VOD That Simply Works.
+      </h1>
+      <p data-en="Stream over 25,000 live channels, 4K sporting events, and 120,000+ movies on demand. Includes white-glove setup assistance for all your devices."
+         data-es="Más de 25,000 canales en vivo, deportes en 4K y 120,000+ películas. Incluye asistencia de configuración personalizada para todos tus dispositivos.">
+        Stream over 25,000 live channels, 4K sporting events, and 120,000+ movies on demand. Includes white-glove setup assistance for all your devices.
       </p>
-    </div>
-
-    <!-- CABLE & STREAMING SAVINGS MATRIX -->
-    <div class="bg-slate-900/90 border-2 border-slate-800 rounded-3xl p-6 md:p-10 max-w-5xl mx-auto shadow-2xl text-left">
-      <h2 class="text-2xl md:text-3xl font-black text-white text-center mb-8 uppercase tracking-wide">
-        💰 What You Can Cancel Today
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xl md:text-2xl font-bold">
-        <div class="bg-slate-800/80 p-5 rounded-2xl border border-red-500/30 flex justify-between items-center">
-          <div>
-            <div class="text-slate-300 font-semibold text-lg">Cable & Satellite</div>
-            <div class="text-red-400 text-2xl font-black">🇨🇦 Rogers / Bell / US Cable</div>
-          </div>
-          <div class="text-red-400 font-black text-3xl">~$120/mo</div>
-        </div>
-
-        <div class="bg-slate-800/80 p-5 rounded-2xl border border-red-500/30 flex justify-between items-center">
-          <div>
-            <div class="text-slate-300 font-semibold text-lg">On-Demand Apps</div>
-            <div class="text-red-400 text-2xl font-black">Netflix, HBO, Hulu, Prime</div>
-          </div>
-          <div class="text-red-400 font-black text-3xl">~$55/mo</div>
-        </div>
-
-        <div class="bg-slate-800/80 p-5 rounded-2xl border border-red-500/30 flex justify-between items-center">
-          <div>
-            <div class="text-slate-300 font-semibold text-lg">Sports Packages</div>
-            <div class="text-red-400 text-2xl font-black">MLB.TV, NHL Pass, NFL</div>
-          </div>
-          <div class="text-red-400 font-black text-3xl">~$35/mo</div>
-        </div>
-
-        <div class="bg-slate-800/80 p-5 rounded-2xl border border-red-500/30 flex justify-between items-center">
-          <div>
-            <div class="text-slate-300 font-semibold text-lg">VPN Service</div>
-            <div class="text-red-400 text-2xl font-black">Nord / ExpressVPN</div>
-          </div>
-          <div class="text-red-400 font-black text-3xl">~$12/mo</div>
-        </div>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="openWhatsApp('Free Trial Request')" data-en="🚀 Claim 24-Hour Free Trial" data-es="🚀 Solicitar Prueba Gratis de 24h">
+          🚀 Claim 24-Hour Free Trial
+        </button>
+        <a href="#plans" class="btn btn-secondary" data-en="Explore VIP Plans" data-es="Explorar Planes VIP">
+          Explore VIP Plans
+        </a>
       </div>
 
-      <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 bg-cyan-950/40 p-6 rounded-2xl border border-cyan-500/30">
-        <div>
-          <div class="text-slate-300 text-xl font-bold">Your Total Annual Cable Spend:</div>
-          <div class="text-red-400 text-3xl font-black line-through">$2,600+ / Year</div>
-        </div>
-        <div class="text-right">
-          <div class="text-cyan-300 text-xl font-bold">All-In-One MazTV Plan:</div>
-          <div class="text-cyan-400 text-4xl font-black">Starting at $10 / Month</div>
+      <div class="hero-graphic">
+        <div class="mockup-card">
+          <div class="stat-box">
+            <div class="stat-num">25,000+</div>
+            <div class="stat-label" data-en="Live Global Channels" data-es="Canales en Vivo">Live Global Channels</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">120,000+</div>
+            <div class="stat-label" data-en="Movies & Series" data-es="Películas y Series">Movies & Series</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">99.9%</div>
+            <div class="stat-label" data-en="Guaranteed Server Uptime" data-es="Tiempo de Actividad">Guaranteed Server Uptime</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">4K / UHD</div>
+            <div class="stat-label" data-en="Ultra HD Feeds" data-es="Transmisión Ultra HD">Ultra HD Feeds</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DEVICE SETUP SECTION -->
-  <section class="px-4 py-12 max-w-7xl mx-auto w-full">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-5xl font-black text-white mb-4">
-        EASY INSTALLATION ON ANY SMART DEVICE
-      </h2>
-      <p class="text-2xl text-cyan-300 font-bold max-w-3xl mx-auto">
-        Get up and running quickly on your Firestick, Samsung TV, LG TV, or Apple TV.
-      </p>
+  <!-- FEATURES / TRUST PILLARS -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-en="Why MazTV Outperforms Cheap IPTV Services" data-es="Por qué MazTV Supera a Otros Servicios">
+          Why MazTV Outperforms Cheap IPTV Services
+        </h2>
+        <p class="section-desc" data-en="We deliver a high-touch, reliable service tailored for local residents and expats." data-es="Ofrecemos un servicio confiable y personalizado para residentes y expatriados.">
+          We deliver a high-touch, reliable service tailored for local residents and expats.
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3 data-en="Family-Friendly by Default" data-es="Apto para la Familia por Defecto">Family-Friendly by Default</h3>
+          <p data-en="Adult channels are excluded by default to keep your installation safe for kids and Airbnb guests. Enabled only upon explicit request."
+             data-es="Los canales para adultos están desactivados por defecto para proteger a tu familia y huéspedes. Se activan solo a petición.">
+            Adult channels are excluded by default to keep your installation safe for kids and Airbnb guests. Enabled only upon explicit request.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🛠️</div>
+          <h3 data-en="Free White-Glove Setup" data-es="Instalación Asistida Gratis">Free White-Glove Setup</h3>
+          <p data-en="Don't struggle with side-loading. Our team sets up and activates your player app (TiviMate, Kodi, Smart TV) for free."
+             data-es="No te compliques con la configuración. Nuestro equipo instala y activa tu aplicación de reproductor sin costo extra.">
+            Don't struggle with side-loading. Our team sets up and activates your player app (TiviMate, Kodi, Smart TV) for free.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚽</div>
+          <h3 data-en="Anti-Buffer Sports Routing" data-es="Enrutamiento Deportivo Anticongelamiento">Anti-Buffer Sports Routing</h3>
+          <p data-en="Dedicated capacity reserved per subscriber ensures fight nights and major games play fluidly without lag or blackouts."
+             data-es="Capacidad dedicada para que las grandes peleas y partidos importantes se vean fluidos, sin congelamientos.">
+            Dedicated capacity reserved per subscriber ensures fight nights and major games play fluidly without lag or blackouts.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">💳</div>
+          <h3 data-en="No Contracts or Auto-Billing" data-es="Sin Contratos ni Cargos Automáticos">No Contracts or Auto-Billing</h3>
+          <p data-en="Pay only for the period you want. No recurring billing surprises, transparent local Mexican Peso (SPEI/OXXO) or USD options."
+             data-es="Paga solo por el periodo que desees. Sin sorpresas de cobros recurrentes. Opciones en Pesos (SPEI/OXXO) o USD.">
+            Pay only for the period you want. No recurring billing surprises, transparent local Mexican Peso (SPEI/OXXO) or USD options.
+          </p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      
-      <!-- FIRESTICK CARD -->
-      <div class="bg-slate-900 border-2 border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
-        <div>
-          <div class="w-14 h-14 bg-orange-500/20 text-orange-400 rounded-2xl flex items-center justify-center font-black text-2xl mb-4">
-            🔥
-          </div>
-          <h3 class="text-2xl font-black text-white mb-2">Amazon Firestick / Android</h3>
-          <p class="text-lg text-slate-300 mb-4 font-semibold">Uses Downloader App for fast 1-click install.</p>
-          <div class="bg-slate-800 p-4 rounded-xl mb-4 border border-slate-700">
-            <div class="text-sm text-slate-400 uppercase font-black mb-1">Downloader App Codes</div>
-            <div class="text-lg font-bold text-cyan-400">TiviMate: <span class="text-white font-mono font-black text-xl">260580</span></div>
-            <div class="text-lg font-bold text-cyan-400">XCIPTV: <span class="text-white font-mono font-black text-xl">762312</span></div>
-          </div>
-        </div>
-        <button onclick="openSetupModal('firestick')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-lg py-3 rounded-xl transition">
-          View Step-By-Step
-        </button>
+  <!-- PRICING SECTION -->
+  <section id="plans">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-en="Transparent VIP Subscription Plans" data-es="Planes de Suscripción VIP Transparentes">
+          Transparent VIP Subscription Plans
+        </h2>
+        <p class="section-desc" data-en="Choose your duration and screen allowance. Every plan unlocks full 4K access." data-es="Elige la duración y cantidad de pantallas. Todos los planes incluyen calidad 4K.">
+          Choose your duration and screen allowance. Every plan unlocks full 4K access.
+        </p>
       </div>
 
-      <!-- SAMSUNG TV CARD -->
-      <div class="bg-slate-900 border-2 border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
-        <div>
-          <div class="w-14 h-14 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center font-black text-2xl mb-4">
-            📺
-          </div>
-          <h3 class="text-2xl font-black text-white mb-2">Samsung Smart TV</h3>
-          <p class="text-lg text-slate-300 mb-4 font-semibold">Direct install via Samsung Tizen App Store.</p>
-          <div class="bg-slate-800 p-4 rounded-xl mb-4 border border-slate-700">
-            <div class="text-sm text-slate-400 uppercase font-black mb-1">Recommended Apps</div>
-            <div class="text-lg font-bold text-cyan-400">IPTV Smarters Pro</div>
-            <div class="text-lg font-bold text-cyan-400">IBO Player</div>
-          </div>
-        </div>
-        <button onclick="openSetupModal('samsung')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-lg py-3 rounded-xl transition">
-          View Step-By-Step
-        </button>
+      <div class="duration-tabs">
+        <button class="tab-btn" onclick="setDuration(1)" id="tab-1" data-en="1 Month" data-es="1 Mes">1 Month</button>
+        <button class="tab-btn active" onclick="setDuration(3)" id="tab-3" data-en="3 Months (Save 15%)" data-es="3 Meses (Ahorra 15%)">3 Months (Save 15%)</button>
+        <button class="tab-btn" onclick="setDuration(6)" id="tab-6" data-en="6 Months (Save 25%)" data-es="6 Meses (Ahorra 25%)">6 Months (Save 25%)</button>
+        <button class="tab-btn" onclick="setDuration(12)" id="tab-12" data-en="12 Months (Best Value)" data-es="12 Meses (Mejor Valor)">12 Months (Best Value)</button>
       </div>
 
-      <!-- LG TV CARD -->
-      <div class="bg-slate-900 border-2 border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
-        <div>
-          <div class="w-14 h-14 bg-pink-500/20 text-pink-400 rounded-2xl flex items-center justify-center font-black text-2xl mb-4">
-            🏷️
-          </div>
-          <h3 class="text-2xl font-black text-white mb-2">LG Smart TV</h3>
-          <p class="text-lg text-slate-300 mb-4 font-semibold">Direct install via LG Content Store.</p>
-          <div class="bg-slate-800 p-4 rounded-xl mb-4 border border-slate-700">
-            <div class="text-sm text-slate-400 uppercase font-black mb-1">Recommended Apps</div>
-            <div class="text-lg font-bold text-cyan-400">IBO Player</div>
-            <div class="text-lg font-bold text-cyan-400">IPTV Smarters</div>
-          </div>
+      <div class="pricing-grid">
+        <!-- STANDARD 1 SCREEN -->
+        <div class="pricing-card">
+          <h3 data-en="Standard Single" data-es="Estándar 1 Pantalla">Standard Single</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;" data-en="Ideal for solo viewers or single TV setups." data-es="Ideal para personas solas o una sola TV.">Ideal for solo viewers or single TV setups.</p>
+          <div class="price-main" id="price-card-1">$44.99 USD</div>
+          <div class="price-equiv" id="equiv-card-1">$14.99/mo equivalent</div>
+          <ul class="feature-list">
+            <li><span>✓</span> <strong>1 Active Connection</strong></li>
+            <li><span>✓</span> 25,000+ Live HD/FHD Channels</li>
+            <li><span>✓</span> Full Sports & PPV Access</li>
+            <li><span>✓</span> 120,000+ VOD Movies & Series</li>
+            <li><span>✓</span> Family-Friendly Default</li>
+          </ul>
+          <button class="btn btn-secondary" onclick="openWhatsApp('Standard Plan')" data-en="Select Plan" data-es="Seleccionar Plan">Select Plan</button>
         </div>
-        <button onclick="openSetupModal('lg')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-lg py-3 rounded-xl transition">
-          View Step-By-Step
-        </button>
+
+        <!-- VIP 2 SCREEN (POPULAR) -->
+        <div class="pricing-card popular">
+          <div class="pop-badge" data-en="Most Popular" data-es="Más Popular">Most Popular</div>
+          <h3 data-en="VIP Dual-Screen" data-es="VIP 2 Pantallas">VIP Dual-Screen</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;" data-en="Perfect for living room + bedroom viewing." data-es="Perfecto para sala + recámara.">Perfect for living room + bedroom viewing.</p>
+          <div class="price-main" id="price-card-2">$54.99 USD</div>
+          <div class="price-equiv" id="equiv-card-2">$18.33/mo equivalent</div>
+          <ul class="feature-list">
+            <li><span>✓</span> <strong>2 Simultaneous Connections</strong></li>
+            <li><span>✓</span> Full 4K / UHD Sports & Event Feeds</li>
+            <li><span>✓</span> Free White-Glove App Setup</li>
+            <li><span>✓</span> Anti-Freeze™ Dedicated Bandwidth</li>
+            <li><span>✓</span> WhatsApp VIP Support Line</li>
+          </ul>
+          <button class="btn btn-primary" onclick="openWhatsApp('VIP Dual-Screen Plan')" data-en="Get Started Now" data-es="Comenzar Ahora">Get Started Now</button>
+        </div>
+
+        <!-- ULTIMATE 4 SCREEN -->
+        <div class="pricing-card">
+          <h3 data-en="Ultimate Family" data-es="Familiar Ultimate">Ultimate Family</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;" data-en="For whole households, tablets, and phones." data-es="Para toda la familia, tablets y teléfonos.">For whole households, tablets, and phones.</p>
+          <div class="price-main" id="price-card-4">$79.99 USD</div>
+          <div class="price-equiv" id="equiv-card-4">$26.66/mo equivalent</div>
+          <ul class="feature-list">
+            <li><span>✓</span> <strong>4 Simultaneous Connections</strong></li>
+            <li><span>✓</span> Priority Support Escalation</li>
+            <li><span>✓</span> Multi-Room Sync Capability</li>
+            <li><span>✓</span> Complete International Channel Package</li>
+            <li><span>✓</span> Built-In Secure Streaming Access</li>
+          </ul>
+          <button class="btn btn-secondary" onclick="openWhatsApp('Ultimate Family Plan')" data-en="Select Plan" data-es="Seleccionar Plan">Select Plan</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOUSEHOLD MATRIX SECTION -->
+  <section id="matrix">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-en="Household Connection Guide" data-es="Guía de Conexiones del Hogar">
+          Household Connection Guide
+        </h2>
+        <p class="section-desc" data-en="Make sure you choose enough screens so your streams never conflict on game day." data-es="Asegúrate de elegir suficientes pantallas para evitar interrupciones.">
+          Make sure you choose enough screens so your streams never conflict on game day.
+        </p>
       </div>
 
-      <!-- APPLE TV / IOS CARD -->
-      <div class="bg-slate-900 border-2 border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
-        <div>
-          <div class="w-14 h-14 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center font-black text-2xl mb-4">
-            🍏
-          </div>
-          <h3 class="text-2xl font-black text-white mb-2">Apple TV / iPhone / iPad</h3>
-          <p class="text-lg text-slate-300 mb-4 font-semibold">Available directly in the iOS App Store.</p>
-          <div class="bg-slate-800 p-4 rounded-xl mb-4 border border-slate-700">
-            <div class="text-sm text-slate-400 uppercase font-black mb-1">Recommended Apps</div>
-            <div class="text-lg font-bold text-cyan-400">Smarters Player Lite</div>
-            <div class="text-lg font-bold text-cyan-400">GSE Smart IPTV</div>
-          </div>
-        </div>
-        <button onclick="openSetupModal('apple')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-lg py-3 rounded-xl transition">
-          View Step-By-Step
-        </button>
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th data-en="Household Setup" data-es="Configuración del Hogar">Household Setup</th>
+            <th data-en="Recommended Plan" data-es="Plan Recomendado">Recommended Plan</th>
+            <th data-en="Active Screens" data-es="Pantallas Activas">Active Screens</th>
+            <th data-en="Why This Tier?" data-es="¿Por qué este plan?">Why This Tier?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Single Viewers / Condos</strong></td>
+            <td>Standard Single</td>
+            <td>1 Stream</td>
+            <td data-en="Great for individual viewing on one main TV or tablet." data-es="Ideal para uso individual en una televisión o tablet.">Great for individual viewing on one main TV or tablet.</td>
+          </tr>
+          <tr>
+            <td><strong>Couples / Living + Bedroom</strong></td>
+            <td>VIP Dual-Screen</td>
+            <td>2 Streams</td>
+            <td data-en="Watch sports in the main room while someone streams movies upstairs." data-es="Mira deportes en la sala mientras alguien ve películas en la recámara.">Watch sports in the main room while someone streams movies upstairs.</td>
+          </tr>
+          <tr>
+            <td><strong>Families / Multiple Rooms + Mobile</strong></td>
+            <td>Ultimate Family</td>
+            <td>4 Streams</td>
+            <td data-en="Covers multiple smart TVs, iPads, and mobile devices without kick-offs." data-es="Cubre varias TVs, iPads y dispositivos móviles simultáneamente.">Covers multiple smart TVs, iPads, and mobile devices without kick-offs.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- STEP BY STEP SETUP GUIDE -->
+  <section id="setup">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title" data-en="How to Get Started in 3 Simple Steps" data-es="Cómo Empezar en 3 Sencillos Pasos">
+          How to Get Started in 3 Simple Steps
+        </h2>
+        <p class="section-desc" data-en="We provide Xtream Codes credentials for instant loading and high performance." data-es="Proporcionamos credenciales Xtream Codes para carga instantánea y alto rendimiento.">
+          We provide Xtream Codes credentials for instant loading and high performance.
+        </p>
       </div>
 
+      <div class="setup-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <h3 data-en="Choose Your Plan" data-es="Elige Tu Plan">Choose Your Plan</h3>
+          <p data-en="Select your preferred subscription term or request a 24-hour test line on WhatsApp."
+             data-es="Selecciona el plazo de tu preferencia o solicita una línea de prueba de 24 horas por WhatsApp.">
+            Select your preferred subscription term or request a 24-hour test line on WhatsApp.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <h3 data-en="Receive Xtream Credentials" data-es="Recibe tus Credenciales">Receive Xtream Credentials</h3>
+          <p data-en="You will receive a Server URL, Username, and Password. Xtream Codes loads categories faster than old M3U playlists."
+             data-es="Recibirás URL del Servidor, Usuario y Contraseña. Xtream Codes carga más rápido que las listas M3U antiguas.">
+            You will receive a Server URL, Username, and Password. Xtream Codes loads categories faster than old M3U playlists.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <h3 data-en="Log In & Start Watching" data-es="Ingresa y Disfruta">Log In & Start Watching</h3>
+          <p data-en="Enter details into TiviMate, IPTV Smarters, or Kodi. Need help? We install and configure it for you remotely!"
+             data-es="Ingresa los datos en TiviMate, IPTV Smarters o Kodi. ¿Necesitas ayuda? ¡Lo configuramos por ti a distancia!">
+            Enter details into TiviMate, IPTV Smarters, or Kodi. Need help? We install and configure it for you remotely!
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="w-full bg-slate-950 border-t border-slate-800 py-8 px-4 text-center mt-12">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xl font-bold text-slate-400">
-      <div>
-        © 2026 <span class="text-white">MazTV</span>. Powered by Mazatlan Media Services.
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>MazTV</h4>
+          <p style="font-size: 0.85rem; line-height: 1.5;" data-en="Powered by Mazatlan Media Services. Delivering high-reliability streaming entertainment with dedicated local support."
+             data-es="Respaldado por Mazatlan Media Services. Entretenimiento digital de alta confiabilidad con soporte local dedicado.">
+            Powered by Mazatlan Media Services. Delivering high-reliability streaming entertainment with dedicated local support.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-en="Supported Apps" data-es="Aplicaciones Compatibles">Supported Apps</h4>
+          <ul class="footer-links">
+            <li>TiviMate Companion</li>
+            <li>IPTV Smarters Pro</li>
+            <li>Kodi Media Center</li>
+            <li>Downloader App</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-en="Local Service Areas" data-es="Áreas de Servicio">Local Service Areas</h4>
+          <ul class="footer-links">
+            <li>Mazatlán (Tellería / Zona Dorada)</li>
+            <li>Puerto Vallarta / Riviera Nayarit</li>
+            <li>Los Cabos / Baja California Sur</li>
+            <li>Expat & National Accounts</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 data-en="Accepted Payments" data-es="Métodos de Pago">Accepted Payments</h4>
+          <p style="font-size: 0.85rem;" data-en="SPEI Bank Transfer, OXXO Deposit, Credit/Debit Cards, PayPal, and USD Crypto."
+             data-es="Transferencia SPEI, Depósito OXXO, Tarjetas de Crédito/Débito, PayPal y Cripto.">
+            SPEI Bank Transfer, OXXO Deposit, Credit/Debit Cards, PayPal, and USD Crypto.
+          </p>
+        </div>
       </div>
-      <div class="flex items-center gap-6">
-        <a href="https://wa.me/526692448788" target="_blank" class="text-cyan-400 hover:underline">WhatsApp: +52 669 244 8788</a>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 MazTV / Mazatlan Media Services. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <!-- TRIAL MODAL -->
-  <div id="trialModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4">
-    <div class="bg-slate-900 border-2 border-cyan-500 rounded-3xl p-8 max-w-lg w-full shadow-2xl relative">
-      <button onclick="closeTrialModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-3xl font-black">&times;</button>
-      <h3 class="text-3xl font-black text-white mb-4">START YOUR FREE TRIAL</h3>
-      <p class="text-xl text-slate-300 mb-6 font-semibold">Select your device to request your 24-hour test account via WhatsApp:</p>
-      
-      <div class="space-y-4 mb-6">
-        <a href="https://wa.me/526692448788?text=Hola!%20I%20would%20like%20a%20Free%20Trial%20for%20my%20Amazon%20Firestick." target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-xl p-4 rounded-xl text-center border border-slate-700">
-          🔥 Amazon Firestick / Android Box
-        </a>
-        <a href="https://wa.me/526692448788?text=Hola!%20I%20would%20like%20a%20Free%20Trial%20for%20my%20Samsung%20Smart%20TV." target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-xl p-4 rounded-xl text-center border border-slate-700">
-          📺 Samsung Smart TV
-        </a>
-        <a href="https://wa.me/526692448788?text=Hola!%20I%20would%20like%20a%20Free%20Trial%20for%20my%20LG%20Smart%20TV." target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-xl p-4 rounded-xl text-center border border-slate-700">
-          🏷️ LG Smart TV
-        </a>
-        <a href="https://wa.me/526692448788?text=Hola!%20I%20would%20like%20a%20Free%20Trial%20for%20my%20Apple%20TV%20or%20iPhone." target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-xl p-4 rounded-xl text-center border border-slate-700">
-          🍏 Apple TV / iOS
-        </a>
-      </div>
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a href="javascript:void(0)" class="whatsapp-float" onclick="openWhatsApp('Direct Inquiry')" aria-label="WhatsApp Support">
+    💬
+  </a>
+
+  <!-- RECENT ACTIVITY TOAST -->
+  <div class="toast-notif" id="toast">
+    <span style="font-size: 1.4rem;">🎉</span>
+    <div>
+      <div style="font-weight: 700; font-size: 0.85rem;" id="toast-title">New Trial Activated</div>
+      <div style="font-size: 0.75rem; color: var(--text-muted);" id="toast-desc">User in Mazatlán started 24h access</div>
+    </div>
+  </div>
+
+  <!-- EXIT INTENT MODAL -->
+  <div class="modal-overlay" id="exit-modal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="badge-pill" style="margin-bottom: 12px;">VIP SPECIAL OFFER</div>
+      <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 8px;" data-en="Unlock Your 24-Hour Free Trial" data-es="Desbloquea Tu Prueba Gratis de 24 Horas">
+        Unlock Your 24-Hour Free Trial
+      </h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted);" data-en="Test all 25,000+ channels and 4K sports feeds on your device with no commitment."
+         data-es="Prueba los 25,000+ canales y deportes en 4K en tu dispositivo sin compromiso.">
+        Test all 25,000+ channels and 4K sports feeds on your device with no commitment.
+      </p>
+
+      <form onsubmit="handleModalSubmit(event)">
+        <input type="email" class="form-input" placeholder="Enter your email address" required id="modal-email">
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" data-en="Get Instant Test Credentials" data-es="Obtener Credenciales de Prueba">
+          Get Instant Test Credentials
+        </button>
+      </form>
     </div>
   </div>
 
   <script>
-    function openTrialModal() {
-      document.getElementById('trialModal').classList.remove('hidden');
-      document.getElementById('trialModal').classList.add('flex');
+    // GLOBAL STATE
+    let currentCurrency = 'USD';
+    let currentDuration = 3; // Months
+    const exchangeRate = 18.55; // USD to MXN
+
+    // BASE USD PRICING DATA [DurationInMonths]: { tier1, tier2, tier4 }
+    const pricingData = {
+      1: { 1: 16.99, 2: 21.99, 4: 29.99 },
+      3: { 1: 44.99, 2: 54.99, 4: 79.99 },
+      6: { 1: 79.99, 2: 99.99, 4: 139.99 },
+      12: { 1: 129.99, 2: 159.99, 4: 219.99 }
+    };
+
+    function setCurrency(curr) {
+      currentCurrency = curr;
+      document.getElementById('btn-usd').classList.toggle('active', curr === 'USD');
+      document.getElementById('btn-mxn').classList.toggle('active', curr === 'MXN');
+      
+      // Update Language elements
+      document.querySelectorAll('[data-' + curr.toLowerCase() + ']').forEach(el => {
+        el.textContent = el.getAttribute('data-' + curr.toLowerCase());
+      });
+
+      updatePrices();
     }
-    function closeTrialModal() {
-      document.getElementById('trialModal').classList.add('hidden');
-      document.getElementById('trialModal').classList.remove('flex');
+
+    function setDuration(months) {
+      currentDuration = months;
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('tab-' + months).classList.add('active');
+      updatePrices();
     }
+
+    function updatePrices() {
+      const data = pricingData[currentDuration];
+      
+      [1, 2, 4].forEach(tier => {
+        const baseUSD = data[tier];
+        const monthlyUSD = baseUSD / currentDuration;
+
+        const mainPriceEl = document.getElementById(`price-card-${tier}`);
+        const equivPriceEl = document.getElementById(`equiv-card-${tier}`);
+
+        if (currentCurrency === 'USD') {
+          mainPriceEl.textContent = `$${baseUSD.toFixed(2)} USD`;
+          equivPriceEl.textContent = `$${monthlyUSD.toFixed(2)}/mo equivalent (~$${Math.round(monthlyUSD * exchangeRate)} MXN)`;
+        } else {
+          const baseMXN = Math.round(baseUSD * exchangeRate);
+          const monthlyMXN = Math.round(monthlyUSD * exchangeRate);
+          mainPriceEl.textContent = `$${baseMXN.toLocaleString()} MXN`;
+          equivPriceEl.textContent = `$${monthlyMXN.toLocaleString()} MXN/mes ($${monthlyUSD.toFixed(2)} USD)`;
+        }
+      });
+    }
+
+    function openWhatsApp(context) {
+      const phone = "526690000000"; // Replace with your target WhatsApp number
+      const text = encodeURIComponent(`Hi! I am visiting the MazTV website and would like to request information about: ${context}`);
+      window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+    }
+
+    // TOAST NOTIFICATION ROTATOR
+    const toastMessages = [
+      { title: "New Trial Activated", desc: "User in Mazatlán started 24h access" },
+      { title: "VIP Subscription Joined", desc: "Expat client renewed 12-month 4K plan" },
+      { title: "White-Glove Setup Done", desc: "Firestick activated in Puerto Vallarta" }
+    ];
+
+    let toastIdx = 0;
+    function showNextToast() {
+      const toast = document.getElementById('toast');
+      const msg = toastMessages[toastIdx];
+      document.getElementById('toast-title').textContent = msg.title;
+      document.getElementById('toast-desc').textContent = msg.desc;
+      
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+      
+      toastIdx = (toastIdx + 1) % toastMessages.length;
+    }
+
+    setInterval(showNextToast, 12000);
+    setTimeout(showNextToast, 3000);
+
+    // EXIT INTENT MODAL
+    let modalShown = false;
+    document.addEventListener('mouseleave', (e) => {
+      if (e.clientY < 10 && !modalShown) {
+        document.getElementById('exit-modal').classList.add('active');
+        modalShown = true;
+      }
+    });
+
+    function closeModal() {
+      document.getElementById('exit-modal').classList.remove('active');
+    }
+
+    function handleModalSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('modal-email').value;
+      closeModal();
+      openWhatsApp(`Free Trial Request for Email: ${email}`);
+    }
+
+    // INITIAL RENDER
+    updatePrices();
   </script>
 </body>
 </html>
