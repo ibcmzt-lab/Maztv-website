@@ -1,646 +1,275 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MazTV | Ultra-Fast 4K Streaming Hub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-        
-        :root {
-            --bg-dark: #070A10;
-            --header-bg: #0B0F19;
-            --card-bg: #0F172A;
-            --accent-cyan: #06B6D4;
-            --accent-gold: #EAB308;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-dark);
-            color: #F3F4F6;
-        }
-
-        .header-backdrop {
-            background-color: var(--header-bg);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .glass-card {
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .glass-card-gold {
-            background: rgba(30, 27, 75, 0.9);
-            backdrop-filter: blur(16px);
-            border: 2px solid #EAB308;
-            box-shadow: 0 0 35px rgba(234, 179, 8, 0.25);
-        }
-
-        .glow-cyan {
-            box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
-        }
-
-        .text-gradient-cyan {
-            background: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .text-gradient-gold {
-            background: linear-gradient(135deg, #FDE047 0%, #EAB308 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Custom SVG Logo Styles */
-        .brand-logo-icon {
-            filter: drop-shadow(0px 0px 8px rgba(6, 182, 212, 0.6));
-        }
-
-        /* Smooth accordion transitions */
-        .modal-body-scroll {
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MazTV | Cut The Cable & Cancel Subscriptions</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #0B0F19;
+      color: #F3F4F6;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+    .text-glow {
+      text-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+    }
+    .btn-glow {
+      box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+    }
+    .btn-glow:hover {
+      box-shadow: 0 0 35px rgba(6, 182, 212, 0.7);
+    }
+  </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500 selection:text-black">
 
-    <!-- Header Navigation Bar -->
-    <header class="sticky top-0 z-50 header-backdrop shadow-2xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            
-            <!-- Brand Logo -->
-            <div class="flex items-center space-x-3.5">
-                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-cyan-600 via-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 border border-cyan-400/40 brand-logo-icon">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                </div>
-                <div>
-                    <div class="flex items-center">
-                        <span class="text-3xl font-black tracking-tight text-white drop-shadow-md">Maz</span>
-                        <span class="text-3xl font-black tracking-tight text-cyan-400 ml-0.5">TV</span>
-                    </div>
-                    <span class="block text-[11px] tracking-widest text-amber-400 font-bold uppercase">Powered by Mazatlan Media Services</span>
-                </div>
-            </div>
-
-            <!-- Header Controls -->
-            <div class="flex items-center space-x-3 sm:space-x-4">
-                <!-- Language Toggle Button with Flag Icons -->
-                <button onclick="toggleLanguage()" id="langBtn" class="px-3 py-2 rounded-xl border border-slate-700 bg-slate-900/90 hover:bg-slate-800 text-xs font-bold text-slate-200 transition flex items-center gap-2 shadow-inner">
-                    <span id="langFlag" class="text-base">🇲🇽</span>
-                    <span id="langLabel" class="tracking-wide">ESPAÑOL</span>
-                </button>
-
-                <!-- WhatsApp Direct Link Button -->
-                <a href="https://wa.me/526692448788" target="_blank" class="hidden sm:flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black px-4 py-2.5 rounded-xl text-xs sm:text-sm transition shadow-lg shadow-emerald-500/25 uppercase tracking-wide">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>+52 669 244 8788</span>
-                </a>
-            </div>
+  <!-- HEADER / NAVIGATION -->
+  <header class="w-full bg-[#0B0F19] border-b border-slate-800 sticky top-0 z-50 px-4 py-4 md:px-8">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <!-- LOGO -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
+          <svg class="w-6 h-6 text-black fill-current" viewBox="0 0 24 24">
+            <path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z"/>
+          </svg>
         </div>
-    </header>
+        <span class="text-3xl font-black tracking-wider text-white">MAZ<span class="text-cyan-400">TV</span></span>
+      </div>
 
-    <!-- Main Content Container -->
-    <main class="flex-grow">
-        
-        <!-- Hero Section -->
-        <section class="relative py-12 lg:py-20 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    
-                    <!-- Left Hero Text Column -->
-                    <div class="lg:col-span-7 text-center lg:text-left">
-                        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/90 border border-cyan-500/40 text-cyan-300 text-xs font-extrabold uppercase tracking-widest mb-6 shadow-sm">
-                            <i class="fa-solid fa-bolt text-amber-400"></i> <span data-i18n="heroBadge">Ultra-Fast 4K Streaming Hub</span>
-                        </span>
-                        
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight mb-6 leading-tight">
-                            <span data-i18n="heroTitle1">Stream The Best In</span> <br>
-                            <span class="text-gradient-cyan" data-i18n="heroTitle2">Live TV, Sports & Movies</span>
-                        </h1>
-                        
-                        <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal" data-i18n="heroSub">
-                            Instant access to over 9,000+ live HD/4K channels, major sports leagues (NFL, MLB, NHL, NBA), and premium movie networks on any device.
-                        </p>
+      <!-- LANGUAGE TOGGLE & WHATSAPP HEADER LINK -->
+      <div class="flex items-center gap-4">
+        <button id="langToggle" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-4 py-2 rounded-lg text-lg border border-slate-700 flex items-center gap-2 transition">
+          <span id="langFlag">🇺🇸</span> <span id="langText">EN</span>
+        </button>
+        <a href="https://wa.me/526692448788?text=Hola!%20I%20have%20a%20question%20about%20MazTV." target="_blank" class="hidden sm:inline-flex bg-green-600 hover:bg-green-500 text-white font-bold px-4 py-2 rounded-lg text-base transition items-center gap-2">
+          <span>💬</span> Chat Direct
+        </a>
+      </div>
+    </div>
+  </header>
 
-                        <!-- Call To Action Buttons -->
-                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                            <button onclick="openTrialModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-black font-black text-sm tracking-wider uppercase transition shadow-xl shadow-cyan-500/30 flex items-center justify-center gap-3">
-                                <i class="fa-solid fa-play"></i>
-                                <span data-i18n="getTrialBtn">GET FREE 24-HOUR TRIAL</span>
-                            </button>
-                            
-                            <a href="https://wa.me/526692448788" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card hover:bg-slate-800 text-white font-bold text-sm tracking-wide transition flex items-center justify-center gap-3 border border-slate-700">
-                                <i class="fa-brands fa-whatsapp text-emerald-400 text-xl"></i>
-                                <span data-i18n="chatWhatsappBtn">Chat On WhatsApp</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Right Hero Graphic: High-Tech 4K Dashboard Mockup -->
-                    <div class="lg:col-span-5 flex justify-center">
-                        <div class="relative w-full max-w-lg rounded-2xl p-4 glass-card border border-cyan-500/30 glow-cyan">
-                            <!-- Mock TV Screen Header -->
-                            <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                                </div>
-                                <span class="text-[10px] font-mono text-cyan-400 tracking-wider">MAZTV 4K ULTRA HD PLAYER</span>
-                            </div>
-                            
-                            <!-- Mock Streaming Channels Dashboard Grid -->
-                            <div class="space-y-3">
-                                <div class="relative h-44 rounded-xl bg-slate-900 overflow-hidden border border-slate-800 flex items-center justify-center group">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-10"></div>
-                                    <div class="absolute top-3 left-3 z-20 flex items-center gap-2">
-                                        <span class="px-2 py-0.5 rounded bg-red-600 text-white text-[10px] font-black uppercase">LIVE</span>
-                                        <span class="text-xs font-bold text-white">4K SPORTS NETWORK</span>
-                                    </div>
-                                    <div class="z-20 text-center p-4">
-                                        <i class="fa-solid fa-trophy text-amber-400 text-4xl mb-2 drop-shadow-md"></i>
-                                        <p class="text-xs font-black text-white uppercase tracking-wider">LIVE PPV & LEAGUE PASS</p>
-                                    </div>
-                                </div>
-
-                                <div class="grid grid-cols-3 gap-2">
-                                    <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800 text-center">
-                                        <i class="fa-solid fa-film text-cyan-400 text-lg mb-1"></i>
-                                        <p class="text-[10px] font-bold text-slate-300">MOVIES</p>
-                                    </div>
-                                    <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800 text-center">
-                                        <i class="fa-solid fa-tv text-indigo-400 text-lg mb-1"></i>
-                                        <p class="text-[10px] font-bold text-slate-300">SERIES</p>
-                                    </div>
-                                    <div class="bg-slate-900 p-2.5 rounded-lg border border-slate-800 text-center">
-                                        <i class="fa-solid fa-globe text-emerald-400 text-lg mb-1"></i>
-                                        <p class="text-[10px] font-bold text-slate-300">NEWS</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Pricing Packages Section -->
-        <section id="pricing" class="py-16 bg-slate-950/80 border-y border-slate-900">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl sm:text-4xl font-black text-white mb-3 tracking-tight" data-i18n="pricingTitle">Streaming Packages</h2>
-                    <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto font-medium" data-i18n="pricingSub">Flexible monthly options with zero long-term contracts. Compatible with Smart TVs, Firestick, Android, and iOS.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                    
-                    <!-- Bronze Package -->
-                    <div class="glass-card rounded-2xl p-8 flex flex-col justify-between relative border border-slate-800">
-                        <div>
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-xl font-black text-amber-600">BRONZE</h3>
-                                <span class="text-xs px-2.5 py-1 rounded-md bg-amber-950/80 text-amber-300 border border-amber-800/60 font-bold">HD Quality</span>
-                            </div>
-                            <div class="mb-6">
-                                <span class="text-5xl font-black text-white">$10</span>
-                                <span class="text-slate-400 text-sm font-semibold">/ Month</span>
-                            </div>
-                            <ul class="space-y-3.5 text-sm text-slate-200 mb-8 font-medium">
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-400"></i> HD Streaming Quality</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-400"></i> 1 Active Device at a time</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-400"></i> Core Library (9,000+ Channels)</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-400"></i> Live Sports & News</li>
-                            </ul>
-                        </div>
-                        <button onclick="openTrialModal('Bronze ($10/mo)')" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-black text-xs uppercase tracking-wider transition border border-slate-700" data-i18n="selectPlanBtn">Select Bronze</button>
-                    </div>
-
-                    <!-- Gold Package (Featured) -->
-                    <div class="glass-card-gold rounded-2xl p-8 flex flex-col justify-between relative transform md:-translate-y-2">
-                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-950 font-black text-xs uppercase tracking-widest shadow-lg">
-                            BEST VALUE
-                        </div>
-                        <div>
-                            <div class="flex justify-between items-center mb-4 mt-2">
-                                <h3 class="text-2xl font-black text-gradient-gold">GOLD</h3>
-                                <span class="text-xs px-2.5 py-1 rounded-md bg-yellow-950 text-yellow-300 border border-yellow-500/60 font-extrabold">4K Ultra HD</span>
-                            </div>
-                            <div class="mb-6">
-                                <span class="text-6xl font-black text-white">$20</span>
-                                <span class="text-slate-300 text-sm font-semibold">/ Month</span>
-                            </div>
-                            <ul class="space-y-3.5 text-sm text-slate-100 mb-8 font-semibold">
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-star text-yellow-400"></i> 4K Ultra HD & Full HD Streaming</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-star text-yellow-400"></i> Multi-Device Support</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-star text-yellow-400"></i> Full Library & Premium Channels</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-star text-yellow-400"></i> Ad-Free Experience & PPV Events</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-star text-yellow-400"></i> 24/7 Priority Support</li>
-                            </ul>
-                        </div>
-                        <button onclick="openTrialModal('Gold ($20/mo)')" class="w-full py-4 rounded-xl bg-gradient-to-r from-yellow-400 via-amber-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-lg shadow-yellow-500/30" data-i18n="selectPlanGoldBtn">Get Gold Package</button>
-                    </div>
-
-                    <!-- Silver Package -->
-                    <div class="glass-card rounded-2xl p-8 flex flex-col justify-between relative border border-slate-800">
-                        <div>
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-xl font-black text-slate-300">SILVER</h3>
-                                <span class="text-xs px-2.5 py-1 rounded-md bg-slate-800 text-slate-200 border border-slate-700 font-bold">Full HD</span>
-                            </div>
-                            <div class="mb-6">
-                                <span class="text-5xl font-black text-white">$15</span>
-                                <span class="text-slate-400 text-sm font-semibold">/ Month</span>
-                            </div>
-                            <ul class="space-y-3.5 text-sm text-slate-200 mb-8 font-medium">
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-400"></i> Full HD 1080p Streaming</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-400"></i> Expanded On-Demand Library</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-400"></i> Pay-Per-View Sports & Events</li>
-                                <li class="flex items-center gap-3"><i class="fa-solid fa-check text-cyan-400"></i> MLB, NHL, NFL, NBA League Pass</li>
-                            </ul>
-                        </div>
-                        <button onclick="openTrialModal('Silver ($15/mo)')" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-black text-xs uppercase tracking-wider transition border border-slate-700" data-i18n="selectPlanBtn">Select Silver</button>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Device Onboarding Section with Official Branding & Step-by-Step Expansion -->
-        <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl sm:text-4xl font-black text-white mb-2 tracking-tight" data-i18n="setupTitle">Easy Smart TV & Device Setup</h2>
-                <p class="text-cyan-300 text-sm sm:text-base font-semibold" data-i18n="setupSub">Get up and running quickly on any Smart TV or Streaming Device.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <!-- 1. Firestick / Android TV Box -->
-                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-orange-500 flex flex-col justify-between">
-                    <div>
-                        <!-- Firestick & Downloader Branding -->
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-orange-950/80 border border-orange-500/40 flex items-center justify-center text-orange-400 text-2xl font-bold">
-                                <i class="fa-solid fa-fire-flame-curved"></i>
-                            </div>
-                            <span class="text-[10px] font-bold px-2.5 py-1 rounded bg-orange-900/60 text-orange-300 border border-orange-700/50 uppercase">TiviMate / Downloader</span>
-                        </div>
-                        
-                        <h3 class="text-xl font-extrabold text-white mb-2">Firestick & Android TV</h3>
-                        <p class="text-xs text-slate-300 mb-4 font-normal">Use Downloader app to install TiviMate or XCIPTV in under 2 minutes.</p>
-                        
-                        <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 mb-4 text-xs font-mono text-slate-300 space-y-1">
-                            <div><span class="text-amber-400 font-bold">TiviMate Code:</span> <span class="text-white font-bold">260580</span></div>
-                            <div><span class="text-amber-400 font-bold">XCIPTV Code:</span> <span class="text-white font-bold">762312</span></div>
-                        </div>
-                    </div>
-                    
-                    <button onclick="openGuideModal('firestick')" class="w-full py-2.5 rounded-xl bg-orange-500/20 hover:bg-orange-500/30 text-orange-300 border border-orange-500/40 font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-book-open"></i>
-                        <span data-i18n="viewGuideBtn">Full Guide</span>
-                    </button>
-                </div>
-
-                <!-- 2. Samsung Smart TV -->
-                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-blue-500 flex flex-col justify-between">
-                    <div>
-                        <!-- Samsung Tizen Branding -->
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-blue-950/80 border border-blue-500/40 flex items-center justify-center text-blue-400 text-2xl font-bold">
-                                <i class="fa-solid fa-tv"></i>
-                            </div>
-                            <span class="text-[10px] font-bold px-2.5 py-1 rounded bg-blue-900/60 text-blue-300 border border-blue-700/50 uppercase">Samsung Tizen OS</span>
-                        </div>
-                        
-                        <h3 class="text-xl font-extrabold text-white mb-2">Samsung Smart TV</h3>
-                        <p class="text-xs text-slate-300 mb-4 font-normal">Direct app installation from the Samsung Smart TV App Store.</p>
-                        
-                        <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 mb-4 text-xs text-slate-300 font-medium">
-                            <i class="fa-solid fa-circle-check text-cyan-400 mr-1"></i> IPTV Smarters Pro <br>
-                            <i class="fa-solid fa-circle-check text-cyan-400 mr-1"></i> IBO Player / SmartOne
-                        </div>
-                    </div>
-                    
-                    <button onclick="openGuideModal('samsung')" class="w-full py-2.5 rounded-xl bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/40 font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-book-open"></i>
-                        <span data-i18n="viewGuideBtn">Full Guide</span>
-                    </button>
-                </div>
-
-                <!-- 3. LG Smart TV -->
-                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-pink-500 flex flex-col justify-between">
-                    <div>
-                        <!-- LG webOS Branding -->
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-pink-950/80 border border-pink-500/40 flex items-center justify-center text-pink-400 text-2xl font-bold">
-                                <i class="fa-solid fa-display"></i>
-                            </div>
-                            <span class="text-[10px] font-bold px-2.5 py-1 rounded bg-pink-900/60 text-pink-300 border border-pink-700/50 uppercase">LG webOS</span>
-                        </div>
-                        
-                        <h3 class="text-xl font-extrabold text-white mb-2">LG Smart TV</h3>
-                        <p class="text-xs text-slate-300 mb-4 font-normal">Direct app installation from LG Content Store on your TV screen.</p>
-                        
-                        <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 mb-4 text-xs text-slate-300 font-medium">
-                            <i class="fa-solid fa-circle-check text-pink-400 mr-1"></i> IBO Player <br>
-                            <i class="fa-solid fa-circle-check text-pink-400 mr-1"></i> IPTV Smarters Lite
-                        </div>
-                    </div>
-                    
-                    <button onclick="openGuideModal('lg')" class="w-full py-2.5 rounded-xl bg-pink-500/20 hover:bg-pink-500/30 text-pink-300 border border-pink-500/40 font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-book-open"></i>
-                        <span data-i18n="viewGuideBtn">Full Guide</span>
-                    </button>
-                </div>
-
-                <!-- 4. Apple TV / iOS & Mac -->
-                <div class="glass-card rounded-2xl p-6 border-t-4 border-t-purple-500 flex flex-col justify-between">
-                    <div>
-                        <!-- Apple Branding -->
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="w-12 h-12 rounded-xl bg-purple-950/80 border border-purple-500/40 flex items-center justify-center text-purple-300 text-2xl font-bold">
-                                <i class="fa-brands fa-apple"></i>
-                            </div>
-                            <span class="text-[10px] font-bold px-2.5 py-1 rounded bg-purple-900/60 text-purple-300 border border-purple-700/50 uppercase">Apple TV / iOS</span>
-                        </div>
-                        
-                        <h3 class="text-xl font-extrabold text-white mb-2">Apple TV & iOS</h3>
-                        <p class="text-xs text-slate-300 mb-4 font-normal">Install high-speed streaming players directly from the App Store.</p>
-                        
-                        <div class="bg-slate-900/90 rounded-xl p-3 border border-slate-800 mb-4 text-xs text-slate-300 font-medium">
-                            <i class="fa-solid fa-circle-check text-purple-400 mr-1"></i> GSE Smart IPTV <br>
-                            <i class="fa-solid fa-circle-check text-purple-400 mr-1"></i> IPTV Smarters Expert
-                        </div>
-                    </div>
-                    
-                    <button onclick="openGuideModal('apple')" class="w-full py-2.5 rounded-xl bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-500/40 font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-book-open"></i>
-                        <span data-i18n="viewGuideBtn">Full Guide</span>
-                    </button>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="header-backdrop py-8 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="text-center sm:text-left">
-                <p class="text-base font-black text-white">Maz<span class="text-cyan-400">TV</span></p>
-                <p class="text-xs text-slate-400">Powered by Mazatlan Media Services &copy; 2026. All rights reserved.</p>
-            </div>
-            <div class="flex items-center gap-4 text-xs text-slate-300 font-semibold">
-                <span>Support Line: <strong class="text-emerald-400 font-extrabold">+52 669 244 8788</strong></span>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Modal 1: Trial Request Modal -->
-    <div id="trialModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="glass-card rounded-2xl max-w-md w-full p-6 relative border border-cyan-500/40">
-            <button onclick="closeTrialModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            
-            <h3 class="text-2xl font-black text-white mb-1" data-i18n="modalTitle">Claim Free 24-Hour Trial</h3>
-            <p class="text-xs text-slate-300 mb-6 font-medium" data-i18n="modalSub">Select your device and request trial access on WhatsApp.</p>
-
-            <form id="trialForm" onsubmit="handleTrialSubmit(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-bold text-slate-200 mb-1" data-i18n="deviceLabel">Your Device / TV OS</label>
-                    <select id="deviceType" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-3 text-sm text-white focus:outline-none focus:border-cyan-500">
-                        <option value="Firestick / Android TV (TiviMate)">Firestick / Android TV (TiviMate)</option>
-                        <option value="Samsung Smart TV (Tizen OS)">Samsung Smart TV (Tizen OS)</option>
-                        <option value="LG Smart TV (webOS)">LG Smart TV (webOS)</option>
-                        <option value="Apple TV / iOS">Apple TV / iOS</option>
-                        <option value="Windows / Mac PC">Windows / Mac PC</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-bold text-slate-200 mb-1" data-i18n="planLabel">Interested Plan</label>
-                    <select id="modalPlan" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-3 text-sm text-white focus:outline-none focus:border-cyan-500">
-                        <option value="Free 24h Trial">Free 24h Trial</option>
-                        <option value="Bronze ($10/mo)">Bronze ($10/mo)</option>
-                        <option value="Silver ($15/mo)">Silver ($15/mo)</option>
-                        <option value="Gold ($20/mo)">Gold ($20/mo)</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="w-full py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20">
-                    <i class="fa-brands fa-whatsapp text-xl"></i>
-                    <span data-i18n="sendWhatsappBtn">Request Trial On WhatsApp</span>
-                </button>
-            </form>
-        </div>
+  <!-- HERO SECTION -->
+  <section class="relative px-4 py-12 md:py-20 max-w-7xl mx-auto text-center">
+    <!-- BADGE -->
+    <div class="inline-flex items-center gap-2 bg-cyan-950/80 border border-cyan-500/40 text-cyan-300 px-5 py-2 rounded-full text-lg md:text-xl font-bold mb-8">
+      <span>⚡ NO VPN REQUIRED</span>
+      <span class="text-slate-500">•</span>
+      <span>100% BUFFER-FREE SERVERS</span>
     </div>
 
-    <!-- Modal 2: Step-by-Step Installation Guides -->
-    <div id="guideModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="glass-card rounded-2xl max-w-2xl w-full p-6 relative border border-slate-700 modal-body-scroll">
-            <button onclick="closeGuideModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            
-            <div id="guideModalContent">
-                <!-- Dynamically populated step-by-step content -->
-            </div>
-        </div>
+    <!-- MAIN HEADLINE -->
+    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-8">
+      CUT THE CABLE.<br>
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-200 text-glow">
+        CANCEL EVERY SUBSCRIPTION.
+      </span>
+    </h1>
+
+    <!-- SUBHEADLINE (EXTRA LARGE FOR ACCESSIBILITY) -->
+    <p class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-100 max-w-5xl mx-auto leading-relaxed mb-10">
+      INSTANT ACCESS TO <span class="text-cyan-400 font-black underline decoration-cyan-500">9,000+ LIVE HD & 4K CHANNELS</span>, LOCAL US/CANADA/MEXICO FEEDS, & EVERY ON-DEMAND MOVIE & SHOW FROM NETFLIX, HULU, HBO MAX, & APPLE TV+.
+    </p>
+
+    <!-- MAIN CALL TO ACTION BUTTON (GLOWING & PROMINENT) -->
+    <div class="flex flex-col items-center gap-4 mb-12">
+      <button onclick="openTrialModal()" class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-black text-2xl sm:text-3xl px-10 py-6 rounded-2xl btn-glow transition transform hover:-translate-y-1 active:translate-y-0">
+        🚀 GET FREE 24-HOUR TRIAL
+      </button>
+      <p class="text-xl sm:text-2xl font-bold text-slate-300">
+        No Credit Card Required • Setup Takes Under 3 Minutes
+      </p>
     </div>
 
-    <!-- Scripts: Translations & Modals -->
-    <script>
-        const translations = {
-            en: {
-                heroBadge: "Ultra-Fast 4K Streaming Hub",
-                heroTitle1: "Stream The Best In",
-                heroTitle2: "Live TV, Sports & Movies",
-                heroSub: "Instant access to over 9,000+ live HD/4K channels, major sports leagues (NFL, MLB, NHL, NBA), and premium movie networks on any device.",
-                getTrialBtn: "GET FREE 24-HOUR TRIAL",
-                chatWhatsappBtn: "Chat On WhatsApp",
-                pricingTitle: "Streaming Packages",
-                pricingSub: "Flexible monthly options with zero long-term contracts. Compatible with Smart TVs, Firestick, Android, and iOS.",
-                selectPlanBtn: "Select Package",
-                selectPlanGoldBtn: "Get Gold Package",
-                setupTitle: "Easy Smart TV & Device Setup",
-                setupSub: "Get up and running quickly on any Smart TV or Streaming Device.",
-                viewGuideBtn: "Full Guide",
-                modalTitle: "Claim Free 24-Hour Trial",
-                modalSub: "Select your device and request trial access on WhatsApp.",
-                deviceLabel: "Your Device / TV OS",
-                planLabel: "Interested Plan",
-                sendWhatsappBtn: "Request Trial On WhatsApp"
-            },
-            es: {
-                heroBadge: "Centro de Streaming 4K Ultra-Rápido",
-                heroTitle1: "Transmite Lo Mejor En",
-                heroTitle2: "TV en Vivo, Deportes y Películas",
-                heroSub: "Acceso instantáneo a más de 9,000+ canales en HD/4K, ligas deportivas (NFL, MLB, NHL, NBA) y redes premium en cualquier dispositivo.",
-                getTrialBtn: "OBTÉN PRUEBA GRATIS DE 24 HRS",
-                chatWhatsappBtn: "Chatear por WhatsApp",
-                pricingTitle: "Paquetes de Streaming",
-                pricingSub: "Opciones mensuales flexibles sin contratos a largo plazo. Compatible con Smart TVs, Firestick, Android e iOS.",
-                selectPlanBtn: "Seleccionar Paquete",
-                selectPlanGoldBtn: "Obtener Paquete Oro",
-                setupTitle: "Configuración Fácil para Smart TV",
-                setupSub: "Comienza a ver rápidamente en cualquier Smart TV o dispositivo.",
-                viewGuideBtn: "Guía Completa",
-                modalTitle: "Solicitar Prueba Gratis de 24 Horas",
-                modalSub: "Selecciona tu dispositivo y recibe tu prueba por WhatsApp.",
-                deviceLabel: "Tu Dispositivo / Sistema TV",
-                planLabel: "Paquete de Interés",
-                sendWhatsappBtn: "Solicitar Prueba por WhatsApp"
-            }
-        };
+    <!-- CABLE & STREAMING SAVINGS MATRIX -->
+    <div class="bg-slate-900/90 border-2 border-slate-800 rounded-3xl p-6 md:p-10 max-w-5xl mx-auto shadow-2xl text-left">
+      <h2 class="text-2xl md:text-3xl font-black text-white text-center mb-8 uppercase tracking-wide">
+        💰 What You Can Cancel Today
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xl md:text-2xl font-bold">
+        <div class="bg-slate-800/80 p-5 rounded-2xl border border-red-500/30 flex justify-between items-center">
+          <div>
+            <div class="text-slate-300 font-semibold text-lg">Cable & Satellite</div>
+            <div class="text-red-400 text-2xl font-black">🇨🇦 Rogers / Bell / US Cable</div>
+          </div>
+          <div class="text-red-400 font-black text-3xl">~$120/mo</div>
+        </div>
 
-        let currentLang = 'en';
+        <div class="bg-slate-800/80 p-5 rounded-2xl border border-red-500/30 flex justify-between items-center">
+          <div>
+            <div class="text-slate-300 font-semibold text-lg">On-Demand Apps</div>
+            <div class="text-red-400 text-2xl font-black">Netflix, HBO, Hulu, Prime</div>
+          </div>
+          <div class="text-red-400 font-black text-3xl">~$55/mo</div>
+        </div>
 
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'es' : 'en';
-            
-            document.querySelectorAll('[data-i18n]').forEach(elem => {
-                const key = elem.getAttribute('data-i18n');
-                if (translations[currentLang][key]) {
-                    elem.textContent = translations[currentLang][key];
-                }
-            });
+        <div class="bg-slate-800/80 p-5 rounded-2xl border border-red-500/30 flex justify-between items-center">
+          <div>
+            <div class="text-slate-300 font-semibold text-lg">Sports Packages</div>
+            <div class="text-red-400 text-2xl font-black">MLB.TV, NHL Pass, NFL</div>
+          </div>
+          <div class="text-red-400 font-black text-3xl">~$35/mo</div>
+        </div>
 
-            const langFlag = document.getElementById('langFlag');
-            const langLabel = document.getElementById('langLabel');
-            
-            if (currentLang === 'es') {
-                langFlag.textContent = '🇺🇸';
-                langLabel.textContent = 'ENGLISH';
-            } else {
-                langFlag.textContent = '🇲🇽';
-                langLabel.textContent = 'ESPAÑOL';
-            }
-        }
+        <div class="bg-slate-800/80 p-5 rounded-2xl border border-red-500/30 flex justify-between items-center">
+          <div>
+            <div class="text-slate-300 font-semibold text-lg">VPN Service</div>
+            <div class="text-red-400 text-2xl font-black">Nord / ExpressVPN</div>
+          </div>
+          <div class="text-red-400 font-black text-3xl">~$12/mo</div>
+        </div>
+      </div>
 
-        function openTrialModal(plan = 'Free 24h Trial') {
-            document.getElementById('modalPlan').value = plan;
-            document.getElementById('trialModal').classList.remove('hidden');
-        }
+      <div class="mt-8 pt-6 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 bg-cyan-950/40 p-6 rounded-2xl border border-cyan-500/30">
+        <div>
+          <div class="text-slate-300 text-xl font-bold">Your Total Annual Cable Spend:</div>
+          <div class="text-red-400 text-3xl font-black line-through">$2,600+ / Year</div>
+        </div>
+        <div class="text-right">
+          <div class="text-cyan-300 text-xl font-bold">All-In-One MazTV Plan:</div>
+          <div class="text-cyan-400 text-4xl font-black">Starting at $10 / Month</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        function closeTrialModal() {
-            document.getElementById('trialModal').classList.add('hidden');
-        }
+  <!-- DEVICE SETUP SECTION -->
+  <section class="px-4 py-12 max-w-7xl mx-auto w-full">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-5xl font-black text-white mb-4">
+        EASY INSTALLATION ON ANY SMART DEVICE
+      </h2>
+      <p class="text-2xl text-cyan-300 font-bold max-w-3xl mx-auto">
+        Get up and running quickly on your Firestick, Samsung TV, LG TV, or Apple TV.
+      </p>
+    </div>
 
-        function handleTrialSubmit(e) {
-            e.preventDefault();
-            const device = document.getElementById('deviceType').value;
-            const plan = document.getElementById('modalPlan').value;
-            const message = encodeURIComponent(`Hola! I would like to request a Free Trial for MazTV.\n\nDevice: ${device}\nPlan: ${plan}`);
-            window.open(`https://wa.me/526692448788?text=${message}`, '_blank');
-            closeTrialModal();
-        }
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- FIRESTICK CARD -->
+      <div class="bg-slate-900 border-2 border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
+        <div>
+          <div class="w-14 h-14 bg-orange-500/20 text-orange-400 rounded-2xl flex items-center justify-center font-black text-2xl mb-4">
+            🔥
+          </div>
+          <h3 class="text-2xl font-black text-white mb-2">Amazon Firestick / Android</h3>
+          <p class="text-lg text-slate-300 mb-4 font-semibold">Uses Downloader App for fast 1-click install.</p>
+          <div class="bg-slate-800 p-4 rounded-xl mb-4 border border-slate-700">
+            <div class="text-sm text-slate-400 uppercase font-black mb-1">Downloader App Codes</div>
+            <div class="text-lg font-bold text-cyan-400">TiviMate: <span class="text-white font-mono font-black text-xl">260580</span></div>
+            <div class="text-lg font-bold text-cyan-400">XCIPTV: <span class="text-white font-mono font-black text-xl">762312</span></div>
+          </div>
+        </div>
+        <button onclick="openSetupModal('firestick')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-lg py-3 rounded-xl transition">
+          View Step-By-Step
+        </button>
+      </div>
 
-        // Expanded Step-by-Step Installation Modal Guides
-        const guides = {
-            firestick: `
-                <div class="space-y-4 text-left">
-                    <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
-                        <i class="fa-solid fa-fire-flame-curved text-orange-500 text-3xl"></i>
-                        <div>
-                            <h3 class="text-xl font-extrabold text-white">Firestick & Android TV Installation</h3>
-                            <p class="text-xs text-slate-400">Step-by-step setup using Downloader & TiviMate</p>
-                        </div>
-                    </div>
+      <!-- SAMSUNG TV CARD -->
+      <div class="bg-slate-900 border-2 border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
+        <div>
+          <div class="w-14 h-14 bg-blue-500/20 text-blue-400 rounded-2xl flex items-center justify-center font-black text-2xl mb-4">
+            📺
+          </div>
+          <h3 class="text-2xl font-black text-white mb-2">Samsung Smart TV</h3>
+          <p class="text-lg text-slate-300 mb-4 font-semibold">Direct install via Samsung Tizen App Store.</p>
+          <div class="bg-slate-800 p-4 rounded-xl mb-4 border border-slate-700">
+            <div class="text-sm text-slate-400 uppercase font-black mb-1">Recommended Apps</div>
+            <div class="text-lg font-bold text-cyan-400">IPTV Smarters Pro</div>
+            <div class="text-lg font-bold text-cyan-400">IBO Player</div>
+          </div>
+        </div>
+        <button onclick="openSetupModal('samsung')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-lg py-3 rounded-xl transition">
+          View Step-By-Step
+        </button>
+      </div>
 
-                    <ol class="space-y-3 text-xs sm:text-sm text-slate-200 list-decimal list-inside leading-relaxed">
-                        <li>Go to Firestick <strong>Settings</strong> &gt; <strong>My Fire TV</strong> &gt; <strong>Developer Options</strong>. Enable <strong>Install Unknown Apps</strong> for Downloader.</li>
-                        <li>Open the <strong>Downloader App</strong> from your home screen.</li>
-                        <li>In the URL field, enter code <strong class="text-amber-400 font-mono text-base">260580</strong> for TiviMate OR <strong class="text-amber-400 font-mono text-base">762312</strong> for XCIPTV.</li>
-                        <li>Click <strong>Go</strong> to download and install the app.</li>
-                        <li>Open the installed player, click <strong>Add Playlist</strong>, and select <strong>Xtream Codes Login</strong>.</li>
-                        <li>Enter Server URL: <code class="text-cyan-400 font-mono bg-slate-900 px-2 py-0.5 rounded">http://p.maztv.xyz:8080</code> along with your trial Username and Password.</li>
-                    </ol>
-                </div>
-            `,
-            samsung: `
-                <div class="space-y-4 text-left">
-                    <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
-                        <i class="fa-solid fa-tv text-blue-500 text-3xl"></i>
-                        <div>
-                            <h3 class="text-xl font-extrabold text-white">Samsung Smart TV (Tizen OS) Setup</h3>
-                            <p class="text-xs text-slate-400">Direct App Store Installation</p>
-                        </div>
-                    </div>
+      <!-- LG TV CARD -->
+      <div class="bg-slate-900 border-2 border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
+        <div>
+          <div class="w-14 h-14 bg-pink-500/20 text-pink-400 rounded-2xl flex items-center justify-center font-black text-2xl mb-4">
+            🏷️
+          </div>
+          <h3 class="text-2xl font-black text-white mb-2">LG Smart TV</h3>
+          <p class="text-lg text-slate-300 mb-4 font-semibold">Direct install via LG Content Store.</p>
+          <div class="bg-slate-800 p-4 rounded-xl mb-4 border border-slate-700">
+            <div class="text-sm text-slate-400 uppercase font-black mb-1">Recommended Apps</div>
+            <div class="text-lg font-bold text-cyan-400">IBO Player</div>
+            <div class="text-lg font-bold text-cyan-400">IPTV Smarters</div>
+          </div>
+        </div>
+        <button onclick="openSetupModal('lg')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-lg py-3 rounded-xl transition">
+          View Step-By-Step
+        </button>
+      </div>
 
-                    <ol class="space-y-3 text-xs sm:text-sm text-slate-200 list-decimal list-inside leading-relaxed">
-                        <li>Press the <strong>Home</strong> button on your Samsung remote and open the <strong>APPS Store</strong>.</li>
-                        <li>Search for <strong>IPTV Smarters Pro</strong>, <strong>IBO Player</strong>, or <strong>SmartOne IPTV</strong>.</li>
-                        <li>Click <strong>Install</strong> and launch the app.</li>
-                        <li>Select <strong>Login with Xtream Codes API</strong>.</li>
-                        <li>Enter Server Portal: <code class="text-cyan-400 font-mono bg-slate-900 px-2 py-0.5 rounded">http://p.maztv.xyz:8080</code></li>
-                        <li>Input the Username and Password sent to you on WhatsApp.</li>
-                    </ol>
-                </div>
-            `,
-            lg: `
-                <div class="space-y-4 text-left">
-                    <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
-                        <i class="fa-solid fa-display text-pink-500 text-3xl"></i>
-                        <div>
-                            <h3 class="text-xl font-extrabold text-white">LG Smart TV (webOS) Setup</h3>
-                            <p class="text-xs text-slate-400">Direct LG Content Store Installation</p>
-                        </div>
-                    </div>
+      <!-- APPLE TV / IOS CARD -->
+      <div class="bg-slate-900 border-2 border-slate-800 rounded-3xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
+        <div>
+          <div class="w-14 h-14 bg-purple-500/20 text-purple-400 rounded-2xl flex items-center justify-center font-black text-2xl mb-4">
+            🍏
+          </div>
+          <h3 class="text-2xl font-black text-white mb-2">Apple TV / iPhone / iPad</h3>
+          <p class="text-lg text-slate-300 mb-4 font-semibold">Available directly in the iOS App Store.</p>
+          <div class="bg-slate-800 p-4 rounded-xl mb-4 border border-slate-700">
+            <div class="text-sm text-slate-400 uppercase font-black mb-1">Recommended Apps</div>
+            <div class="text-lg font-bold text-cyan-400">Smarters Player Lite</div>
+            <div class="text-lg font-bold text-cyan-400">GSE Smart IPTV</div>
+          </div>
+        </div>
+        <button onclick="openSetupModal('apple')" class="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-lg py-3 rounded-xl transition">
+          View Step-By-Step
+        </button>
+      </div>
 
-                    <ol class="space-y-3 text-xs sm:text-sm text-slate-200 list-decimal list-inside leading-relaxed">
-                        <li>Open the <strong>LG Content Store</strong> on your TV home screen.</li>
-                        <li>Use the search bar to search for <strong>IBO Player</strong> or <strong>IPTV Smarters Lite</strong>.</li>
-                        <li>Download and launch the application.</li>
-                        <li>Choose <strong>Xtream Codes Login</strong>.</li>
-                        <li>Type Portal Address: <code class="text-pink-400 font-mono bg-slate-900 px-2 py-0.5 rounded">http://p.maztv.xyz:8080</code></li>
-                        <li>Type your credentials and click <strong>Add User</strong>.</li>
-                    </ol>
-                </div>
-            `,
-            apple: `
-                <div class="space-y-4 text-left">
-                    <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
-                        <i class="fa-brands fa-apple text-purple-400 text-3xl"></i>
-                        <div>
-                            <h3 class="text-xl font-extrabold text-white">Apple TV & iOS Setup</h3>
-                            <p class="text-xs text-slate-400">App Store Installation for iPhone, iPad & Apple TV</p>
-                        </div>
-                    </div>
+    </div>
+  </section>
 
-                    <ol class="space-y-3 text-xs sm:text-sm text-slate-200 list-decimal list-inside leading-relaxed">
-                        <li>Open the <strong>App Store</strong> on your Apple TV or iOS device.</li>
-                        <li>Search and install <strong>GSE Smart IPTV</strong>, <strong>iPlayTV</strong>, or <strong>IPTV Smarters Expert</strong>.</li>
-                        <li>Open the app and select <strong>Xtream Codes API</strong>.</li>
-                        <li>Enter Server URL: <code class="text-purple-300 font-mono bg-slate-900 px-2 py-0.5 rounded">http://p.maztv.xyz:8080</code></li>
-                        <li>Enter your trial Username and Password to load all 9,000+ channels and VOD library.</li>
-                    </ol>
-                </div>
-            `
-        };
+  <!-- FOOTER -->
+  <footer class="w-full bg-slate-950 border-t border-slate-800 py-8 px-4 text-center mt-12">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xl font-bold text-slate-400">
+      <div>
+        © 2026 <span class="text-white">MazTV</span>. Powered by Mazatlan Media Services.
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://wa.me/526692448788" target="_blank" class="text-cyan-400 hover:underline">WhatsApp: +52 669 244 8788</a>
+      </div>
+    </div>
+  </footer>
 
-        function openGuideModal(device) {
-            if (guides[device]) {
-                document.getElementById('guideModalContent').innerHTML = guides[device];
-                document.getElementById('guideModal').classList.remove('hidden');
-            }
-        }
+  <!-- TRIAL MODAL -->
+  <div id="trialModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden items-center justify-center z-50 p-4">
+    <div class="bg-slate-900 border-2 border-cyan-500 rounded-3xl p-8 max-w-lg w-full shadow-2xl relative">
+      <button onclick="closeTrialModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-3xl font-black">&times;</button>
+      <h3 class="text-3xl font-black text-white mb-4">START YOUR FREE TRIAL</h3>
+      <p class="text-xl text-slate-300 mb-6 font-semibold">Select your device to request your 24-hour test account via WhatsApp:</p>
+      
+      <div class="space-y-4 mb-6">
+        <a href="https://wa.me/526692448788?text=Hola!%20I%20would%20like%20a%20Free%20Trial%20for%20my%20Amazon%20Firestick." target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-xl p-4 rounded-xl text-center border border-slate-700">
+          🔥 Amazon Firestick / Android Box
+        </a>
+        <a href="https://wa.me/526692448788?text=Hola!%20I%20would%20like%20a%20Free%20Trial%20for%20my%20Samsung%20Smart%20TV." target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-xl p-4 rounded-xl text-center border border-slate-700">
+          📺 Samsung Smart TV
+        </a>
+        <a href="https://wa.me/526692448788?text=Hola!%20I%20would%20like%20a%20Free%20Trial%20for%20my%20LG%20Smart%20TV." target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-xl p-4 rounded-xl text-center border border-slate-700">
+          🏷️ LG Smart TV
+        </a>
+        <a href="https://wa.me/526692448788?text=Hola!%20I%20would%20like%20a%20Free%20Trial%20for%20my%20Apple%20TV%20or%20iPhone." target="_blank" class="block w-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-xl p-4 rounded-xl text-center border border-slate-700">
+          🍏 Apple TV / iOS
+        </a>
+      </div>
+    </div>
+  </div>
 
-        function closeGuideModal() {
-            document.getElementById('guideModal').classList.add('hidden');
-        }
-    </script>
+  <script>
+    function openTrialModal() {
+      document.getElementById('trialModal').classList.remove('hidden');
+      document.getElementById('trialModal').classList.add('flex');
+    }
+    function closeTrialModal() {
+      document.getElementById('trialModal').classList.add('hidden');
+      document.getElementById('trialModal').classList.remove('flex');
+    }
+  </script>
 </body>
 </html>
