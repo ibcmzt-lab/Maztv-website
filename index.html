@@ -927,6 +927,22 @@
       .hero-copy h1 { font-size:2.55rem; }
     }
 
+  
+    /* Reliable hero image: use an actual image element, not only a CSS background. */
+    .hero { position: relative !important; isolation: isolate; }
+    .hero .hero-background-image {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      object-position: center center;
+      z-index: -1;
+      pointer-events: none;
+    }
+
   </style>
 </head>
 <body>
@@ -962,7 +978,7 @@
   </aside>
 
   <!-- HERO SECTION -->
-  <section class="hero" aria-label="MazTV streaming devices showcase"></section>
+  <section class="hero" aria-label="MazTV streaming devices showcase"><img class="hero-background-image" src="maztvhero2.webp?v=20261028-2" alt="" aria-hidden="true" fetchpriority="high" /></section>
   <section class="hero-copy" id="top">
     <div class="container hero-copy-inner">
       <h1 data-en="Premium Live TV, Sports &amp; VOD That Simply Works." data-es="TV en Vivo, Deportes y Películas Premium que Simplemente Funciona.">
