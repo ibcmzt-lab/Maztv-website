@@ -10,16 +10,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #0b0f19;
-      --bg-card: #131b2e;
-      --bg-card-hover: #1c2742;
-      --accent-red: #e50914;
-      --accent-red-hover: #f40612;
-      --accent-glow: rgba(229, 9, 20, 0.35);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --border-color: #2a3859;
-      --green-glow: #10b981;
+      --bg-dark: #F8F9FA;
+      --bg-card: #FFFFFF;
+      --bg-card-hover: #F0F5FF;
+      --accent-red: #1769E0;
+      --accent-red-hover: #0F55BC;
+      --accent-glow: rgba(23, 105, 224, 0.18);
+      --text-main: #1A1D20;
+      --text-muted: #5F6B7A;
+      --border-color: #DCE3EB;
+      --green-glow: #12805C;
       --radius-lg: 16px;
       --radius-md: 10px;
       --font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -55,9 +55,9 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(11, 15, 25, 0.85);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid #E3E8EF;
       padding: 16px 0;
     }
 
@@ -127,7 +127,7 @@
 
     .toggle-btn.active {
       background: var(--accent-red);
-      color: #fff;
+      color: #1A1D20;
       box-shadow: 0 0 10px var(--accent-glow);
     }
 
@@ -143,9 +143,9 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(229, 9, 20, 0.12);
+      background: rgba(23, 105, 224, 0.08);
       border: 1px solid var(--accent-red);
-      color: #ff4d4d;
+      color: #1769E0;
       padding: 6px 16px;
       border-radius: 30px;
       font-size: 0.85rem;
@@ -190,7 +190,7 @@
 
     .btn-primary {
       background: var(--accent-red);
-      color: #fff;
+      color: #1A1D20;
       box-shadow: 0 4px 20px var(--accent-glow);
     }
 
@@ -220,7 +220,7 @@
       border: 1px solid var(--border-color);
       border-radius: var(--radius-lg);
       padding: 24px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 16px 36px rgba(28, 48, 74, 0.10);
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 16px;
@@ -228,16 +228,16 @@
     }
 
     .stat-box {
-      background: rgba(255, 255, 255, 0.03);
+      background: #F5F8FC;
       padding: 16px;
       border-radius: var(--radius-md);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid #E7ECF2;
     }
 
     .stat-num {
       font-size: 1.8rem;
       font-weight: 800;
-      color: #fff;
+      color: #1A1D20;
     }
 
     .stat-label {
@@ -248,7 +248,7 @@
     /* SECTION LAYOUT */
     section {
       padding: 80px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid #E7ECF2;
     }
 
     .section-header {
@@ -327,7 +327,7 @@
 
     .tab-btn.active {
       background: var(--accent-red);
-      color: #fff;
+      color: #1A1D20;
       border-color: var(--accent-red);
       box-shadow: 0 0 15px var(--accent-glow);
     }
@@ -361,7 +361,7 @@
       top: -14px;
       right: 24px;
       background: var(--accent-red);
-      color: #fff;
+      color: #1A1D20;
       font-size: 0.75rem;
       font-weight: 800;
       padding: 4px 12px;
@@ -379,7 +379,7 @@
     .price-main {
       font-size: 2.5rem;
       font-weight: 800;
-      color: #fff;
+      color: #1A1D20;
       line-height: 1;
       margin: 16px 0 6px;
     }
@@ -399,7 +399,7 @@
 
     .feature-list li {
       padding: 10px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid #E7ECF2;
       font-size: 0.925rem;
       display: flex;
       align-items: center;
@@ -427,14 +427,14 @@
     }
 
     .matrix-table th {
-      background: rgba(255, 255, 255, 0.03);
+      background: #F5F8FC;
       font-weight: 700;
       border-bottom: 1px solid var(--border-color);
-      color: #fff;
+      color: #1A1D20;
     }
 
     .matrix-table tr:not(:last-child) td {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid #E7ECF2;
     }
 
     /* SETUP STEPS */
@@ -456,7 +456,7 @@
       width: 36px;
       height: 36px;
       background: var(--accent-red);
-      color: #fff;
+      color: #1A1D20;
       font-weight: 800;
       border-radius: 50%;
       display: flex;
@@ -467,7 +467,7 @@
 
     /* FOOTER */
     footer {
-      background: #070a12;
+      background: #EEF2F7;
       padding: 60px 0 30px;
       color: var(--text-muted);
       font-size: 0.9rem;
@@ -481,7 +481,7 @@
     }
 
     .footer-col h4 {
-      color: #fff;
+      color: #1A1D20;
       font-weight: 700;
       margin-bottom: 16px;
     }
@@ -506,7 +506,7 @@
       bottom: 24px;
       right: 24px;
       background: #25d366;
-      color: #fff;
+      color: #1A1D20;
       width: 60px;
       height: 60px;
       border-radius: 50%;
@@ -549,7 +549,7 @@
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.8);
+      background: rgba(26,29,32,0.55);
       backdrop-filter: blur(8px);
       z-index: 2000;
       display: flex;
@@ -590,10 +590,10 @@
     .form-input {
       width: 100%;
       padding: 12px 16px;
-      background: #0b0f19;
+      background: #FFFFFF;
       border: 1px solid var(--border-color);
       border-radius: var(--radius-md);
-      color: #fff;
+      color: #1A1D20;
       margin: 16px 0;
       font-family: inherit;
     }
@@ -748,51 +748,49 @@
       <div class="pricing-grid">
         <!-- STANDARD 1 SCREEN -->
         <div class="pricing-card">
-          <h3 data-en="Standard Single" data-es="Estándar 1 Pantalla">Standard Single</h3>
-          <p style="color: var(--text-muted); font-size: 0.85rem;" data-en="Ideal for solo viewers or single TV setups." data-es="Ideal para personas solas o una sola TV.">Ideal for solo viewers or single TV setups.</p>
-          <div class="price-main" id="price-card-1">$44.99 USD</div>
-          <div class="price-equiv" id="equiv-card-1">$14.99/mo equivalent</div>
+          <h3 data-en="Bronze · Single Device" data-es="Bronce · 1 Dispositivo">Bronze · Single Device</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;" data-en="A simple plan for one screen." data-es="Un plan sencillo para una pantalla.">A simple plan for one screen.</p>
+          <div class="price-main" id="price-card-1">$16 / month</div>
+          <div class="price-equiv" id="equiv-card-1">Month-to-month pricing</div>
           <ul class="feature-list">
-            <li><span>✓</span> <strong>1 Active Connection</strong></li>
-            <li><span>✓</span> 25,000+ Live HD/FHD Channels</li>
-            <li><span>✓</span> Full Sports & PPV Access</li>
-            <li><span>✓</span> 120,000+ VOD Movies & Series</li>
-            <li><span>✓</span> Family-Friendly Default</li>
+            <li><span>✓</span> <strong>1 device connection</strong></li>
+            <li><span>✓</span> HD streaming</li>
+            <li><span>✓</span> 9,000+ live channels</li>
+            <li><span>✓</span> EPG guide support</li>
           </ul>
-          <button class="btn btn-secondary" onclick="openWhatsApp('Standard Plan')" data-en="Select Plan" data-es="Seleccionar Plan">Select Plan</button>
+          <button class="btn btn-secondary" onclick="openWhatsApp('Bronze Plan')" data-en="Select Plan" data-es="Seleccionar Plan">Select Plan</button>
         </div>
 
         <!-- VIP 2 SCREEN (POPULAR) -->
         <div class="pricing-card popular">
           <div class="pop-badge" data-en="Most Popular" data-es="Más Popular">Most Popular</div>
-          <h3 data-en="VIP Dual-Screen" data-es="VIP 2 Pantallas">VIP Dual-Screen</h3>
-          <p style="color: var(--text-muted); font-size: 0.85rem;" data-en="Perfect for living room + bedroom viewing." data-es="Perfecto para sala + recámara.">Perfect for living room + bedroom viewing.</p>
-          <div class="price-main" id="price-card-2">$54.99 USD</div>
-          <div class="price-equiv" id="equiv-card-2">$18.33/mo equivalent</div>
+          <h3 data-en="Silver · Expanded" data-es="Plata · Ampliado">Silver · Expanded</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;" data-en="More flexibility for two screens." data-es="Más flexibilidad para dos pantallas.">More flexibility for two screens.</p>
+          <div class="price-main" id="price-card-2">$24 / month</div>
+          <div class="price-equiv" id="equiv-card-2">Month-to-month pricing</div>
           <ul class="feature-list">
-            <li><span>✓</span> <strong>2 Simultaneous Connections</strong></li>
-            <li><span>✓</span> Full 4K / UHD Sports & Event Feeds</li>
-            <li><span>✓</span> Free White-Glove App Setup</li>
-            <li><span>✓</span> Anti-Freeze™ Dedicated Bandwidth</li>
-            <li><span>✓</span> WhatsApp VIP Support Line</li>
+            <li><span>✓</span> <strong>2 device connections</strong></li>
+            <li><span>✓</span> Full HD streaming</li>
+            <li><span>✓</span> Expanded content library</li>
+            <li><span>✓</span> PPV events</li>
+            <li><span>✓</span> MLB / NHL sports packages</li>
           </ul>
-          <button class="btn btn-primary" onclick="openWhatsApp('VIP Dual-Screen Plan')" data-en="Get Started Now" data-es="Comenzar Ahora">Get Started Now</button>
+          <button class="btn btn-primary" onclick="openWhatsApp('Silver Plan')" data-en="Get Started Now" data-es="Comenzar Ahora">Get Started Now</button>
         </div>
 
         <!-- ULTIMATE 4 SCREEN -->
         <div class="pricing-card">
-          <h3 data-en="Ultimate Family" data-es="Familiar Ultimate">Ultimate Family</h3>
-          <p style="color: var(--text-muted); font-size: 0.85rem;" data-en="For whole households, tablets, and phones." data-es="Para toda la familia, tablets y teléfonos.">For whole households, tablets, and phones.</p>
-          <div class="price-main" id="price-card-4">$79.99 USD</div>
-          <div class="price-equiv" id="equiv-card-4">$26.66/mo equivalent</div>
+          <h3 data-en="Gold · VIP Ultra" data-es="Oro · VIP Ultra">Gold · VIP Ultra</h3>
+          <p style="color: var(--text-muted); font-size: 0.85rem;" data-en="Premium access for multiple devices." data-es="Acceso premium para varios dispositivos.">Premium access for multiple devices.</p>
+          <div class="price-main" id="price-card-4">$32 / month</div>
+          <div class="price-equiv" id="equiv-card-4">Month-to-month pricing</div>
           <ul class="feature-list">
-            <li><span>✓</span> <strong>4 Simultaneous Connections</strong></li>
-            <li><span>✓</span> Priority Support Escalation</li>
-            <li><span>✓</span> Multi-Room Sync Capability</li>
-            <li><span>✓</span> Complete International Channel Package</li>
-            <li><span>✓</span> Built-In Secure Streaming Access</li>
+            <li><span>✓</span> <strong>Unlimited device connections</strong></li>
+            <li><span>✓</span> 4K Ultra HD streaming</li>
+            <li><span>✓</span> Full video-on-demand library</li>
+            <li><span>✓</span> Priority support</li>
           </ul>
-          <button class="btn btn-secondary" onclick="openWhatsApp('Ultimate Family Plan')" data-en="Select Plan" data-es="Seleccionar Plan">Select Plan</button>
+          <button class="btn btn-secondary" onclick="openWhatsApp('Gold VIP Ultra Plan')" data-en="Select Plan" data-es="Seleccionar Plan">Select Plan</button>
         </div>
       </div>
     </div>
@@ -972,27 +970,28 @@
   <script>
     // GLOBAL STATE
     let currentCurrency = 'USD';
-    let currentDuration = 3; // Months
-    const exchangeRate = 18.55; // USD to MXN
+    let currentDuration = 1;
 
-    // BASE USD PRICING DATA [DurationInMonths]: { tier1, tier2, tier4 }
-    const pricingData = {
-      1: { 1: 16.99, 2: 21.99, 4: 29.99 },
-      3: { 1: 44.99, 2: 54.99, 4: 79.99 },
-      6: { 1: 79.99, 2: 99.99, 4: 139.99 },
-      12: { 1: 129.99, 2: 159.99, 4: 219.99 }
+    // Fixed monthly rates by market. These are local prices, not currency conversions.
+    const monthlyPricing = {
+      1: { USD: 16, MXN: 320 },
+      2: { USD: 24, MXN: 480 },
+      4: { USD: 32, MXN: 640 }
     };
+    const termDiscounts = { 1: 0, 3: 0.15, 6: 0.25, 12: 0.35 };
 
     function setCurrency(curr) {
       currentCurrency = curr;
       document.getElementById('btn-usd').classList.toggle('active', curr === 'USD');
       document.getElementById('btn-mxn').classList.toggle('active', curr === 'MXN');
-      
-      // Update Language elements
-      document.querySelectorAll('[data-' + curr.toLowerCase() + ']').forEach(el => {
-        el.textContent = el.getAttribute('data-' + curr.toLowerCase());
-      });
 
+      // English is paired with USD; Spanish is paired with MXN.
+      const language = curr === 'USD' ? 'en' : 'es';
+      document.documentElement.lang = language;
+      document.querySelectorAll('[data-en][data-es]').forEach(el => {
+        const translation = el.getAttribute('data-' + language);
+        if (translation !== null) el.textContent = translation;
+      });
       updatePrices();
     }
 
@@ -1004,23 +1003,27 @@
     }
 
     function updatePrices() {
-      const data = pricingData[currentDuration];
-      
+      const discount = termDiscounts[currentDuration] || 0;
       [1, 2, 4].forEach(tier => {
-        const baseUSD = data[tier];
-        const monthlyUSD = baseUSD / currentDuration;
+        const monthly = monthlyPricing[tier][currentCurrency];
+        const total = Math.round(monthly * currentDuration * (1 - discount));
+        const mainPriceEl = document.getElementById('price-card-' + tier);
+        const equivPriceEl = document.getElementById('equiv-card-' + tier);
+        const monthlyLabel = currentCurrency === 'USD' ? '/mo' : ' MXN/mes';
 
-        const mainPriceEl = document.getElementById(`price-card-${tier}`);
-        const equivPriceEl = document.getElementById(`equiv-card-${tier}`);
-
-        if (currentCurrency === 'USD') {
-          mainPriceEl.textContent = `$${baseUSD.toFixed(2)} USD`;
-          equivPriceEl.textContent = `$${monthlyUSD.toFixed(2)}/mo equivalent (~$${Math.round(monthlyUSD * exchangeRate)} MXN)`;
+        if (currentDuration === 1) {
+          mainPriceEl.textContent = currentCurrency === 'USD'
+            ? '$' + monthly.toFixed(0) + ' / month'
+            : '$' + monthly.toLocaleString('es-MX') + ' MXN / mes';
+          equivPriceEl.textContent = currentCurrency === 'USD' ? 'Month-to-month pricing' : 'Precio mensual';
         } else {
-          const baseMXN = Math.round(baseUSD * exchangeRate);
-          const monthlyMXN = Math.round(monthlyUSD * exchangeRate);
-          mainPriceEl.textContent = `$${baseMXN.toLocaleString()} MXN`;
-          equivPriceEl.textContent = `$${monthlyMXN.toLocaleString()} MXN/mes ($${monthlyUSD.toFixed(2)} USD)`;
+          mainPriceEl.textContent = currentCurrency === 'USD'
+            ? '$' + total.toLocaleString('en-US') + ' total'
+            : '$' + total.toLocaleString('es-MX') + ' MXN en total';
+          const monthlyEquivalent = Math.round(total / currentDuration);
+          equivPriceEl.textContent = currentCurrency === 'USD'
+            ? '$' + monthlyEquivalent.toLocaleString('en-US') + '/mo · ' + Math.round(discount * 100) + '% off'
+            : '$' + monthlyEquivalent.toLocaleString('es-MX') + monthlyLabel + ' · ' + Math.round(discount * 100) + '% de descuento';
         }
       });
     }
