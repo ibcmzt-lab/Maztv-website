@@ -1200,7 +1200,8 @@
         '<ol>' + steps.map(step => '<li>' + step + '</li>').join('') + '</ol>' +
         '<div class="device-guide-note"><strong>' + noteHeading + ':</strong> ' + note + '</div>' +
         '<div class="device-guide-help"><span>' + helpLabel + '</span>' +
-        '<button class="btn btn-primary" type="button" onclick="openWhatsApp(\'Device setup: ' + title.replace(/'/g, "\\'") + '\')">' + helpButton + '</button></div>';
+        '<button class="btn btn-primary" type="button" id="device-guide-help-button">' + helpButton + '</button></div>';
+      document.getElementById('device-guide-help-button').onclick = () => openWhatsApp('Device setup: ' + title);
     }
 
     function openWhatsApp(context) {
