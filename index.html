@@ -1560,7 +1560,8 @@
       toastIdx = (toastIdx + 1) % toastMessages.length;
     }
 
-    setInterval(showNextToast, 12000);
+    // Show the first notification after 3 seconds, then rotate roughly once per minute.
+    setInterval(showNextToast, 60000);
     setTimeout(showNextToast, 3000);
 
     // EXIT INTENT MODAL
