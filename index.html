@@ -465,6 +465,57 @@
       margin-bottom: 16px;
     }
 
+
+    /* COMPACT DEVICE SETUP GUIDE */
+    .device-guide-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(28, 48, 74, 0.06);
+    }
+    .device-picker-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .device-picker {
+      display: block;
+      width: 100%;
+      padding: 14px 42px 14px 15px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: #FFFFFF;
+      color: var(--text-main);
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .device-picker:focus { outline: 3px solid var(--accent-glow); border-color: var(--accent-red); }
+    .device-guide-content { margin-top: 20px; }
+    .device-guide-content h3 { font-size: 1.1rem; margin-bottom: 8px; }
+    .device-guide-content p { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 12px; }
+    .device-guide-content ol { padding-left: 22px; margin: 10px 0 16px; }
+    .device-guide-content li { padding: 4px 0 4px 4px; font-size: 0.92rem; }
+    .device-guide-note {
+      background: #F0F5FF;
+      border-left: 3px solid var(--accent-red);
+      padding: 12px 14px;
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      color: #334155;
+      font-size: 0.86rem;
+      margin-top: 14px;
+    }
+    .device-guide-help { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .device-guide-help .btn { padding: 10px 16px; font-size: 0.9rem; }
+    @media (max-width: 600px) {
+      .device-guide-wrap { padding: 17px; }
+      .device-guide-content li { font-size: 0.9rem; }
+    }
+
     /* FOOTER */
     footer {
       background: #EEF2F7;
@@ -853,45 +904,26 @@
     </div>
   </section>
 
-  <!-- STEP BY STEP SETUP GUIDE -->
+  <!-- COMPACT DEVICE SETUP GUIDE -->
   <section id="setup">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title" data-en="How to Get Started in 3 Simple Steps" data-es="Cómo Empezar en 3 Sencillos Pasos">
-          How to Get Started in 3 Simple Steps
-        </h2>
-        <p class="section-desc" data-en="We provide Xtream Codes credentials for instant loading and high performance." data-es="Proporcionamos credenciales Xtream Codes para carga instantánea y alto rendimiento.">
-          We provide Xtream Codes credentials for instant loading and high performance.
-        </p>
+        <h2 class="section-title" data-en="Setup Instructions for Your Device" data-es="Instrucciones para tu Dispositivo">Setup Instructions for Your Device</h2>
+        <p class="section-desc" data-en="Choose your streaming device to see the steps. App availability and menus vary by model and region." data-es="Selecciona tu dispositivo para ver los pasos. Las aplicaciones y los menús varían según el modelo y la región.">Choose your streaming device to see the steps. App availability and menus vary by model and region.</p>
       </div>
 
-      <div class="setup-grid">
-        <div class="step-card">
-          <div class="step-num">1</div>
-          <h3 data-en="Choose Your Plan" data-es="Elige Tu Plan">Choose Your Plan</h3>
-          <p data-en="Select your preferred subscription term or request a 24-hour test line on WhatsApp."
-             data-es="Selecciona el plazo de tu preferencia o solicita una línea de prueba de 24 horas por WhatsApp.">
-            Select your preferred subscription term or request a 24-hour test line on WhatsApp.
-          </p>
-        </div>
-
-        <div class="step-card">
-          <div class="step-num">2</div>
-          <h3 data-en="Receive Xtream Credentials" data-es="Recibe tus Credenciales">Receive Xtream Credentials</h3>
-          <p data-en="You will receive a Server URL, Username, and Password. Xtream Codes loads categories faster than old M3U playlists."
-             data-es="Recibirás URL del Servidor, Usuario y Contraseña. Xtream Codes carga más rápido que las listas M3U antiguas.">
-            You will receive a Server URL, Username, and Password. Xtream Codes loads categories faster than old M3U playlists.
-          </p>
-        </div>
-
-        <div class="step-card">
-          <div class="step-num">3</div>
-          <h3 data-en="Log In & Start Watching" data-es="Ingresa y Disfruta">Log In & Start Watching</h3>
-          <p data-en="Enter details into TiviMate, IPTV Smarters, or Kodi. Need help? We install and configure it for you remotely!"
-             data-es="Ingresa los datos en TiviMate, IPTV Smarters o Kodi. ¿Necesitas ayuda? ¡Lo configuramos por ti a distancia!">
-            Enter details into TiviMate, IPTV Smarters, or Kodi. Need help? We install and configure it for you remotely!
-          </p>
-        </div>
+      <div class="device-guide-wrap">
+        <label class="device-picker-label" for="device-picker" data-en="Select your streaming device" data-es="Selecciona tu dispositivo de streaming">Select your streaming device</label>
+        <select id="device-picker" class="device-picker" onchange="renderDeviceGuide(this.value)">
+          <option value="samsung" data-en="Samsung Smart TV" data-es="Samsung Smart TV">Samsung Smart TV</option>
+          <option value="lg" data-en="LG Smart TV" data-es="LG Smart TV">LG Smart TV</option>
+          <option value="firestick" data-en="Amazon Fire TV Stick" data-es="Amazon Fire TV Stick">Amazon Fire TV Stick</option>
+          <option value="firecube" data-en="Amazon Fire TV Cube" data-es="Amazon Fire TV Cube">Amazon Fire TV Cube</option>
+          <option value="androidtv" data-en="Android TV / Google TV" data-es="Android TV / Google TV">Android TV / Google TV</option>
+          <option value="appletv" data-en="Apple TV" data-es="Apple TV">Apple TV</option>
+          <option value="roku" data-en="Roku or another Smart TV / device" data-es="Roku u otra Smart TV / dispositivo">Roku or another Smart TV / device</option>
+        </select>
+        <div id="device-guide-content" class="device-guide-content" aria-live="polite"></div>
       </div>
     </div>
   </section>
@@ -1040,6 +1072,137 @@
       });
     }
 
+
+    // DEVICE SETUP CONTENT: general guidance; compatible player availability varies.
+    const deviceGuides = {
+      samsung: {
+        title: { en: "Samsung Smart TV (Tizen)", es: "Samsung Smart TV (Tizen)" },
+        intro: {
+          en: "Use the Samsung TV app store to look for a compatible player, then sign in with the details provided for your subscription.",
+          es: "Busca un reproductor compatible en la tienda de aplicaciones de Samsung y después inicia sesión con los datos de tu suscripción."
+        },
+        steps: {
+          en: ["Connect your TV to the internet.", "Press Home on the Samsung remote and open Apps or Smart Hub.", "Search for a compatible streaming player and install it if available.", "Open the player and choose its login method.", "Enter the server address, username and password, or playlist details supplied to you."],
+          es: ["Conecta la televisión a internet.", "Presiona Home en el control Samsung y abre Apps o Smart Hub.", "Busca un reproductor compatible e instálalo si está disponible.", "Abre el reproductor y elige el método de inicio de sesión.", "Introduce la dirección del servidor, usuario y contraseña, o los datos de la lista que te proporcionaron."]
+        },
+        note: {
+          en: "Samsung TVs use Tizen. If the player you need is not listed in your TV's app store, ask support about an external HDMI streaming device.",
+          es: "Los televisores Samsung usan Tizen. Si el reproductor que necesitas no aparece en la tienda, consulta con soporte sobre un dispositivo externo HDMI."
+        }
+      },
+      lg: {
+        title: { en: "LG Smart TV (webOS)", es: "LG Smart TV (webOS)" },
+        intro: {
+          en: "Install a compatible player from the LG Apps or Content Store, where available for your TV model and region.",
+          es: "Instala un reproductor compatible desde LG Apps o Content Store, si está disponible para tu modelo y región."
+        },
+        steps: {
+          en: ["Connect your TV to the internet.", "Press Home on the LG remote.", "Open Apps or the LG Content Store.", "Search for a compatible streaming player and install it if available.", "Open the player and enter the subscription login or playlist details provided to you."],
+          es: ["Conecta la televisión a internet.", "Presiona Home en el control LG.", "Abre Apps o LG Content Store.", "Busca un reproductor compatible e instálalo si está disponible.", "Abre el reproductor e introduce los datos de acceso o de la lista de tu suscripción."]
+        },
+        note: {
+          en: "App names and availability vary across webOS versions. If the required player is unavailable, ask support about an external HDMI streaming device.",
+          es: "Los nombres y la disponibilidad de aplicaciones varían según la versión de webOS. Si el reproductor no está disponible, consulta sobre un dispositivo externo HDMI."
+        }
+      },
+      firestick: {
+        title: { en: "Amazon Fire TV Stick", es: "Amazon Fire TV Stick" },
+        intro: {
+          en: "Fire TV devices use Amazon's app store. Install only the player recommended by your service provider.",
+          es: "Los dispositivos Fire TV usan la tienda de aplicaciones de Amazon. Instala únicamente el reproductor recomendado por tu proveedor."
+        },
+        steps: {
+          en: ["Connect the Fire TV Stick to an HDMI port and power, then connect it to Wi-Fi.", "From the Home screen, open Find or Search.", "Search for the compatible player recommended by your provider and install it if available.", "Open the player and select its sign-in or playlist option.", "Enter the subscription details you received."],
+          es: ["Conecta el Fire TV Stick al puerto HDMI y a la corriente, y conéctalo al Wi-Fi.", "Desde Inicio, abre Buscar o Find.", "Busca el reproductor compatible recomendado por tu proveedor e instálalo si está disponible.", "Abre el reproductor y elige la opción de inicio de sesión o lista.", "Introduce los datos de tu suscripción."]
+        },
+        note: {
+          en: "The exact menu names vary by Fire OS version. Avoid installing apps from unknown websites unless support has confirmed the source and steps.",
+          es: "Los nombres de los menús cambian según la versión de Fire OS. Evita instalar aplicaciones de sitios desconocidos si soporte no ha confirmado la fuente y los pasos."
+        }
+      },
+      firecube: {
+        title: { en: "Amazon Fire TV Cube", es: "Amazon Fire TV Cube" },
+        intro: {
+          en: "The Fire TV Cube uses the Fire TV interface, so the setup is similar to a Fire TV Stick.",
+          es: "Fire TV Cube utiliza la interfaz Fire TV, así que la configuración es similar a la de Fire TV Stick."
+        },
+        steps: {
+          en: ["Connect the Cube to your TV using HDMI and complete its network setup.", "Open Find or Search from the Home screen.", "Search for the compatible player recommended by your provider and install it if available.", "Launch the player and select the appropriate login method.", "Enter the subscription details supplied to you."],
+          es: ["Conecta el Cube a la televisión por HDMI y completa la configuración de red.", "Abre Buscar o Find desde la pantalla de Inicio.", "Busca el reproductor compatible recomendado por tu proveedor e instálalo si está disponible.", "Abre el reproductor y selecciona el método de acceso correspondiente.", "Introduce los datos de suscripción que te proporcionaron."]
+        },
+        note: {
+          en: "App availability can change. If you cannot find the player, contact support before trying another installation method.",
+          es: "La disponibilidad de aplicaciones puede cambiar. Si no encuentras el reproductor, contacta a soporte antes de probar otro método de instalación."
+        }
+      },
+      androidtv: {
+        title: { en: "Android TV / Google TV", es: "Android TV / Google TV" },
+        intro: {
+          en: "Many Android TV and Google TV devices install apps through Google Play, but the catalog differs by device and region.",
+          es: "Muchos dispositivos Android TV y Google TV instalan aplicaciones desde Google Play, pero el catálogo varía según el dispositivo y la región."
+        },
+        steps: {
+          en: ["Connect the TV or streaming box to the internet.", "Open the Apps area or Google Play Store.", "Search for the compatible player recommended by your provider.", "Install and open the player.", "Enter your subscription login or playlist details."],
+          es: ["Conecta la televisión o el dispositivo de streaming a internet.", "Abre la sección Apps o Google Play Store.", "Busca el reproductor compatible recomendado por tu proveedor.", "Instala y abre el reproductor.", "Introduce los datos de acceso o de la lista de tu suscripción."]
+        },
+        note: {
+          en: "Not every Android app is compatible with every TV. Choose an app listed for your device and follow the provider's instructions.",
+          es: "No todas las aplicaciones Android son compatibles con todos los televisores. Elige una aplicación disponible para tu dispositivo y sigue las instrucciones del proveedor."
+        }
+      },
+      appletv: {
+        title: { en: "Apple TV", es: "Apple TV" },
+        intro: {
+          en: "Apple TV uses the App Store. Confirm with support which player is compatible with your specific Apple TV model.",
+          es: "Apple TV utiliza App Store. Confirma con soporte qué reproductor es compatible con tu modelo específico."
+        },
+        steps: {
+          en: ["Connect Apple TV to your television and internet.", "Open the App Store from the Home screen.", "Search for the player confirmed by your service provider.", "Install and launch the app.", "Follow the app's instructions to sign in or add a playlist."],
+          es: ["Conecta Apple TV a la televisión y a internet.", "Abre App Store desde la pantalla de Inicio.", "Busca el reproductor confirmado por tu proveedor.", "Instala y abre la aplicación.", "Sigue las instrucciones de la aplicación para iniciar sesión o añadir una lista."]
+        },
+        note: {
+          en: "Player compatibility varies by Apple TV generation and app. If the app is not available, ask support about another supported device.",
+          es: "La compatibilidad varía según la generación de Apple TV y la aplicación. Si no está disponible, consulta a soporte sobre otro dispositivo compatible."
+        }
+      },
+      roku: {
+        title: { en: "Roku and other Smart TVs / devices", es: "Roku y otras Smart TVs / dispositivos" },
+        intro: {
+          en: "App availability differs widely between Roku, other Smart TV platforms and streaming boxes. Check compatibility before choosing this setup path.",
+          es: "La disponibilidad de aplicaciones varía mucho entre Roku, otras plataformas de Smart TV y dispositivos de streaming. Confirma la compatibilidad antes de seguir esta opción."
+        },
+        steps: {
+          en: ["Connect your device to the internet.", "Open its official app store or channel store.", "Search for a player specifically confirmed as compatible with your device and service.", "If a compatible player is available, install it and open it.", "Follow the provider's instructions to enter your subscription details."],
+          es: ["Conecta tu dispositivo a internet.", "Abre su tienda oficial de aplicaciones o canales.", "Busca un reproductor confirmado como compatible con tu dispositivo y servicio.", "Si hay un reproductor compatible, instálalo y ábrelo.", "Sigue las instrucciones del proveedor para introducir los datos de suscripción."]
+        },
+        note: {
+          en: "Some platforms, including many Roku setups, have limited IPTV player support. Do not assume compatibility; ask support first. An Android TV or Fire TV device may be an alternative.",
+          es: "Algunas plataformas, incluidos muchos equipos Roku, tienen soporte limitado para reproductores IPTV. No des por hecho que es compatible; consulta primero. Un dispositivo Android TV o Fire TV puede ser una alternativa."
+        }
+      }
+    };
+
+    function renderDeviceGuide(deviceKey) {
+      const guide = deviceGuides[deviceKey] || deviceGuides.samsung;
+      const language = currentCurrency === 'USD' ? 'en' : 'es';
+      const title = guide.title[language];
+      const intro = guide.intro[language];
+      const steps = guide.steps[language];
+      const note = guide.note[language];
+      const stepsHeading = language === 'en' ? 'Setup steps' : 'Pasos de instalación';
+      const noteHeading = language === 'en' ? 'Good to know' : 'Importante';
+      const helpLabel = language === 'en' ? 'Need help setting it up?' : '¿Necesitas ayuda para configurarlo?';
+      const helpButton = language === 'en' ? 'Contact MazTV Support' : 'Contactar a Soporte MazTV';
+      document.getElementById('device-guide-content').innerHTML =
+        '<h3>' + title + '</h3>' +
+        '<p>' + intro + '</p>' +
+        '<strong>' + stepsHeading + '</strong>' +
+        '<ol>' + steps.map(step => '<li>' + step + '</li>').join('') + '</ol>' +
+        '<div class="device-guide-note"><strong>' + noteHeading + ':</strong> ' + note + '</div>' +
+        '<div class="device-guide-help"><span>' + helpLabel + '</span>' +
+        '<button class="btn btn-primary" type="button" onclick="openWhatsApp(\'Device setup: ' + title.replace(/'/g, "\\'") + '\')">' + helpButton + '</button></div>';
+    }
+
     function openWhatsApp(context) {
       const phone = "526690000000"; // Replace with your target WhatsApp number
       const text = encodeURIComponent(`Hi! I am visiting the MazTV website and would like to request information about: ${context}`);
@@ -1091,6 +1254,7 @@
 
     // INITIAL RENDER
     updatePrices();
+    renderDeviceGuide(document.getElementById('device-picker').value);
   </script>
 </body>
 </html>
