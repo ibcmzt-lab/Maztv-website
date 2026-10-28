@@ -598,6 +598,18 @@
       font-family: inherit;
     }
 
+    /* Accessible contrast on saturated accent buttons and badges */
+    .btn-primary, .toggle-btn.active, .tab-btn.active, .pop-badge, .step-num {
+      color: #FFFFFF;
+    }
+    .btn-primary:hover { color: #FFFFFF; }
+    .badge-pill { color: var(--accent-red); }
+    .pricing-card.popular { background: #FFFFFF; }
+    .price-main { color: var(--text-main); }
+    .matrix-table th { color: var(--text-main); }
+    .footer-col h4 { color: var(--text-main); }
+    .form-input { color: var(--text-main); }
+
     @media (max-width: 768px) {
       nav ul { display: none; }
       .pricing-card.popular { transform: none; }
