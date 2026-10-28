@@ -55,10 +55,10 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(16, 25, 26, 0.97);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid #E3E8EF;
-      padding: 16px 0;
+      border-bottom: 1px solid #354344;
+      padding: 12px 0;
     }
 
     .nav-wrapper {
@@ -74,14 +74,15 @@
     }
 
     .brand-logo img {
-      height: 62px;
+      height: 82px;
+      max-width: 230px;
       width: auto;
       object-fit: contain;
     }
 
     .brand-tagline {
-      font-size: 0.75rem;
-      color: var(--text-muted);
+      font-size: 0.78rem;
+      color: #D3DDD9;
       text-transform: uppercase;
       letter-spacing: 1px;
       font-weight: 600;
@@ -117,61 +118,78 @@
     .toggle-btn {
       background: transparent;
       border: none;
-      color: var(--text-muted);
+      color: #F4EFE5;
       padding: 6px 14px;
-      font-size: 0.825rem;
+      font-size: 1rem;
       font-weight: 700;
-      border-radius: 20px;
+      border-radius: 3px;
       cursor: pointer;
       transition: all 0.2s;
     }
 
     .toggle-btn.active {
-      background: var(--accent-red);
-      color: #FFFFFF;
-      box-shadow: 0 0 10px var(--accent-glow);
+      background: transparent;
+      color: #F4EFE5;
+      box-shadow: none;
     }
 
+    /* Match Una Más by IBC's simple dark-and-gold language button. */
     .language-toggle {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      min-width: 112px;
-      min-height: 42px;
-      padding: 8px 14px;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.95rem;
-      letter-spacing: 0.04em;
-      color: #172033;
-      border-radius: 24px;
+      min-width: 138px;
+      min-height: 48px;
+      padding: 12px 20px;
+      border: 1px solid #D9B76B;
+      border-radius: 3px;
+      background: transparent;
+      color: #F4EFE5;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: 0;
     }
-    .language-toggle[data-language="en"] {
-      background: linear-gradient(90deg, #18345D 0 30%, #FFFFFF 30% 68%, #D52B32 68% 100%);
-      border: 1px solid #D5DCE5;
-      color: #172033;
-    }
-    .language-toggle[data-language="es"] {
-      background: linear-gradient(90deg, #D62828 0 28%, #FFD447 28% 70%, #26965A 70% 100%);
-      border: 1px solid #D5DCE5;
-      color: #202020;
+    .language-toggle:hover {
+      background: rgba(217, 183, 107, 0.12);
     }
     .language-toggle .language-label {
-      background: rgba(255,255,255,0.88);
-      padding: 2px 8px;
-      border-radius: 14px;
-      line-height: 1.4;
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      color: inherit;
+      line-height: inherit;
     }
 
     /* HERO */
     .hero {
-      padding: 34px 0 44px;
+      padding: 54px 0 42px;
       position: relative;
-      background:
-        linear-gradient(rgba(240, 243, 246, 0.62), rgba(240, 243, 246, 0.76)),
-        url('maztv.jpg') center center / cover no-repeat;
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+      background-color: #10191A;
+      background-image:
+        linear-gradient(90deg, rgba(7, 17, 18, 0.48), rgba(7, 17, 18, 0.20) 55%, rgba(7, 17, 18, 0.40)),
+        linear-gradient(0deg, rgba(7, 17, 18, 0.70), rgba(7, 17, 18, 0.12) 72%),
+        url('maztv.jpg');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
       text-align: center;
+      color: #FFFFFF;
+      border-bottom: 0;
     }
+    .hero .container { width: 100%; }
+    .hero h1 { color: #FFFFFF; text-shadow: 0 3px 22px rgba(0,0,0,0.42); }
+    .hero p { color: #F0F4F5; text-shadow: 0 2px 12px rgba(0,0,0,0.55); }
+    .hero .btn-secondary { background: rgba(16,25,26,0.72); color: #FFFFFF; border: 1px solid rgba(255,255,255,0.55); }
+    .hero .btn-secondary:hover { background: rgba(16,25,26,0.92); }
+    .hero .badge-pill { margin-top: 24px; margin-bottom: 0; background: rgba(16,25,26,0.72); border-color: #D9B76B; color: #F4EFE5; }
+    .hero .hero-graphic { margin-top: 34px; }
+    .hero .mockup-card { background: rgba(255,255,255,0.96); }
 
     .badge-pill {
       display: inline-flex;
@@ -696,24 +714,24 @@
     .form-input { color: var(--text-main); }
 
     /* MazTV visual polish: larger type, warmer contrast, clearer floating support */
-    body { font-size: 17px; }
+    body { font-size: 19px; }
     h1, h2, h3, h4, .section-title, .price-main, .stat-num {
       font-family: 'Outfit', 'DM Sans', sans-serif;
       letter-spacing: -0.025em;
     }
-    .brand-tagline { font-size: 0.78rem; letter-spacing: 0.07em; }
-    nav a { font-size: 1rem; }
-    .hero h1 { font-size: clamp(2.55rem, 5.3vw, 4.35rem); line-height: 1.08; margin-bottom: 16px; }
-    .hero p { font-size: clamp(1.1rem, 1.7vw, 1.25rem); color: #394454; }
-    .badge-pill { font-size: 0.95rem; margin-bottom: 15px; }
-    .hero-graphic { margin-top: 32px; }
-    .section-title { font-size: clamp(2.35rem, 4vw, 2.8rem); }
-    .section-desc { font-size: 1.08rem; }
-    .feature-card h3, .pricing-card h3 { font-size: 1.35rem; }
-    .feature-card p, .feature-list li { font-size: 1rem; }
-    .device-picker-label { font-size: 1rem; }
-    .device-guide-content h3 { font-size: 1.3rem; }
-    .device-guide-content p, .device-guide-content li { font-size: 1rem; }
+    .brand-tagline { font-size: 0.82rem; letter-spacing: 0.07em; }
+    nav a { font-size: 1.05rem; }
+    .hero h1 { font-size: clamp(2.8rem, 5.6vw, 4.8rem); line-height: 1.06; margin-bottom: 18px; }
+    .hero p { font-size: clamp(1.2rem, 1.9vw, 1.4rem); color: #F0F4F5; }
+    .badge-pill { font-size: 1.05rem; }
+    .hero-graphic { margin-top: 30px; }
+    .section-title { font-size: clamp(2.55rem, 4.3vw, 3.1rem); }
+    .section-desc { font-size: 1.18rem; }
+    .feature-card h3, .pricing-card h3 { font-size: 1.5rem; }
+    .feature-card p, .feature-list li { font-size: 1.1rem; }
+    .device-picker-label { font-size: 1.1rem; }
+    .device-guide-content h3 { font-size: 1.45rem; }
+    .device-guide-content p, .device-guide-content li { font-size: 1.1rem; }
     .device-guide-help .btn { background: #087F5B; color: #FFFFFF; box-shadow: 0 5px 16px rgba(8,127,91,0.2); }
     .device-guide-help .btn:hover { background: #066747; }
     section:not(.hero) { background-color: rgba(225, 231, 238, 0.32); }
@@ -732,28 +750,28 @@
     }
 
     @media (max-width: 768px) {
-      header { padding: 10px 0; }
+      header { padding: 8px 0; }
       .nav-wrapper { gap: 10px; }
       .brand-logo { gap: 0; }
-      .brand-logo img { height: 54px; max-width: 142px; }
+      .brand-logo img { height: 66px; max-width: 170px; }
       .brand-tagline { display: none; }
       nav ul { display: none; }
       .pricing-card.popular { transform: none; }
       .matrix-table { display: block; overflow-x: auto; }
-      .hero { padding: 28px 0 34px; }
-      .hero h1 { font-size: clamp(2.25rem, 9vw, 3.1rem); }
-      .hero p { font-size: 1.08rem; }
-      section { padding: 58px 0; }
-      .section-header { margin-bottom: 34px; }
-      .section-title { font-size: 2.15rem; }
-      .language-toggle { min-width: 96px; padding: 7px 10px; font-size: 0.9rem; }
+      .hero { min-height: 0; padding: 44px 0 34px; }
+      .hero h1 { font-size: clamp(2.45rem, 9vw, 3.4rem); }
+      .hero p { font-size: 1.16rem; }
+      section { padding: 62px 0; }
+      .section-header { margin-bottom: 36px; }
+      .section-title { font-size: 2.3rem; }
+      .language-toggle { min-width: 132px; padding: 10px 12px; font-size: 0.95rem; }
       .whatsapp-float { bottom: 86px; right: 16px; width: 58px; height: 58px; }
       .toast-notif { left: 12px; bottom: 12px; max-width: calc(100vw - 100px); }
     }
     @media (max-width: 390px) {
-      .brand-logo img { height: 46px; max-width: 120px; }
-      .language-toggle { min-width: 86px; gap: 5px; }
-      .hero h1 { font-size: 2.1rem; }
+      .brand-logo img { height: 58px; max-width: 140px; }
+      .language-toggle { min-width: 120px; gap: 5px; }
+      .hero h1 { font-size: 2.2rem; }
       .hero-actions .btn { width: 100%; justify-content: center; }
     }
   </style>
@@ -777,9 +795,7 @@
         </ul>
       </nav>
       <div class="toggle-group" aria-label="Language selector">
-        <button class="toggle-btn active language-toggle" id="language-toggle" data-language="en" onclick="setCurrency(currentCurrency === 'USD' ? 'MXN' : 'USD')" aria-label="Switch to Spanish">
-          <span aria-hidden="true">🇺🇸 🇨🇦</span><span class="language-label">EN</span>
-        </button>
+        <button class="toggle-btn active language-toggle" id="language-toggle" data-language="en" onclick="setCurrency(currentCurrency === 'USD' ? 'MXN' : 'USD')" aria-label="Switch language to Spanish">🇲🇽 Español</button>
       </div>
     </div>
   </header>
@@ -787,9 +803,6 @@
   <!-- HERO SECTION -->
   <section class="hero">
     <div class="container">
-      <div class="badge-pill" data-en="⚡ Next-Gen Anti-Freeze™ Servers" data-es="⚡ Servidores Anti-Freeze™ de Última Generación">
-        ⚡ Next-Gen Anti-Freeze™ Servers
-      </div>
       <h1 data-en="Premium Live TV, Sports & VOD That Simply Works." data-es="TV en Vivo, Deportes y Películas Premium que Simplemente Funciona.">
         Premium Live TV, Sports & VOD That Simply Works.
       </h1>
@@ -804,6 +817,9 @@
         <a href="#plans" class="btn btn-secondary" data-en="Explore VIP Plans" data-es="Explorar Planes VIP">
           Explore VIP Plans
         </a>
+      </div>
+      <div class="badge-pill" data-en="⚡ Next-Gen Anti-Freeze™ Servers" data-es="⚡ Servidores Anti-Freeze™ de Última Generación">
+        ⚡ Next-Gen Anti-Freeze™ Servers
       </div>
 
       <div class="hero-graphic">
@@ -1182,10 +1198,8 @@
       currentCurrency = curr;
       const languageToggle = document.getElementById('language-toggle');
       languageToggle.dataset.language = curr === 'USD' ? 'en' : 'es';
-      languageToggle.innerHTML = curr === 'USD'
-        ? '<span aria-hidden="true">🇺🇸 🇨🇦</span><span class="language-label">EN</span>'
-        : '<span class="language-label">ES</span>';
-      languageToggle.setAttribute('aria-label', curr === 'USD' ? 'Switch to Spanish' : 'Cambiar a inglés');
+      languageToggle.textContent = curr === 'USD' ? '🇲🇽 Español' : '🇺🇸 English';
+      languageToggle.setAttribute('aria-label', curr === 'USD' ? 'Switch language to Spanish' : 'Cambiar idioma a inglés');
 
       // English is paired with USD; Spanish is paired with MXN.
       const language = curr === 'USD' ? 'en' : 'es';
