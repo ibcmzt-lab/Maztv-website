@@ -122,7 +122,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
           <span class="text-2xl font-black tracking-tight bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">
             MazTV
           </span>
-          <span class="block text-[10px] text-cyan-400 font-bold uppercase tracking-widest -mt-1">
+          <span id="brand-tagline" class="block text-[10px] text-cyan-400 font-bold uppercase tracking-widest -mt-1">
             Mazatlán-based TV support
           </span>
         </div>
@@ -131,7 +131,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
       <button id="language-toggle" type="button" aria-label="Switch language to Spanish" class="text-sm font-extrabold text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/10 rounded-xl px-3 py-2">EN / ES</button>
       <a href="https://wa.me/526692442788" target="_blank" class="text-xs sm:text-sm font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3.5 py-1.5 rounded-full transition flex items-center space-x-1.5">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>Chat with Us</span>
+        <span id="chat-label">Chat with Us</span>
       </a>
       <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open navigation menu" class="w-11 h-11 rounded-xl border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 flex flex-col items-center justify-center gap-1.5"><span class="block w-5 h-0.5 bg-current"></span><span class="block w-5 h-0.5 bg-current"></span><span class="block w-5 h-0.5 bg-current"></span></button>
       </div>
@@ -144,14 +144,14 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
     
     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
       <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-cyan-500/20 rounded-full px-4 py-1.5 mb-6 text-xs sm:text-sm font-medium text-cyan-300">
-        <span>⚡ UPGRADED HIGH-SPEED SERVERS</span>
+        <span id="hero-kicker-main">⚡ UPGRADED HIGH-SPEED SERVERS</span>
         <span class="text-gray-600">•</span>
-        <span>Made in Mazatlán. Ready for your home.</span>
+        <span id="hero-kicker-sub">Made in Mazatlán. Ready for your home.</span>
       </div>
-      <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-4 leading-none">
+      <h1 id="hero-title" class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-4 leading-none">
         TV THAT FITS YOUR LIFE. <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">MADE SIMPLE.</span>
       </h1>
-      <p class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+      <p id="hero-description" class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
         Based in Mazatlán, Sinaloa, with subscribers in Mexico, the U.S., Canada, and beyond. Explore your options, choose a plan, and get friendly help setting up on a compatible device.
       </p>
     </div>
@@ -161,13 +161,13 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
       <div class="absolute -top-24 -right-24 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="text-center mb-10">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">Find the Plan That Fits</h2>
+        <h2 id="plans-title" class="text-2xl sm:text-3xl font-extrabold text-white mb-2">Find the Plan That Fits</h2>
         <p class="text-gray-400 text-sm">Choose a plan, tell us how many screens you watch at once, and select your subscription length. We’ll show your price before you contact us.</p>
       </div>
 
       <!-- STEP 1: SELECT TIER -->
       <div class="mb-10">
-        <label class="block text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 text-center sm:text-left">
+        <label id="step-plan" class="block text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 text-center sm:text-left">
           STEP 1 · CHOOSE A PLAN
         </label>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -176,7 +176,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
           <div id="tier-bronze" onclick="selectTier('bronze')" class="cursor-pointer bg-gray-800/40 border-2 border-gray-700/60 hover:border-amber-600/50 rounded-2xl p-6 transition-all duration-200 relative group">
             <div class="flex justify-between items-start mb-4">
               <div>
-                <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">Good</span>
+                <span id="bronze-good" class="text-xs font-bold text-amber-500 uppercase tracking-widest">Good</span>
                 <h3 class="text-xl font-bold text-white">Bronze</h3>
               </div>
               <span class="text-sm bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-md font-semibold">1 Connection Included</span>
@@ -186,7 +186,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
               <li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Popular U.S. and Canadian programming</li>
               <li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> 30,000+ Movies & Series</li>
             </ul>
-            <p class="text-[11px] text-gray-500 italic">A straightforward option for one connection.</p>
+            <p id="bronze-note" class="text-[11px] text-gray-500 italic">A straightforward option for one connection.</p>
           </div>
 
           <!-- SILVER -->
@@ -196,7 +196,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
             </div>
             <div class="flex justify-between items-start mb-4">
               <div>
-                <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Better</span>
+                <span id="silver-better" class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Better</span>
                 <h3 class="text-xl font-bold text-white">Silver</h3>
               </div>
               <span class="text-sm bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 px-2.5 py-1 rounded-md font-semibold">2+ Screens</span>
@@ -206,14 +206,14 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
               <li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> Expanded channel and sports selection</li>
               <li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> 60,000+ Movies & Series</li>
             </ul>
-            <p class="text-[11px] text-gray-400 italic">A flexible choice for everyday viewing.</p>
+            <p id="silver-note" class="text-[11px] text-gray-400 italic">A flexible choice for everyday viewing.</p>
           </div>
 
           <!-- GOLD -->
           <div id="tier-gold" onclick="selectTier('gold')" class="cursor-pointer bg-gray-800/40 border-2 border-gray-700/60 hover:border-yellow-500/50 rounded-2xl p-6 transition-all duration-200 relative group">
             <div class="flex justify-between items-start mb-4">
               <div>
-                <span class="text-xs font-bold text-yellow-500 uppercase tracking-widest">Best</span>
+                <span id="gold-best" class="text-xs font-bold text-yellow-500 uppercase tracking-widest">Best</span>
                 <h3 class="text-xl font-bold text-white">Gold</h3>
               </div>
               <span class="text-sm bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-md font-semibold">3+ Screens</span>
@@ -223,7 +223,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
               <li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> Expanded international selection</li>
               <li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> 90,000+ Movies & Catch-Up TV</li>
             </ul>
-            <p class="text-[11px] text-gray-500 italic">For households that want more simultaneous connections.</p>
+            <p id="gold-note" class="text-[11px] text-gray-500 italic">For households that want more simultaneous connections.</p>
           </div>
 
         </div>
@@ -234,20 +234,20 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
         
         <!-- DROPDOWN: SIMULTANEOUS SCREENS -->
         <div>
-          <label class="block text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">
+          <label id="step-connections" class="block text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">
             STEP 2 · SIMULTANEOUS CONNECTIONS
           </label>
           <select id="screens-select" onchange="updateCalculator()" class="w-full bg-gray-800 border border-gray-700 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-cyan-500 text-sm font-semibold transition">
             <!-- Dynamically populated -->
           </select>
-          <p class="text-sm text-gray-500 mt-2">
+          <p id="connection-help" class="text-sm text-gray-500 mt-2">
             You can install the app on multiple devices. Your connection limit controls how many can watch at the same time.
           </p>
         </div>
 
         <!-- DURATION TOGGLE -->
         <div>
-          <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
+          <label id="step-term" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
             STEP 3 · CHOOSE A TERM
           </label>
           <div class="grid grid-cols-4 gap-2 bg-gray-800 p-1.5 rounded-xl border border-gray-700">
@@ -266,7 +266,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
       <!-- SUMMARY & PRICE CALCULATION DISPLAY -->
       <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
-          <span class="text-xs text-gray-500 uppercase tracking-wider font-bold block mb-1">Configured Summary</span>
+          <span id="summary-label" class="text-xs text-gray-500 uppercase tracking-wider font-bold block mb-1">Configured Summary</span>
           <div class="text-lg font-bold text-white flex items-center space-x-2">
             <span id="summary-tier-name" class="text-cyan-400">Silver Tier</span>
             <span>•</span>
@@ -279,11 +279,11 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
 
         <div class="flex items-center space-x-4 w-full sm:w-auto">
           <div class="text-right">
-            <span class="block text-xs text-gray-500 font-bold uppercase">Total Order</span>
+            <span id="total-label" class="block text-xs text-gray-500 font-bold uppercase">Total Order</span>
             <span id="summary-total-price" class="text-3xl font-black text-white">$22.00</span>
             <span class="text-[10px] text-gray-400 block">USD</span>
           </div>
-          <button onclick="requestTrial()" class="flex-grow sm:flex-grow-0 bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-extrabold px-8 py-4 rounded-xl shadow-lg shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5 text-center text-sm">
+          <button id="trial-button" onclick="requestTrial()" class="flex-grow sm:flex-grow-0 bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-extrabold px-8 py-4 rounded-xl shadow-lg shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5 text-center text-sm">
             Request Your Free Trial
           </button>
         </div>
@@ -295,17 +295,17 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
     <div id="features" class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center sm:text-left">
       <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl">
         <div class="text-cyan-400 text-2xl mb-3">📱</div>
-        <h4 class="text-white font-bold mb-1">No Hardware Required</h4>
+        <h4 id="feature1-title" class="text-white font-bold mb-1">No Hardware Required</h4>
         <p class="text-xs text-gray-400 leading-relaxed">Available on supported smart TVs and streaming devices, plus compatible phones and tablets. Ask us if you’re unsure about your device.</p>
       </div>
       <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl">
         <div class="text-cyan-400 text-2xl mb-3">🌎</div>
-        <h4 class="text-white font-bold mb-1">Use It Where You Live</h4>
+        <h4 id="feature2-title" class="text-white font-bold mb-1">Use It Where You Live</h4>
         <p class="text-xs text-gray-400 leading-relaxed">Options for customers in Mexico, the United States, Canada, and other locations. Ask us about compatibility where you live.</p>
       </div>
       <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl">
         <div class="text-cyan-400 text-2xl mb-3">⚡</div>
-        <h4 class="text-white font-bold mb-1">Streaming Support</h4>
+        <h4 id="feature3-title" class="text-white font-bold mb-1">Streaming Support</h4>
         <p class="text-xs text-gray-400 leading-relaxed">Our service is supported from Mazatlán. Contact us for help with compatible devices, setup, and connection questions.</p>
       </div>
     </div>
@@ -316,8 +316,8 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
   <footer id="contact" class="border-t border-gray-800/80 bg-gray-900/30 py-8 text-center text-xs text-gray-500">
     <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        <p class="font-bold text-gray-400">MazTV — Powered by Mazatlan Media Services</p>
-        <p class="text-[11px] text-gray-600 mt-0.5">Based in Mazatlán, Sinaloa, Mexico</p>
+        <p id="footer-title" class="font-bold text-gray-400">MazTV — Powered by Mazatlan Media Services</p>
+        <p id="footer-location" class="text-[11px] text-gray-600 mt-0.5">Based in Mazatlán, Sinaloa, Mexico</p>
       </div>
       <p>&copy; 2026 MazTV. All rights reserved.</p>
     </div>
@@ -442,6 +442,27 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
       const whatsappUrl = `https://wa.me/526692442788?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
     }
+
+    let currentLanguage = "en";
+    const bilingualText = {
+      en: {brand:"Mazatlán-based TV support",chat:"Chat with Us",kicker:"⚡ UPGRADED HIGH-SPEED SERVERS",sub:"Made in Mazatlán. Ready for your home.",title:"TV THAT FITS YOUR LIFE. ",accent:"MADE SIMPLE.",desc:"Based in Mazatlán, Sinaloa, with subscribers in Mexico, the U.S., Canada, and beyond. Explore your options, choose a plan, and get friendly help setting up on a compatible device.",plans:"Find the Plan That Fits",step1:"STEP 1 · CHOOSE A PLAN",good:"Good",better:"Better",best:"Best",bronze:"A straightforward option for one connection.",silver:"A flexible choice for everyday viewing.",gold:"For households that want more simultaneous connections.",popular:"Most Popular",step2:"STEP 2 · SIMULTANEOUS CONNECTIONS",help:"You can install the app on multiple devices. Your connection limit controls how many can watch at the same time.",step3:"STEP 3 · CHOOSE A TERM",summary:"Configured Summary",total:"Total Order",trial:"Request Your Free Trial",f1:"No Hardware Required",f2:"Use It Where You Live",f3:"Streaming Support",footer:"MazTV — Powered by Mazatlan Media Services",location:"Based in Mazatlán, Sinaloa, Mexico",home:"Home",navplans:"Plans & Pricing",features:"Features",contact:"Contact / WhatsApp"},
+      es: {brand:"Soporte de TV desde Mazatlán",chat:"Chatea con nosotros",kicker:"⚡ SERVIDORES DE ALTA VELOCIDAD",sub:"Desde Mazatlán, listos para tu hogar.",title:"TELEVISIÓN A TU MANERA. ",accent:"ASÍ DE FÁCIL.",desc:"Estamos en Mazatlán, Sinaloa, y atendemos a clientes en México, Estados Unidos, Canadá y otros lugares. Explora las opciones, elige un plan y recibe ayuda para configurar un dispositivo compatible.",plans:"Encuentra tu plan ideal",step1:"PASO 1 · ELIGE UN PLAN",good:"Bueno",better:"Mejor",best:"Superior",bronze:"Una opción sencilla para una conexión.",silver:"Una opción flexible para el día a día.",gold:"Para hogares que necesitan más conexiones simultáneas.",popular:"Más popular",step2:"PASO 2 · CONEXIONES SIMULTÁNEAS",help:"Puedes instalar la aplicación en varios dispositivos. El límite de tu plan determina cuántos pueden ver contenido al mismo tiempo.",step3:"PASO 3 · ELIGE LA DURACIÓN",summary:"Resumen del plan",total:"Total del pedido",trial:"Solicita tu prueba gratis",f1:"Sin equipo adicional",f2:"Úsalo donde vivas",f3:"Ayuda con streaming",footer:"MazTV — Con el respaldo de Mazatlan Media Services",location:"Desde Mazatlán, Sinaloa, México",home:"Inicio",navplans:"Planes y precios",features:"Características",contact:"Contacto / WhatsApp"}
+    };
+    function applyLanguage(lang) {
+      currentLanguage=lang; const t=bilingualText[lang]; const put=(id,value)=>{const e=document.getElementById(id);if(e)e.textContent=value;};
+      put("brand-tagline",t.brand);put("chat-label",t.chat);put("hero-kicker-main",t.kicker);put("hero-kicker-sub",t.sub);
+      const h=document.getElementById("hero-title");h.innerHTML=t.title+'<span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">'+t.accent+"</span>";
+      put("hero-description",t.desc);put("plans-title",t.plans);put("step-plan",t.step1);put("bronze-good",t.good);put("silver-better",t.better);put("gold-best",t.best);
+      put("bronze-note",t.bronze);put("silver-note",t.silver);put("gold-note",t.gold);put("silver-popular",t.popular);put("step-connections",t.step2);put("connection-help",t.help);put("step-term",t.step3);put("summary-label",t.summary);put("total-label",t.total);put("trial-button",t.trial);
+      put("feature1-title",t.f1);put("feature2-title",t.f2);put("feature3-title",t.f3);put("footer-title",t.footer);put("footer-location",t.location);
+      const pd=document.querySelector("#plans .text-center.mb-10 p");if(pd)pd.textContent=lang==="en"?"Choose a plan, tell us how many connections can watch at once, and select your subscription length. We’ll show your price before you contact us.":"Elige un plan, indica cuántas conexiones pueden ver contenido al mismo tiempo y selecciona la duración. Verás el precio antes de contactarnos."; 
+      const nav=[t.home,t.navplans,t.features,t.contact];document.querySelectorAll(".menu-link").forEach((e,i)=>e.textContent=nav[i]);
+      document.getElementById("language-toggle").textContent=lang==="en"?"EN / ES":"ES / EN";document.documentElement.lang=lang;
+      const sel=document.getElementById("screens-select");const n=Number(sel.value||1);sel.innerHTML=[1,2,3,4].slice(0,currentTier==="bronze"?1:4).map(v=>'<option value="'+v+'">'+(lang==="en"?(v===1?"1 Connection Included":v+" Simultaneous Connections (+"+(v-1)+")"):(v===1?"1 conexión incluida":v+" conexiones simultáneas (+"+(v-1)+")"))+"</option>").join("");sel.value=String(n);
+      document.getElementById("summary-screens").textContent=currentScreens+(lang==="en"?" Connection"+(currentScreens===1?"":"s"):" conexión"+(currentScreens===1?"":"es"));document.getElementById("summary-term").textContent=currentTerm+(lang==="en"?" Month"+(currentTerm===1?"":"s"):" mes"+(currentTerm===1?"":"es"));
+      document.getElementById("summary-tier-name").textContent=lang==="en"?currentTier.charAt(0).toUpperCase()+currentTier.slice(1)+" Tier":"Plan "+currentTier.charAt(0).toUpperCase()+currentTier.slice(1);
+    }
+    document.getElementById("language-toggle").addEventListener("click",()=>applyLanguage(currentLanguage==="en"?"es":"en"));
 
     // Compact navigation menu for phones, tablets, and desktop.
     const menuToggle = document.getElementById('menu-toggle');
