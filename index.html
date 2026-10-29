@@ -3,23 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MazTV — All Your Home TV in Paradise</title>
+  <title>MazTV | TV Made Simple</title>
+  <meta name="description" content="Explore MazTV plans, compare viewing options, and get friendly setup help from Mazatlán, Sinaloa.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background-color: #0d1117;
-      color: #f3f4f6;
-    }
-    h1, h2, h3, h4 { font-family: "Barlow Condensed", sans-serif; text-transform: uppercase; letter-spacing: .3px; }
-    .glow-gold {
-      box-shadow: 0 0 25px -5px rgba(234, 179, 8, 0.25);
-    }
-    .glow-cyan {
-      box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.25);
+    :root { color-scheme: light; --ink:#101828; --muted:#475467; --blue:#1769e8; --cyan:#18b8d5; --line:#dce5f0; }
+    body { font-family:'DM Sans',sans-serif; background:#f5f8fc; color:var(--ink); font-size:17px; }
+    h1,h2,h3,h4 { font-family:'Space Grotesk',sans-serif; letter-spacing:-.035em; text-transform:none; }
+    .glow-gold,.glow-cyan { box-shadow:0 16px 40px rgba(23,105,232,.10); }
+    /* MazTV responsive visual system */
+    body { background:radial-gradient(ellipse at 80% 0%,rgba(88,132,255,.10),transparent 34%),#f5f8fc; }
+    header { background:rgba(255,255,255,.92)!important; border-color:#e5eaf2!important; box-shadow:0 4px 24px rgba(16,24,40,.04); }
+    header .max-w-6xl { padding-top:16px!important; padding-bottom:16px!important; }
+    header .w-10 { background:linear-gradient(135deg,#1769e8,#7657ef)!important; color:white!important; box-shadow:0 8px 20px rgba(23,105,232,.22)!important; }
+    header .text-2xl { font-family:'Space Grotesk',sans-serif; font-size:30px!important; font-weight:700!important; letter-spacing:-1.4px!important; }
+    header .block.text-\[10px\] { font-size:12px!important; letter-spacing:.08em!important; color:#1769e8!important; }
+    header a { font-size:14px!important; padding:11px 17px!important; font-weight:800!important; }
+    main { padding-top:44px!important; }
+    main > div:first-child { max-width:850px!important; margin-bottom:42px!important; }
+    main > div:first-child > div:first-child { background:#e9f1ff!important; border:1px solid #d4e4ff!important; color:#1558b0!important; font-size:14px!important; padding:9px 16px!important; }
+    main h1 { font-size:clamp(42px,7vw,72px)!important; line-height:1.02!important; font-weight:700!important; letter-spacing:-.065em!important; color:#101828!important; margin-bottom:22px!important; }
+    main h1 span { background:linear-gradient(100deg,#1769e8,#7457ef)!important; -webkit-background-clip:text!important; background-clip:text!important; }
+    main > div:first-child p { color:#475467!important; font-size:clamp(18px,2vw,21px)!important; line-height:1.65!important; max-width:720px!important; }
+    main .bg-gray-900\/80 { background:rgba(255,255,255,.96)!important; border:1px solid #e0e8f2!important; border-radius:28px!important; box-shadow:0 24px 70px rgba(31,54,88,.10)!important; }
+    main .bg-gray-900\/80 > .absolute { background:rgba(23,105,232,.07)!important; }
+    main .bg-gray-900\/80 h2 { color:#101828!important; font-size:clamp(30px,4vw,40px)!important; letter-spacing:-.05em!important; }
+    main .bg-gray-900\/80 h2 + p { font-size:17px!important; color:#526176!important; }
+    main label { font-size:14px!important; color:#344054!important; letter-spacing:.04em!important; font-weight:800!important; }
+    main #tier-bronze, main #tier-silver, main #tier-gold { background:#fff!important; border-color:#dce5f0!important; border-radius:20px!important; box-shadow:0 8px 24px rgba(16,24,40,.04); padding:25px!important; }
+    main #tier-silver { border-color:#1769e8!important; box-shadow:0 14px 32px rgba(23,105,232,.14)!important; }
+    main #tier-bronze:hover, main #tier-gold:hover { border-color:#8ab4ff!important; transform:translateY(-2px); }
+    main #tier-bronze h3, main #tier-silver h3, main #tier-gold h3 { font-size:28px!important; font-weight:700!important; color:#101828!important; }
+    main #tier-bronze .text-xs, main #tier-silver .text-xs, main #tier-gold .text-xs { font-size:14px!important; }
+    main #tier-bronze ul, main #tier-silver ul, main #tier-gold ul { font-size:16px!important; line-height:1.65!important; color:#344054!important; }
+    main #tier-bronze p, main #tier-silver p, main #tier-gold p { font-size:14px!important; line-height:1.5!important; color:#667085!important; }
+    main #tier-silver .absolute { font-size:12px!important; padding:5px 12px!important; background:#1769e8!important; color:white!important; }
+    main #screens-select { min-height:54px!important; background:#fff!important; color:#101828!important; border-color:#cbd7e6!important; font-size:17px!important; border-radius:13px!important; }
+    main #screens-select option { color:#101828; }
+    main .grid.grid-cols-4 button { min-height:46px!important; font-size:15px!important; }
+    main #term-1, main #term-3, main #term-6, main #term-12 { border-radius:10px!important; }
+    main .text-\[11px\], main .text-\[10px\] { font-size:14px!important; line-height:1.5!important; }
+    main .text-xs { font-size:15px!important; }
+    main #summary-tier-name, main #summary-screens, main #summary-term { font-size:17px!important; }
+    main #summary-monthly-rate { display:block; font-size:15px!important; color:#526176!important; margin-top:5px; }
+    main #summary-total-price { font-size:clamp(34px,4vw,44px)!important; color:#101828!important; }
+    main button[onclick="requestTrial()"] { background:linear-gradient(110deg,#1769e8,#6249e8)!important; color:white!important; font-size:17px!important; padding:17px 23px!important; border-radius:14px!important; box-shadow:0 12px 24px rgba(23,105,232,.22)!important; }
+    main button[onclick="requestTrial()"]:hover { filter:brightness(1.07); }
+    main > .grid.grid-cols-1.md\:grid-cols-3 > div { background:white!important; border:1px solid #e0e8f2!important; border-radius:20px!important; padding:27px!important; box-shadow:0 8px 24px rgba(16,24,40,.04); }
+    main > .grid.grid-cols-1.md\:grid-cols-3 h4 { font-size:22px!important; font-weight:700!important; color:#101828!important; }
+    main > .grid.grid-cols-1.md\:grid-cols-3 p { font-size:16px!important; line-height:1.65!important; color:#526176!important; }
+    footer { background:#eef3fa!important; border-color:#dce5f0!important; color:#526176!important; font-size:14px!important; }
+    footer .text-\[11px\] { font-size:14px!important; }
+    button,a,select,[onclick] { -webkit-tap-highlight-color:transparent; }
+    button:focus-visible,a:focus-visible,select:focus-visible,[onclick]:focus-visible { outline:3px solid #73a7ff; outline-offset:3px; }
+    @media(max-width:640px) {
+      header .max-w-6xl { padding-left:18px!important; padding-right:18px!important; }
+      header .text-2xl { font-size:27px!important; }
+      header a { padding:10px 12px!important; font-size:13px!important; }
+      main { padding-top:30px!important; }
+      main > div:first-child { margin-bottom:30px!important; }
+      main h1 { font-size:clamp(39px,11vw,54px)!important; }
+      main > div:first-child p { font-size:18px!important; }
+      main .bg-gray-900\/80 { padding:22px!important; border-radius:22px!important; }
+      main .bg-gray-900\/80 h2 { font-size:31px!important; }
+      main #tier-bronze, main #tier-silver, main #tier-gold { padding:22px!important; }
+      main .grid.grid-cols-4 { gap:5px!important; }
+      main .grid.grid-cols-4 button { font-size:14px!important; }
+      main #summary-total-price { font-size:36px!important; }
+      main button[onclick="requestTrial()"] { width:100%; }
     }
   </style>
 </head>
@@ -37,13 +91,13 @@
             MazTV
           </span>
           <span class="block text-[10px] text-cyan-400 font-bold uppercase tracking-widest -mt-1">
-            Mazatlán Media Services
+            Mazatlán-based TV support
           </span>
         </div>
       </div>
       <a href="https://wa.me/526692442788" target="_blank" class="text-xs sm:text-sm font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3.5 py-1.5 rounded-full transition flex items-center space-x-1.5">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>WhatsApp Direct</span>
+        <span>Chat with Us</span>
       </a>
     </div>
   </header>
@@ -55,13 +109,13 @@
       <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-cyan-500/20 rounded-full px-4 py-1.5 mb-6 text-xs sm:text-sm font-medium text-cyan-300">
         <span>⚡ UPGRADED HIGH-SPEED SERVERS</span>
         <span class="text-gray-600">•</span>
-        <span>Works Globally Anywhere</span>
+        <span>Made in Mazatlán. Ready for your home.</span>
       </div>
       <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-4 leading-none">
-        All Your Home TV in <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Paradise</span>
+        TV THAT FITS YOUR LIFE. <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">MADE SIMPLE.</span>
       </h1>
       <p class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-        Designed for the expat and snowbird community in Mazatlán. Stream live sports, news, and movies seamlessly on all your existing Smart TVs and mobile devices.
+        Based in Mazatlán, Sinaloa, with subscribers in Mexico, the U.S., Canada, and beyond. Explore your options, choose a plan, and get friendly help setting up on a compatible device.
       </p>
     </div>
 
@@ -70,14 +124,14 @@
       <div class="absolute -top-24 -right-24 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="text-center mb-10">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">Design Your Own Plan</h2>
-        <p class="text-gray-400 text-sm">Choose your plan, simultaneous screens, and subscription term.</p>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">Find the Plan That Fits</h2>
+        <p class="text-gray-400 text-sm">Choose a plan, tell us how many screens you watch at once, and select your subscription length. We’ll show your price before you contact us.</p>
       </div>
 
       <!-- STEP 1: SELECT TIER -->
       <div class="mb-10">
-        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 text-center sm:text-left">
-          Step 1: Choose Your Server Tier
+        <label class="block text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 text-center sm:text-left">
+          STEP 1 · CHOOSE A PLAN
         </label>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           
@@ -88,14 +142,14 @@
                 <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">Good</span>
                 <h3 class="text-xl font-bold text-white">Bronze</h3>
               </div>
-              <span class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-md font-semibold">1 Screen</span>
+              <span class="text-sm bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-md font-semibold">1 Screen</span>
             </div>
             <ul class="text-xs text-gray-400 space-y-2 mb-4">
-              <li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Standard HD Streams</li>
-              <li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Core US & Canadian Channels</li>
+              <li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Standard HD streaming</li>
+              <li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Popular U.S. and Canadian programming</li>
               <li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> 30,000+ Movies & Series</li>
             </ul>
-            <p class="text-[11px] text-gray-500 italic">Best for solo viewers & mobile access.</p>
+            <p class="text-[11px] text-gray-500 italic">A straightforward option for one screen.</p>
           </div>
 
           <!-- SILVER -->
@@ -108,14 +162,14 @@
                 <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Better</span>
                 <h3 class="text-xl font-bold text-white">Silver</h3>
               </div>
-              <span class="text-xs bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 px-2.5 py-1 rounded-md font-semibold">2+ Screens</span>
+              <span class="text-sm bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 px-2.5 py-1 rounded-md font-semibold">2+ Screens</span>
             </div>
             <ul class="text-xs text-gray-300 space-y-2 mb-4">
               <li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> <strong>Upgraded High-Speed Servers</strong></li>
-              <li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> Expanded Global & Sports Channels</li>
+              <li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> Expanded channel and sports selection</li>
               <li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> 60,000+ Movies & Series</li>
             </ul>
-            <p class="text-[11px] text-gray-400 italic">Best for living rooms & sports priority.</p>
+            <p class="text-[11px] text-gray-400 italic">A flexible choice for everyday viewing.</p>
           </div>
 
           <!-- GOLD -->
@@ -125,14 +179,14 @@
                 <span class="text-xs font-bold text-yellow-500 uppercase tracking-widest">Best</span>
                 <h3 class="text-xl font-bold text-white">Gold</h3>
               </div>
-              <span class="text-xs bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-md font-semibold">3+ Screens</span>
+              <span class="text-sm bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-md font-semibold">3+ Screens</span>
             </div>
             <ul class="text-xs text-gray-400 space-y-2 mb-4">
               <li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> <strong>VIP Direct Route Servers</strong></li>
-              <li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> Complete Worldwide Vault</li>
+              <li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> Expanded international selection</li>
               <li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> 90,000+ Movies & Catch-Up TV</li>
             </ul>
-            <p class="text-[11px] text-gray-500 italic">Best for multi-room & global power users.</p>
+            <p class="text-[11px] text-gray-500 italic">For households that want more simultaneous screens.</p>
           </div>
 
         </div>
@@ -143,13 +197,13 @@
         
         <!-- DROPDOWN: SIMULTANEOUS SCREENS -->
         <div>
-          <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
-            Step 2: Simultaneous Viewing Screens
+          <label class="block text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">
+            STEP 2 · HOW MANY SCREENS AT ONCE?
           </label>
           <select id="screens-select" onchange="updateCalculator()" class="w-full bg-gray-800 border border-gray-700 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-cyan-500 text-sm font-semibold transition">
             <!-- Dynamically populated -->
           </select>
-          <p class="text-[11px] text-gray-500 mt-2">
+          <p class="text-sm text-gray-500 mt-2">
             *Install app on unlimited devices. This controls how many screens watch at the exact same time.
           </p>
         </div>
@@ -157,7 +211,7 @@
         <!-- DURATION TOGGLE -->
         <div>
           <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
-            Step 3: Select Plan Duration
+            STEP 3 · HOW LONG?
           </label>
           <div class="grid grid-cols-4 gap-2 bg-gray-800 p-1.5 rounded-xl border border-gray-700">
             <button id="term-1" onclick="selectTerm(1)" class="py-2 rounded-lg text-xs font-bold text-white bg-cyan-500 transition">1 Mo</button>
@@ -193,7 +247,7 @@
             <span class="text-[10px] text-gray-400 block">USD</span>
           </div>
           <button onclick="requestTrial()" class="flex-grow sm:flex-grow-0 bg-emerald-400 hover:bg-emerald-300 text-emerald-950 font-extrabold px-8 py-4 rounded-xl shadow-lg shadow-emerald-500/20 transition-all transform hover:-translate-y-0.5 text-center text-sm">
-            Start Your Free Trial
+            Request Your Free Trial
           </button>
         </div>
       </div>
@@ -205,17 +259,17 @@
       <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl">
         <div class="text-cyan-400 text-2xl mb-3">📱</div>
         <h4 class="text-white font-bold mb-1">No Hardware Required</h4>
-        <p class="text-xs text-gray-400 leading-relaxed">Runs natively on Smart TVs (Samsung, LG, Android TV), Fire Sticks, tablets, and phones.</p>
+        <p class="text-xs text-gray-400 leading-relaxed">Available on supported smart TVs and streaming devices, plus compatible phones and tablets. Ask us if you’re unsure about your device.</p>
       </div>
       <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl">
         <div class="text-cyan-400 text-2xl mb-3">🌎</div>
-        <h4 class="text-white font-bold mb-1">Works Globally</h4>
-        <p class="text-xs text-gray-400 leading-relaxed">Take your subscription with you anywhere in the world when traveling or returning home.</p>
+        <h4 class="text-white font-bold mb-1">Use It Where You Live</h4>
+        <p class="text-xs text-gray-400 leading-relaxed">Options for customers in Mexico, the United States, Canada, and other locations. Ask us about compatibility where you live.</p>
       </div>
       <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl">
         <div class="text-cyan-400 text-2xl mb-3">⚡</div>
-        <h4 class="text-white font-bold mb-1">Anti-Buffering Tech</h4>
-        <p class="text-xs text-gray-400 leading-relaxed">Dedicated high-speed server infrastructure tuned specifically for live sports events.</p>
+        <h4 class="text-white font-bold mb-1">Streaming Support</h4>
+        <p class="text-xs text-gray-400 leading-relaxed">Our service is supported from Mazatlán. Contact us for help with compatible devices, setup, and connection questions.</p>
       </div>
     </div>
 
@@ -226,7 +280,7 @@
     <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
         <p class="font-bold text-gray-400">MazTV — Powered by Mazatlan Media Services</p>
-        <p class="text-[11px] text-gray-600 mt-0.5">Tellería, Mazatlán, Sinaloa, Mexico</p>
+        <p class="text-[11px] text-gray-600 mt-0.5">Based in Mazatlán, Sinaloa, Mexico</p>
       </div>
       <p>&copy; 2026 MazTV. All rights reserved.</p>
     </div>
@@ -343,7 +397,7 @@
                       `• Screens: ${currentScreens}\n` +
                       `• Term: ${currentTerm} Month(s)\n` +
                       `• Quoted Price: $${document.getElementById('summary-total-price').textContent} USD\n\n` +
-                      `Please send me my trial login details!`;
+                      `Please let me know the next steps and how to get started.`;
       
       const whatsappUrl = `https://wa.me/526692442788?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
