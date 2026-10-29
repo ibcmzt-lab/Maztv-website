@@ -181,7 +181,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
               </div>
               <span class="text-sm bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-md font-semibold">1 Connection Included</span>
             </div>
-            <ul class="text-xs text-gray-400 space-y-2 mb-4">
+            <ul id="bronze-points" class="text-xs text-gray-400 space-y-2 mb-4">
               <li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Standard HD streaming</li>
               <li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Popular U.S. and Canadian programming</li>
               <li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> 30,000+ Movies & Series</li>
@@ -201,7 +201,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
               </div>
               <span class="text-sm bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 px-2.5 py-1 rounded-md font-semibold">2+ Screens</span>
             </div>
-            <ul class="text-xs text-gray-300 space-y-2 mb-4">
+            <ul id="silver-points" class="text-xs text-gray-300 space-y-2 mb-4">
               <li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> <strong>Upgraded High-Speed Servers</strong></li>
               <li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> Expanded channel and sports selection</li>
               <li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> 60,000+ Movies & Series</li>
@@ -218,7 +218,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
               </div>
               <span class="text-sm bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-md font-semibold">3+ Screens</span>
             </div>
-            <ul class="text-xs text-gray-400 space-y-2 mb-4">
+            <ul id="gold-points" class="text-xs text-gray-400 space-y-2 mb-4">
               <li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> <strong>VIP Direct Route Servers</strong></li>
               <li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> Expanded international selection</li>
               <li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> 90,000+ Movies & Catch-Up TV</li>
@@ -296,17 +296,17 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
       <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl">
         <div class="text-cyan-400 text-2xl mb-3">📱</div>
         <h4 id="feature1-title" class="text-white font-bold mb-1">No Hardware Required</h4>
-        <p class="text-xs text-gray-400 leading-relaxed">Available on supported smart TVs and streaming devices, plus compatible phones and tablets. Ask us if you’re unsure about your device.</p>
+        <p id="feature1-body" class="text-xs text-gray-400 leading-relaxed">Available on supported smart TVs and streaming devices, plus compatible phones and tablets. Ask us if you’re unsure about your device.</p>
       </div>
       <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl">
         <div class="text-cyan-400 text-2xl mb-3">🌎</div>
         <h4 id="feature2-title" class="text-white font-bold mb-1">Use It Where You Live</h4>
-        <p class="text-xs text-gray-400 leading-relaxed">Options for customers in Mexico, the United States, Canada, and other locations. Ask us about compatibility where you live.</p>
+        <p id="feature2-body" class="text-xs text-gray-400 leading-relaxed">Options for customers in Mexico, the United States, Canada, and other locations. Ask us about compatibility where you live.</p>
       </div>
       <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl">
         <div class="text-cyan-400 text-2xl mb-3">⚡</div>
         <h4 id="feature3-title" class="text-white font-bold mb-1">Streaming Support</h4>
-        <p class="text-xs text-gray-400 leading-relaxed">Our service is supported from Mazatlán. Contact us for help with compatible devices, setup, and connection questions.</p>
+        <p id="feature3-body" class="text-xs text-gray-400 leading-relaxed">Our service is supported from Mazatlán. Contact us for help with compatible devices, setup, and connection questions.</p>
       </div>
     </div>
 
@@ -450,6 +450,13 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
     };
     function applyLanguage(lang) {
       currentLanguage=lang; const t=bilingualText[lang]; const put=(id,value)=>{const e=document.getElementById(id);if(e)e.textContent=value;};
+      put("silver-connections",lang==="en"?"1 Connection Included":"1 conexión incluida");put("gold-connections",lang==="en"?"1 Connection Included":"1 conexión incluida");
+      document.getElementById("bronze-points").innerHTML=lang==="en"?"<li>✓ Standard HD streaming</li><li>✓ Popular U.S. and Canadian programming</li><li>✓ 30,000+ Movies &amp; Series</li>":"<li>✓ Transmisión HD estándar</li><li>✓ Programación popular de EE. UU. y Canadá</li><li>✓ Más de 30,000 películas y series</li>";
+      document.getElementById("silver-points").innerHTML=lang==="en"?"<li>✓ <strong>Upgraded High-Speed Servers</strong></li><li>✓ Expanded channel and sports selection</li><li>✓ 60,000+ Movies &amp; Series</li>":"<li>✓ <strong>Servidores mejorados de alta velocidad</strong></li><li>✓ Más canales y deportes</li><li>✓ Más de 60,000 películas y series</li>";
+      document.getElementById("gold-points").innerHTML=lang==="en"?"<li>✓ <strong>VIP Direct Route Servers</strong></li><li>✓ Expanded international selection</li><li>✓ 90,000+ Movies &amp; Catch-Up TV</li>":"<li>✓ <strong>Servidores VIP de ruta directa</strong></li><li>✓ Mayor selección internacional</li><li>✓ Más de 90,000 películas y TV para ponerse al día</li>";
+      put("feature1-body",lang==="en"?"Available on supported smart TVs and streaming devices, plus compatible phones and tablets. Ask us if you’re unsure about your device.":"Disponible en televisores inteligentes y dispositivos de streaming compatibles, además de teléfonos y tabletas. Pregúntanos si no sabes si tu equipo es compatible.");
+      put("feature2-body",lang==="en"?"Options for customers in Mexico, the United States, Canada, and other locations. Ask us about compatibility where you live.":"Opciones para clientes en México, Estados Unidos, Canadá y otros lugares. Consúltanos sobre la compatibilidad en tu zona.");
+      put("feature3-body",lang==="en"?"Our service is supported from Mazatlán. Contact us for help with compatible devices, setup, and connection questions.":"Nuestro servicio recibe soporte desde Mazatlán. Contáctanos para recibir ayuda con dispositivos compatibles, configuración y conexiones.");
       put("brand-tagline",t.brand);put("chat-label",t.chat);put("hero-kicker-main",t.kicker);put("hero-kicker-sub",t.sub);
       const h=document.getElementById("hero-title");h.innerHTML=t.title+'<span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">'+t.accent+"</span>";
       put("hero-description",t.desc);put("plans-title",t.plans);put("step-plan",t.step1);put("bronze-good",t.good);put("silver-better",t.better);put("gold-best",t.best);
