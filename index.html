@@ -199,7 +199,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
                 <span id="silver-better" class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Better</span>
                 <h3 class="text-xl font-bold text-white">Silver</h3>
               </div>
-              <span class="text-sm bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 px-2.5 py-1 rounded-md font-semibold">2+ Screens</span>
+              <span class="text-sm bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 px-2.5 py-1 rounded-md font-semibold">1 Connection Included</span>
             </div>
             <ul id="silver-points" class="text-xs text-gray-300 space-y-2 mb-4">
               <li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> <strong>Upgraded High-Speed Servers</strong></li>
@@ -216,7 +216,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
                 <span id="gold-best" class="text-xs font-bold text-yellow-500 uppercase tracking-widest">Best</span>
                 <h3 class="text-xl font-bold text-white">Gold</h3>
               </div>
-              <span class="text-sm bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-md font-semibold">3+ Screens</span>
+              <span class="text-sm bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-md font-semibold">1 Connection Included</span>
             </div>
             <ul id="gold-points" class="text-xs text-gray-400 space-y-2 mb-4">
               <li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> <strong>VIP Direct Route Servers</strong></li>
@@ -356,7 +356,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
 
       if (tier === 'bronze') {
         currentScreens = 1;
-        select.innerHTML = `<option value="1">1 Screen (Included)</option>`;
+        select.innerHTML = `<option value="1">1 Connection (Included)</option>`;
         select.disabled = true;
       } else if (tier === 'silver') {
         currentScreens = 1;
@@ -435,7 +435,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
     function requestTrial() {
       const message = `Hi MazTV! I want to claim my 1-Week Free Trial for the configured plan:\n\n` +
                       `• Tier: ${currentTier.toUpperCase()}\n` +
-                      `• Screens: ${currentScreens}\n` +
+                      `• Simultaneous connections: ${currentScreens}\n` +
                       `• Term: ${currentTerm} Month(s)\n` +
                       `• Quoted Price: $${document.getElementById('summary-total-price').textContent} USD\n\n` +
                       `Please let me know the next steps and how to get started.`;
