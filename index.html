@@ -81,7 +81,7 @@
 
   <!-- TOP BRANDING & NAVIGATION -->
   <header class="border-b border-gray-800/80 bg-gray-900/50 backdrop-blur-md sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
       <div class="flex items-center space-x-3">
         <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-black text-xl text-black shadow-lg shadow-cyan-500/20">
           M
@@ -95,15 +95,20 @@
           </span>
         </div>
       </div>
+      <div class="flex items-center gap-2">
+      <button id="language-toggle" type="button" aria-label="Switch language to Spanish" class="text-sm font-extrabold text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/10 rounded-xl px-3 py-2">EN / ES</button>
       <a href="https://wa.me/526692442788" target="_blank" class="text-xs sm:text-sm font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3.5 py-1.5 rounded-full transition flex items-center space-x-1.5">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         <span>Chat with Us</span>
       </a>
+      <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open navigation menu" class="w-11 h-11 rounded-xl border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 flex flex-col items-center justify-center gap-1.5"><span class="block w-5 h-0.5 bg-current"></span><span class="block w-5 h-0.5 bg-current"></span><span class="block w-5 h-0.5 bg-current"></span></button>
+      </div>
     </div>
+    <nav id="site-menu" hidden class="max-w-6xl mx-auto px-4 pb-4"><div class="grid grid-cols-2 sm:grid-cols-4 gap-2 rounded-2xl border border-gray-700 bg-gray-900 p-3"><a href="#home" class="menu-link rounded-xl px-4 py-3 text-white hover:bg-cyan-500/15">Home</a><a href="#plans" class="menu-link rounded-xl px-4 py-3 text-white hover:bg-cyan-500/15">Plans &amp; Pricing</a><a href="#features" class="menu-link rounded-xl px-4 py-3 text-white hover:bg-cyan-500/15">Features</a><a href="#contact" class="menu-link rounded-xl px-4 py-3 text-white hover:bg-cyan-500/15">Contact / WhatsApp</a></div></nav>
   </header>
 
   <!-- HERO & VALUE PROPOSITION -->
-  <main class="max-w-6xl mx-auto px-4 py-10 sm:py-16 flex-grow w-full">
+  <main id="home" class="max-w-6xl mx-auto px-4 py-10 sm:py-16 flex-grow w-full">
     
     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
       <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-cyan-500/20 rounded-full px-4 py-1.5 mb-6 text-xs sm:text-sm font-medium text-cyan-300">
@@ -120,7 +125,7 @@
     </div>
 
     <!-- DESIGN YOUR OWN PLAN CALCULATOR -->
-    <div class="bg-gray-900/80 border border-gray-800 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden backdrop-blur-xl mb-16">
+    <div id="plans" class="bg-gray-900/80 border border-gray-800 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden backdrop-blur-xl mb-16">
       <div class="absolute -top-24 -right-24 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="text-center mb-10">
@@ -255,7 +260,7 @@
     </div>
 
     <!-- KEY FEATURES GRID -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center sm:text-left">
+    <div id="features" class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center sm:text-left">
       <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl">
         <div class="text-cyan-400 text-2xl mb-3">📱</div>
         <h4 class="text-white font-bold mb-1">No Hardware Required</h4>
@@ -276,7 +281,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="border-t border-gray-800/80 bg-gray-900/30 py-8 text-center text-xs text-gray-500">
+  <footer id="contact" class="border-t border-gray-800/80 bg-gray-900/30 py-8 text-center text-xs text-gray-500">
     <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
         <p class="font-bold text-gray-400">MazTV — Powered by Mazatlan Media Services</p>
@@ -405,6 +410,21 @@
       const whatsappUrl = `https://wa.me/526692442788?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, '_blank');
     }
+
+    // Compact navigation menu for phones, tablets, and desktop.
+    const menuToggle = document.getElementById('menu-toggle');
+    const siteMenu = document.getElementById('site-menu');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+      siteMenu.hidden = isOpen;
+    });
+    siteMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      siteMenu.hidden = true;
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Open navigation menu');
+    }));
 
     // Initialize defaults
     selectTier('silver');
