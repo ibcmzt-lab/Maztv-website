@@ -75,7 +75,41 @@
       main #summary-total-price { font-size:36px!important; }
       main button[onclick="requestTrial()"] { width:100%; }
     }
-  </style>
+  
+/* Restored MazTV night-sky palette and image-led hero */
+:root { color-scheme:dark!important; --ink:#f4f8ff; --muted:#aab8ce; }
+body { background:radial-gradient(ellipse at 75% -5%,rgba(0,184,255,.15),transparent 35%),#07111f!important; color:#f4f8ff!important; }
+header { background:rgba(5,14,27,.95)!important; border-color:rgba(75,111,151,.35)!important; box-shadow:0 8px 30px rgba(0,0,0,.25)!important; }
+header .maztv-logo { width:52px!important;height:52px!important;border-radius:12px!important; }
+header .text-2xl { color:#f8fbff!important;background:none!important;-webkit-text-fill-color:#f8fbff!important; }
+#site-menu[hidden] { display:none!important; } #site-menu:not([hidden]) { display:block!important; }
+#site-menu > div { background:#0b192b!important;border-color:#24415f!important; } #site-menu a { color:#eef7ff!important; }
+main { padding-top:30px!important; }
+main > div:first-child { max-width:none!important;min-height:clamp(360px,48vw,530px);margin-bottom:44px!important;padding:clamp(28px,6vw,70px) clamp(18px,5vw,60px)!important;display:flex;flex-direction:column;justify-content:center;align-items:center;border:1px solid rgba(108,201,255,.22);border-radius:28px;overflow:hidden;position:relative;isolation:isolate;background:#0a1b30 url("maztvhero2.webp") center 48%/cover no-repeat!important;box-shadow:0 24px 65px rgba(0,0,0,.28); }
+main > div:first-child:before { content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(3,11,22,.90),rgba(3,11,22,.66) 56%,rgba(3,11,22,.30)),linear-gradient(0deg,rgba(3,11,22,.42),transparent 55%); }
+main > div:first-child > * { position:relative; }
+main > div:first-child > div:first-child { background:rgba(3,18,34,.70)!important;border-color:rgba(64,218,255,.45)!important;color:#8deaff!important; }
+main h1 { color:#f6f9ff!important;text-shadow:0 3px 24px rgba(0,0,0,.4); }
+main h1 span { background:linear-gradient(100deg,#45e2ff,#5688ff)!important;-webkit-background-clip:text!important;background-clip:text!important; }
+main > div:first-child p { color:#edf5ff!important;text-shadow:0 2px 12px rgba(0,0,0,.45); }
+main .bg-gray-900\/80 { background:linear-gradient(145deg,rgba(13,29,49,.98),rgba(7,19,34,.98))!important;border:1px solid #24405e!important;box-shadow:0 25px 75px rgba(0,0,0,.28)!important; }
+main .bg-gray-900\/80 > .absolute { background:rgba(0,190,255,.08)!important; }
+main .bg-gray-900\/80 h2 { color:#f5f9ff!important; } main .bg-gray-900\/80 h2 + p { color:#b3c3d8!important; }
+main label { color:#b5c7dc!important; }
+main #tier-bronze,main #tier-silver,main #tier-gold { background:#102238!important;border-color:#2a4564!important;box-shadow:0 10px 28px rgba(0,0,0,.17)!important; }
+main #tier-silver { border-color:#24c9ef!important;box-shadow:0 12px 34px rgba(0,190,255,.13)!important; }
+main #tier-bronze h3,main #tier-silver h3,main #tier-gold h3 { color:#f5f9ff!important; }
+main #tier-bronze ul,main #tier-silver ul,main #tier-gold ul { color:#c5d4e7!important; }
+main #tier-bronze p,main #tier-silver p,main #tier-gold p { color:#a6b8ce!important; }
+main #screens-select { background:#0b1a2c!important;color:#f5f9ff!important;border-color:#355373!important; }
+main .grid.grid-cols-4 { background:#0a192b!important;border-color:#2c4663!important; }
+main #summary-tier-name,main #summary-total-price { color:#f5f9ff!important; } main #summary-monthly-rate { color:#a9bdd4!important; }
+main > .grid.grid-cols-1.md\\:grid-cols-3 > div { background:#102238!important;border-color:#28445f!important;box-shadow:0 10px 28px rgba(0,0,0,.17)!important; }
+main > .grid.grid-cols-1.md\\:grid-cols-3 h4 { color:#f5f9ff!important; } main > .grid.grid-cols-1.md\\:grid-cols-3 p { color:#b5c6da!important; }
+footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5bf!important; } footer .font-bold { color:#d6e5f7!important; }
+@media(max-width:640px){main{padding-top:18px!important}main>div:first-child{min-height:400px;margin-bottom:28px!important;border-radius:20px;background-position:55% center!important}header .maztv-logo{width:43px!important;height:43px!important}header .text-2xl{font-size:24px!important}header a{padding:9px 10px!important;font-size:12px!important}#language-toggle{padding:9px 8px!important;font-size:12px!important}}
+
+</style>
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500 selection:text-black">
 
@@ -83,9 +117,7 @@
   <header class="border-b border-gray-800/80 bg-gray-900/50 backdrop-blur-md sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
       <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-black text-xl text-black shadow-lg shadow-cyan-500/20">
-          M
-        </div>
+        <img src="mztlogo.png" alt="MazTV logo" class="maztv-logo w-12 h-12 object-contain rounded-xl" width="48" height="48">
         <div>
           <span class="text-2xl font-black tracking-tight bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">
             MazTV
@@ -154,7 +186,7 @@
               <li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Popular U.S. and Canadian programming</li>
               <li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> 30,000+ Movies & Series</li>
             </ul>
-            <p class="text-[11px] text-gray-500 italic">A straightforward option for one screen.</p>
+            <p class="text-[11px] text-gray-500 italic">A straightforward option for one connection.</p>
           </div>
 
           <!-- SILVER -->
@@ -191,7 +223,7 @@
               <li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> Expanded international selection</li>
               <li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> 90,000+ Movies & Catch-Up TV</li>
             </ul>
-            <p class="text-[11px] text-gray-500 italic">For households that want more simultaneous screens.</p>
+            <p class="text-[11px] text-gray-500 italic">For households that want more simultaneous connections.</p>
           </div>
 
         </div>
@@ -203,7 +235,7 @@
         <!-- DROPDOWN: SIMULTANEOUS SCREENS -->
         <div>
           <label class="block text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">
-            STEP 2 · HOW MANY SCREENS AT ONCE?
+            STEP 2 · SIMULTANEOUS CONNECTIONS
           </label>
           <select id="screens-select" onchange="updateCalculator()" class="w-full bg-gray-800 border border-gray-700 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-cyan-500 text-sm font-semibold transition">
             <!-- Dynamically populated -->
@@ -216,7 +248,7 @@
         <!-- DURATION TOGGLE -->
         <div>
           <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">
-            STEP 3 · HOW LONG?
+            STEP 3 · CHOOSE A TERM
           </label>
           <div class="grid grid-cols-4 gap-2 bg-gray-800 p-1.5 rounded-xl border border-gray-700">
             <button id="term-1" onclick="selectTerm(1)" class="py-2 rounded-lg text-xs font-bold text-white bg-cyan-500 transition">1 Mo</button>
