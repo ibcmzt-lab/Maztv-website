@@ -142,7 +142,7 @@
                 <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">Good</span>
                 <h3 class="text-xl font-bold text-white">Bronze</h3>
               </div>
-              <span class="text-sm bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-md font-semibold">1 Screen</span>
+              <span class="text-sm bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-md font-semibold">1 Connection Included</span>
             </div>
             <ul class="text-xs text-gray-400 space-y-2 mb-4">
               <li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Standard HD streaming</li>
@@ -204,7 +204,7 @@
             <!-- Dynamically populated -->
           </select>
           <p class="text-sm text-gray-500 mt-2">
-            *Install app on unlimited devices. This controls how many screens watch at the exact same time.
+            You can install the app on multiple devices. Your connection limit controls how many can watch at the same time.
           </p>
         </div>
 
@@ -322,19 +322,22 @@
         select.innerHTML = `<option value="1">1 Screen (Included)</option>`;
         select.disabled = true;
       } else if (tier === 'silver') {
-        currentScreens = 2;
+        currentScreens = 1;
         select.disabled = false;
         select.innerHTML = `
-          <option value="2">2 Screens (Included)</option>
-          <option value="3">3 Screens (extra connection charge)</option>
-          <option value="4">4 Screens (extra connection charge)</option>
+          <option value="1">1 Connection (Included)</option>
+          <option value="2">2 Simultaneous Connections (+1)</option>
+          <option value="3">3 Simultaneous Connections (+2)</option>
+          <option value="4">4 Simultaneous Connections (+3)</option>
         `;
       } else if (tier === 'gold') {
-        currentScreens = 3;
+        currentScreens = 1;
         select.disabled = false;
         select.innerHTML = `
-          <option value="3">3 Screens (Included)</option>
-          <option value="4">4 Screens (extra connection charge)</option>
+          <option value="1">1 Connection (Included)</option>
+          <option value="2">2 Simultaneous Connections (+1)</option>
+          <option value="3">3 Simultaneous Connections (+2)</option>
+          <option value="4">4 Simultaneous Connections (+3)</option>
         `;
       }
 
@@ -376,7 +379,7 @@
 
       const basePrice = basePrices[currentTier][currentTerm];
       
-      let baseScreens = currentTier === 'bronze' ? 1 : (currentTier === 'silver' ? 2 : 3);
+      let baseScreens = 1; // Every plan includes one simultaneous connection.
       let extraScreens = Math.max(0, currentScreens - baseScreens);
       let extraCost = extraScreens * addOnRates[currentTerm];
 
