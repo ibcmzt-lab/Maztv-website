@@ -425,9 +425,139 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
 
       // DOM Updates
       document.getElementById('summary-tier-name').textContent = `${currentTier.charAt(0).toUpperCase() + currentTier.slice(1)} Tier`;
-      document.getElementById('summary-screens').textContent = `${currentScreens} Screen${currentScreens > 1 ? 's' : ''}`;
+      document.getElementById('summary-screens').textContent = `${currentScreens} Connection${currentScreens > 1 ? 's' : ''}`;
       document.getElementById('summary-term').textContent = `${currentTerm} Month${currentTerm > 1 ? 's' : ''}`;
-      document.getElementById('summary-monthly-rate').textContent = `$${monthlyRate} / month equivalent`;
+      document.getElementById('summary-monthly-rate').textContent = currentLanguage === 'es' ? '
+      document.getElementById('summary-total-price').textContent = `$${totalPrice.toFixed(2)}`;
+      if (currentLanguage === 'es') applyLanguage('es');
+    }
+
+    function requestTrial() {
+      const message = `Hi MazTV! I want to claim my 1-Week Free Trial for the configured plan:\n\n` +
+                      `• Tier: ${currentTier.toUpperCase()}\n` +
+                      `• Simultaneous connections: ${currentScreens}\n` +
+                      `• Term: ${currentTerm} Month(s)\n` +
+                      `• Quoted Price: $${document.getElementById('summary-total-price').textContent} USD\n\n` +
+                      `Please let me know the next steps and how to get started.`;
+      
+      const whatsappUrl = `https://wa.me/526692442788?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    let currentLanguage = "en";
+    const bilingualText = {
+      en: {brand:"Mazatlán-based TV support",chat:"Chat with Us",kicker:"⚡ UPGRADED HIGH-SPEED SERVERS",sub:"Made in Mazatlán. Ready for your home.",title:"TV THAT FITS YOUR LIFE. ",accent:"MADE SIMPLE.",desc:"Based in Mazatlán, Sinaloa, with subscribers in Mexico, the U.S., Canada, and beyond. Explore your options, choose a plan, and get friendly help setting up on a compatible device.",plans:"Find the Plan That Fits",step1:"STEP 1 · CHOOSE A PLAN",good:"Good",better:"Better",best:"Best",bronze:"A straightforward option for one connection.",silver:"A flexible choice for everyday viewing.",gold:"For households that want more simultaneous connections.",popular:"Most Popular",step2:"STEP 2 · SIMULTANEOUS CONNECTIONS",help:"You can install the app on multiple devices. Your connection limit controls how many can watch at the same time.",step3:"STEP 3 · CHOOSE A TERM",summary:"Configured Summary",total:"Total Order",trial:"Request Your Free Trial",f1:"No Hardware Required",f2:"Use It Where You Live",f3:"Streaming Support",footer:"MazTV — Powered by Mazatlan Media Services",location:"Based in Mazatlán, Sinaloa, Mexico",home:"Home",navplans:"Plans & Pricing",features:"Features",contact:"Contact / WhatsApp"},
+      es: {brand:"Soporte de TV desde Mazatlán",chat:"Chatea con nosotros",kicker:"⚡ SERVIDORES DE ALTA VELOCIDAD",sub:"Desde Mazatlán, listos para tu hogar.",title:"TELEVISIÓN A TU MANERA. ",accent:"ASÍ DE FÁCIL.",desc:"Estamos en Mazatlán, Sinaloa, y atendemos a clientes en México, Estados Unidos, Canadá y otros lugares. Explora las opciones, elige un plan y recibe ayuda para configurar un dispositivo compatible.",plans:"Encuentra tu plan ideal",step1:"PASO 1 · ELIGE UN PLAN",good:"Bueno",better:"Mejor",best:"Superior",bronze:"Una opción sencilla para una conexión.",silver:"Una opción flexible para el día a día.",gold:"Para hogares que necesitan más conexiones simultáneas.",popular:"Más popular",step2:"PASO 2 · CONEXIONES SIMULTÁNEAS",help:"Puedes instalar la aplicación en varios dispositivos. El límite de tu plan determina cuántos pueden ver contenido al mismo tiempo.",step3:"PASO 3 · ELIGE LA DURACIÓN",summary:"Resumen del plan",total:"Total del pedido",trial:"Solicita tu prueba gratis",f1:"Sin equipo adicional",f2:"Úsalo donde vivas",f3:"Ayuda con streaming",footer:"MazTV — Con el respaldo de Mazatlan Media Services",location:"Desde Mazatlán, Sinaloa, México",home:"Inicio",navplans:"Planes y precios",features:"Características",contact:"Contacto / WhatsApp"}
+    };
+    function applyLanguage(lang) {
+      currentLanguage=lang; const t=bilingualText[lang]; const put=(id,value)=>{const e=document.getElementById(id);if(e)e.textContent=value;};
+      put("silver-connections",lang==="en"?"1 Connection Included":"1 conexión incluida");put("gold-connections",lang==="en"?"1 Connection Included":"1 conexión incluida");
+      document.getElementById("bronze-points").innerHTML=lang==="en"?"<li>✓ Standard HD streaming</li><li>✓ Popular U.S. and Canadian programming</li><li>✓ 30,000+ Movies &amp; Series</li>":"<li>✓ Transmisión HD estándar</li><li>✓ Programación popular de EE. UU. y Canadá</li><li>✓ Más de 30,000 películas y series</li>";
+      document.getElementById("silver-points").innerHTML=lang==="en"?"<li>✓ <strong>Upgraded High-Speed Servers</strong></li><li>✓ Expanded channel and sports selection</li><li>✓ 60,000+ Movies &amp; Series</li>":"<li>✓ <strong>Servidores mejorados de alta velocidad</strong></li><li>✓ Más canales y deportes</li><li>✓ Más de 60,000 películas y series</li>";
+      document.getElementById("gold-points").innerHTML=lang==="en"?"<li>✓ <strong>VIP Direct Route Servers</strong></li><li>✓ Expanded international selection</li><li>✓ 90,000+ Movies &amp; Catch-Up TV</li>":"<li>✓ <strong>Servidores VIP de ruta directa</strong></li><li>✓ Mayor selección internacional</li><li>✓ Más de 90,000 películas y TV para ponerse al día</li>";
+      put("feature1-body",lang==="en"?"Available on supported smart TVs and streaming devices, plus compatible phones and tablets. Ask us if you’re unsure about your device.":"Disponible en televisores inteligentes y dispositivos de streaming compatibles, además de teléfonos y tabletas. Pregúntanos si no sabes si tu equipo es compatible.");
+      put("feature2-body",lang==="en"?"Options for customers in Mexico, the United States, Canada, and other locations. Ask us about compatibility where you live.":"Opciones para clientes en México, Estados Unidos, Canadá y otros lugares. Consúltanos sobre la compatibilidad en tu zona.");
+      put("feature3-body",lang==="en"?"Our service is supported from Mazatlán. Contact us for help with compatible devices, setup, and connection questions.":"Nuestro servicio recibe soporte desde Mazatlán. Contáctanos para recibir ayuda con dispositivos compatibles, configuración y conexiones.");
+      put("brand-tagline",t.brand);put("chat-label",t.chat);put("hero-kicker-main",t.kicker);put("hero-kicker-sub",t.sub);
+      const h=document.getElementById("hero-title");h.innerHTML=t.title+'<span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">'+t.accent+"</span>";
+      put("hero-description",t.desc);put("plans-title",t.plans);put("step-plan",t.step1);put("bronze-good",t.good);put("silver-better",t.better);put("gold-best",t.best);
+      put("bronze-note",t.bronze);put("silver-note",t.silver);put("gold-note",t.gold);put("silver-popular",t.popular);put("step-connections",t.step2);put("connection-help",t.help);put("step-term",t.step3);put("summary-label",t.summary);put("total-label",t.total);put("trial-button",t.trial);
+      put("feature1-title",t.f1);put("feature2-title",t.f2);put("feature3-title",t.f3);put("footer-title",t.footer);put("footer-location",t.location);
+      const pd=document.querySelector("#plans .text-center.mb-10 p");if(pd)pd.textContent=lang==="en"?"Choose a plan, tell us how many connections can watch at once, and select your subscription length. We’ll show your price before you contact us.":"Elige un plan, indica cuántas conexiones pueden ver contenido al mismo tiempo y selecciona la duración. Verás el precio antes de contactarnos."; 
+      const nav=[t.home,t.navplans,t.features,t.contact];document.querySelectorAll(".menu-link").forEach((e,i)=>e.textContent=nav[i]);
+      document.getElementById("language-toggle").textContent=lang==="en"?"EN / ES":"ES / EN";document.documentElement.lang=lang;
+      const sel=document.getElementById("screens-select");const n=Number(sel.value||1);sel.innerHTML=[1,2,3,4].slice(0,currentTier==="bronze"?1:4).map(v=>'<option value="'+v+'">'+(lang==="en"?(v===1?"1 Connection Included":v+" Simultaneous Connections (+"+(v-1)+")"):(v===1?"1 conexión incluida":v+" conexiones simultáneas (+"+(v-1)+")"))+"</option>").join("");sel.value=String(n);
+      document.getElementById("summary-screens").textContent=currentScreens+(lang==="en"?" Connection"+(currentScreens===1?"":"s"):" conexión"+(currentScreens===1?"":"es"));document.getElementById("summary-term").textContent=currentTerm+(lang==="en"?" Month"+(currentTerm===1?"":"s"):" mes"+(currentTerm===1?"":"es"));
+      document.getElementById("summary-tier-name").textContent=lang==="en"?currentTier.charAt(0).toUpperCase()+currentTier.slice(1)+" Tier":"Plan "+currentTier.charAt(0).toUpperCase()+currentTier.slice(1);
+    }
+    document.getElementById("language-toggle").addEventListener("click",()=>applyLanguage(currentLanguage==="en"?"es":"en"));
+
+    // Compact navigation menu for phones, tablets, and desktop.
+    const menuToggle = document.getElementById('menu-toggle');
+    const siteMenu = document.getElementById('site-menu');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+      siteMenu.hidden = isOpen;
+    });
+    siteMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      siteMenu.hidden = true;
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Open navigation menu');
+    }));
+
+    // Initialize defaults
+    selectTier('silver');
+  </script>
+</body>
+</html>
+ + monthlyRate + ' / equivalente mensual' : '
+      document.getElementById('summary-total-price').textContent = `$${totalPrice.toFixed(2)}`;
+      if (currentLanguage === 'es') applyLanguage('es');
+    }
+
+    function requestTrial() {
+      const message = `Hi MazTV! I want to claim my 1-Week Free Trial for the configured plan:\n\n` +
+                      `• Tier: ${currentTier.toUpperCase()}\n` +
+                      `• Simultaneous connections: ${currentScreens}\n` +
+                      `• Term: ${currentTerm} Month(s)\n` +
+                      `• Quoted Price: $${document.getElementById('summary-total-price').textContent} USD\n\n` +
+                      `Please let me know the next steps and how to get started.`;
+      
+      const whatsappUrl = `https://wa.me/526692442788?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    }
+
+    let currentLanguage = "en";
+    const bilingualText = {
+      en: {brand:"Mazatlán-based TV support",chat:"Chat with Us",kicker:"⚡ UPGRADED HIGH-SPEED SERVERS",sub:"Made in Mazatlán. Ready for your home.",title:"TV THAT FITS YOUR LIFE. ",accent:"MADE SIMPLE.",desc:"Based in Mazatlán, Sinaloa, with subscribers in Mexico, the U.S., Canada, and beyond. Explore your options, choose a plan, and get friendly help setting up on a compatible device.",plans:"Find the Plan That Fits",step1:"STEP 1 · CHOOSE A PLAN",good:"Good",better:"Better",best:"Best",bronze:"A straightforward option for one connection.",silver:"A flexible choice for everyday viewing.",gold:"For households that want more simultaneous connections.",popular:"Most Popular",step2:"STEP 2 · SIMULTANEOUS CONNECTIONS",help:"You can install the app on multiple devices. Your connection limit controls how many can watch at the same time.",step3:"STEP 3 · CHOOSE A TERM",summary:"Configured Summary",total:"Total Order",trial:"Request Your Free Trial",f1:"No Hardware Required",f2:"Use It Where You Live",f3:"Streaming Support",footer:"MazTV — Powered by Mazatlan Media Services",location:"Based in Mazatlán, Sinaloa, Mexico",home:"Home",navplans:"Plans & Pricing",features:"Features",contact:"Contact / WhatsApp"},
+      es: {brand:"Soporte de TV desde Mazatlán",chat:"Chatea con nosotros",kicker:"⚡ SERVIDORES DE ALTA VELOCIDAD",sub:"Desde Mazatlán, listos para tu hogar.",title:"TELEVISIÓN A TU MANERA. ",accent:"ASÍ DE FÁCIL.",desc:"Estamos en Mazatlán, Sinaloa, y atendemos a clientes en México, Estados Unidos, Canadá y otros lugares. Explora las opciones, elige un plan y recibe ayuda para configurar un dispositivo compatible.",plans:"Encuentra tu plan ideal",step1:"PASO 1 · ELIGE UN PLAN",good:"Bueno",better:"Mejor",best:"Superior",bronze:"Una opción sencilla para una conexión.",silver:"Una opción flexible para el día a día.",gold:"Para hogares que necesitan más conexiones simultáneas.",popular:"Más popular",step2:"PASO 2 · CONEXIONES SIMULTÁNEAS",help:"Puedes instalar la aplicación en varios dispositivos. El límite de tu plan determina cuántos pueden ver contenido al mismo tiempo.",step3:"PASO 3 · ELIGE LA DURACIÓN",summary:"Resumen del plan",total:"Total del pedido",trial:"Solicita tu prueba gratis",f1:"Sin equipo adicional",f2:"Úsalo donde vivas",f3:"Ayuda con streaming",footer:"MazTV — Con el respaldo de Mazatlan Media Services",location:"Desde Mazatlán, Sinaloa, México",home:"Inicio",navplans:"Planes y precios",features:"Características",contact:"Contacto / WhatsApp"}
+    };
+    function applyLanguage(lang) {
+      currentLanguage=lang; const t=bilingualText[lang]; const put=(id,value)=>{const e=document.getElementById(id);if(e)e.textContent=value;};
+      put("silver-connections",lang==="en"?"1 Connection Included":"1 conexión incluida");put("gold-connections",lang==="en"?"1 Connection Included":"1 conexión incluida");
+      document.getElementById("bronze-points").innerHTML=lang==="en"?"<li>✓ Standard HD streaming</li><li>✓ Popular U.S. and Canadian programming</li><li>✓ 30,000+ Movies &amp; Series</li>":"<li>✓ Transmisión HD estándar</li><li>✓ Programación popular de EE. UU. y Canadá</li><li>✓ Más de 30,000 películas y series</li>";
+      document.getElementById("silver-points").innerHTML=lang==="en"?"<li>✓ <strong>Upgraded High-Speed Servers</strong></li><li>✓ Expanded channel and sports selection</li><li>✓ 60,000+ Movies &amp; Series</li>":"<li>✓ <strong>Servidores mejorados de alta velocidad</strong></li><li>✓ Más canales y deportes</li><li>✓ Más de 60,000 películas y series</li>";
+      document.getElementById("gold-points").innerHTML=lang==="en"?"<li>✓ <strong>VIP Direct Route Servers</strong></li><li>✓ Expanded international selection</li><li>✓ 90,000+ Movies &amp; Catch-Up TV</li>":"<li>✓ <strong>Servidores VIP de ruta directa</strong></li><li>✓ Mayor selección internacional</li><li>✓ Más de 90,000 películas y TV para ponerse al día</li>";
+      put("feature1-body",lang==="en"?"Available on supported smart TVs and streaming devices, plus compatible phones and tablets. Ask us if you’re unsure about your device.":"Disponible en televisores inteligentes y dispositivos de streaming compatibles, además de teléfonos y tabletas. Pregúntanos si no sabes si tu equipo es compatible.");
+      put("feature2-body",lang==="en"?"Options for customers in Mexico, the United States, Canada, and other locations. Ask us about compatibility where you live.":"Opciones para clientes en México, Estados Unidos, Canadá y otros lugares. Consúltanos sobre la compatibilidad en tu zona.");
+      put("feature3-body",lang==="en"?"Our service is supported from Mazatlán. Contact us for help with compatible devices, setup, and connection questions.":"Nuestro servicio recibe soporte desde Mazatlán. Contáctanos para recibir ayuda con dispositivos compatibles, configuración y conexiones.");
+      put("brand-tagline",t.brand);put("chat-label",t.chat);put("hero-kicker-main",t.kicker);put("hero-kicker-sub",t.sub);
+      const h=document.getElementById("hero-title");h.innerHTML=t.title+'<span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">'+t.accent+"</span>";
+      put("hero-description",t.desc);put("plans-title",t.plans);put("step-plan",t.step1);put("bronze-good",t.good);put("silver-better",t.better);put("gold-best",t.best);
+      put("bronze-note",t.bronze);put("silver-note",t.silver);put("gold-note",t.gold);put("silver-popular",t.popular);put("step-connections",t.step2);put("connection-help",t.help);put("step-term",t.step3);put("summary-label",t.summary);put("total-label",t.total);put("trial-button",t.trial);
+      put("feature1-title",t.f1);put("feature2-title",t.f2);put("feature3-title",t.f3);put("footer-title",t.footer);put("footer-location",t.location);
+      const pd=document.querySelector("#plans .text-center.mb-10 p");if(pd)pd.textContent=lang==="en"?"Choose a plan, tell us how many connections can watch at once, and select your subscription length. We’ll show your price before you contact us.":"Elige un plan, indica cuántas conexiones pueden ver contenido al mismo tiempo y selecciona la duración. Verás el precio antes de contactarnos."; 
+      const nav=[t.home,t.navplans,t.features,t.contact];document.querySelectorAll(".menu-link").forEach((e,i)=>e.textContent=nav[i]);
+      document.getElementById("language-toggle").textContent=lang==="en"?"EN / ES":"ES / EN";document.documentElement.lang=lang;
+      const sel=document.getElementById("screens-select");const n=Number(sel.value||1);sel.innerHTML=[1,2,3,4].slice(0,currentTier==="bronze"?1:4).map(v=>'<option value="'+v+'">'+(lang==="en"?(v===1?"1 Connection Included":v+" Simultaneous Connections (+"+(v-1)+")"):(v===1?"1 conexión incluida":v+" conexiones simultáneas (+"+(v-1)+")"))+"</option>").join("");sel.value=String(n);
+      document.getElementById("summary-screens").textContent=currentScreens+(lang==="en"?" Connection"+(currentScreens===1?"":"s"):" conexión"+(currentScreens===1?"":"es"));document.getElementById("summary-term").textContent=currentTerm+(lang==="en"?" Month"+(currentTerm===1?"":"s"):" mes"+(currentTerm===1?"":"es"));
+      document.getElementById("summary-tier-name").textContent=lang==="en"?currentTier.charAt(0).toUpperCase()+currentTier.slice(1)+" Tier":"Plan "+currentTier.charAt(0).toUpperCase()+currentTier.slice(1);
+    }
+    document.getElementById("language-toggle").addEventListener("click",()=>applyLanguage(currentLanguage==="en"?"es":"en"));
+
+    // Compact navigation menu for phones, tablets, and desktop.
+    const menuToggle = document.getElementById('menu-toggle');
+    const siteMenu = document.getElementById('site-menu');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+      siteMenu.hidden = isOpen;
+    });
+    siteMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      siteMenu.hidden = true;
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Open navigation menu');
+    }));
+
+    // Initialize defaults
+    selectTier('silver');
+  </script>
+</body>
+</html>
+ + monthlyRate + ' / month equivalent';
       document.getElementById('summary-total-price').textContent = `$${totalPrice.toFixed(2)}`;
       if (currentLanguage === 'es') applyLanguage('es');
     }
