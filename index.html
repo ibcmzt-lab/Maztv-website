@@ -109,6 +109,30 @@ main > .grid.grid-cols-1.md\\:grid-cols-3 h4 { color:#f5f9ff!important; } main >
 footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5bf!important; } footer .font-bold { color:#d6e5f7!important; }
 @media(max-width:640px){main{padding-top:18px!important}main>div:first-child{min-height:400px;margin-bottom:28px!important;border-radius:20px;background-position:55% center!important}header .maztv-logo{width:43px!important;height:43px!important}header .text-2xl{font-size:24px!important}header a{padding:9px 10px!important;font-size:12px!important}#language-toggle{padding:9px 8px!important;font-size:12px!important}}
 
+
+  /* Centered MazTV branding and flag-based language switch */
+  header > div:first-child { position:relative; min-height:88px; }
+  header .maztv-brand { position:absolute; left:50%; transform:translateX(-50%); gap:12px!important; }
+  header .maztv-logo { width:68px!important; height:68px!important; max-width:none; }
+  header .brand-name { display:block; font-size:clamp(28px,3vw,38px)!important; line-height:1.05; }
+  header #brand-tagline { font-size:10px!important; letter-spacing:.12em!important; white-space:nowrap; }
+  header .header-actions { margin-left:auto; position:relative; z-index:2; }
+  header .language-flags { display:flex; align-items:center; gap:7px; border:1px solid rgba(69,226,255,.38); color:#f4f8ff; background:rgba(8,27,48,.9); font-size:14px; font-weight:800; min-height:44px; }
+  header .language-flags span:first-child { font-size:18px; white-space:nowrap; }
+  header .language-name { font-size:12px; }
+  @media(max-width:640px) {
+    header > div:first-child { min-height:76px; padding-top:10px!important; padding-bottom:10px!important; }
+    header .maztv-brand { gap:7px!important; }
+    header .maztv-logo { width:47px!important; height:47px!important; }
+    header .brand-name { font-size:24px!important; }
+    header #brand-tagline { font-size:8px!important; letter-spacing:.06em!important; }
+    header .language-flags { padding:7px 8px!important; min-height:40px; gap:4px; }
+    header .language-flags span:first-child { font-size:15px; }
+    header .language-name { font-size:10px; }
+    header .header-actions { gap:6px!important; }
+    header #menu-toggle { width:40px!important; height:40px!important; flex-shrink:0; }
+  }
+
 </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500 selection:text-black">
@@ -116,24 +140,16 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
   <!-- TOP BRANDING & NAVIGATION -->
   <header class="border-b border-gray-800/80 bg-gray-900/50 backdrop-blur-md sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
-      <div class="flex items-center space-x-3">
-        <img src="mztlogo.png" alt="MazTV logo" class="maztv-logo w-12 h-12 object-contain rounded-xl" width="48" height="48">
-        <div>
-          <span class="text-2xl font-black tracking-tight bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">
-            MazTV
-          </span>
-          <span id="brand-tagline" class="block text-[10px] text-cyan-400 font-bold uppercase tracking-widest -mt-1">
-            Mazatlán-based TV support
-          </span>
+      <div class="maztv-brand flex items-center gap-3">
+        <img src="mztlogo.png" alt="MazTV logo" class="maztv-logo object-contain" width="68" height="68">
+        <div class="brand-copy">
+          <span class="brand-name text-3xl font-black tracking-tight bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">MazTV</span>
+          <span id="brand-tagline" class="block text-xs text-cyan-300 font-bold uppercase tracking-widest">Mazatlán-based TV support</span>
         </div>
       </div>
-      <div class="flex items-center gap-2">
-      <button id="language-toggle" type="button" aria-label="Switch language to Spanish" class="text-sm font-extrabold text-cyan-300 border border-cyan-500/40 hover:bg-cyan-500/10 rounded-xl px-3 py-2">EN / ES</button>
-      <a href="https://wa.me/526692442788" target="_blank" class="text-xs sm:text-sm font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3.5 py-1.5 rounded-full transition flex items-center space-x-1.5">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span id="chat-label">Chat with Us</span>
-      </a>
-      <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open navigation menu" class="w-11 h-11 rounded-xl border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 flex flex-col items-center justify-center gap-1.5"><span class="block w-5 h-0.5 bg-current"></span><span class="block w-5 h-0.5 bg-current"></span><span class="block w-5 h-0.5 bg-current"></span></button>
+      <div class="header-actions flex items-center gap-2">
+        <button id="language-toggle" type="button" aria-label="Switch language" class="language-flags rounded-xl px-3 py-2" title="Change language"><span aria-hidden="true">🇺🇸 🇨🇦</span><span class="language-name">English</span></button>
+        <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" aria-label="Open navigation menu" class="w-11 h-11 rounded-xl border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10 flex flex-col items-center justify-center gap-1.5"><span class="block w-5 h-0.5 bg-current"></span><span class="block w-5 h-0.5 bg-current"></span><span class="block w-5 h-0.5 bg-current"></span></button>
       </div>
     </div>
     <nav id="site-menu" hidden class="max-w-6xl mx-auto px-4 pb-4"><div class="grid grid-cols-2 sm:grid-cols-4 gap-2 rounded-2xl border border-gray-700 bg-gray-900 p-3"><a href="#home" class="menu-link rounded-xl px-4 py-3 text-white hover:bg-cyan-500/15">Home</a><a href="#plans" class="menu-link rounded-xl px-4 py-3 text-white hover:bg-cyan-500/15">Plans &amp; Pricing</a><a href="#features" class="menu-link rounded-xl px-4 py-3 text-white hover:bg-cyan-500/15">Features</a><a href="#contact" class="menu-link rounded-xl px-4 py-3 text-white hover:bg-cyan-500/15">Contact / WhatsApp</a></div></nav>
@@ -356,7 +372,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
 
       if (tier === 'bronze') {
         currentScreens = 1;
-        select.innerHTML = `<option value="1">1 Connection (Included)</option>`;
+        select.innerHTML = `<option value="1">${currentLanguage === 'es' ? 'No disponible' : 'Not available'}</option>`;
         select.disabled = true;
       } else if (tier === 'silver') {
         currentScreens = 1;
@@ -427,7 +443,8 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
       document.getElementById('summary-tier-name').textContent = `${currentTier.charAt(0).toUpperCase() + currentTier.slice(1)} Tier`;
       document.getElementById('summary-screens').textContent = `${currentScreens} Connection${currentScreens > 1 ? 's' : ''}`;
       document.getElementById('summary-term').textContent = `${currentTerm} Month${currentTerm > 1 ? 's' : ''}`;
-      document.getElementById('summary-monthly-rate').textContent = currentLanguage === 'es' ? '
+      document.getElementById('summary-monthly-rate').textContent = currentLanguage === 'es' ? `${monthlyRate} / equivalente mensual` : `${monthlyRate} / month equivalent`;
+      //
       document.getElementById('summary-total-price').textContent = `$${totalPrice.toFixed(2)}`;
       if (currentLanguage === 'es') applyLanguage('es');
     }
@@ -467,7 +484,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
       put("feature1-title",t.f1);put("feature2-title",t.f2);put("feature3-title",t.f3);put("footer-title",t.footer);put("footer-location",t.location);
       const pd=document.querySelector("#plans .text-center.mb-10 p");if(pd)pd.textContent=lang==="en"?"Choose a plan, tell us how many connections can watch at once, and select your subscription length. We’ll show your price before you contact us.":"Elige un plan, indica cuántas conexiones pueden ver contenido al mismo tiempo y selecciona la duración. Verás el precio antes de contactarnos."; 
       const nav=[t.home,t.navplans,t.features,t.contact];document.querySelectorAll(".menu-link").forEach((e,i)=>e.textContent=nav[i]);
-      document.getElementById("language-toggle").textContent=lang==="en"?"EN / ES":"ES / EN";document.documentElement.lang=lang;
+      document.getElementById("language-toggle").innerHTML=lang==="en"?'<span aria-hidden="true">🇺🇸 🇨🇦</span><span class="language-name">English</span>':'<span aria-hidden="true">🇲🇽</span><span class="language-name">Español</span>';document.documentElement.lang=lang;
       const sel=document.getElementById("screens-select");const n=Number(sel.value||1);sel.innerHTML=[1,2,3,4].slice(0,currentTier==="bronze"?1:4).map(v=>'<option value="'+v+'">'+(lang==="en"?(v===1?"1 Connection Included":v+" Simultaneous Connections (+"+(v-1)+")"):(v===1?"1 conexión incluida":v+" conexiones simultáneas (+"+(v-1)+")"))+"</option>").join("");sel.value=String(n);
       document.getElementById("summary-screens").textContent=currentScreens+(lang==="en"?" Connection"+(currentScreens===1?"":"s"):" conexión"+(currentScreens===1?"":"es"));document.getElementById("summary-term").textContent=currentTerm+(lang==="en"?" Month"+(currentTerm===1?"":"s"):" mes"+(currentTerm===1?"":"es"));
       document.getElementById("summary-tier-name").textContent=lang==="en"?currentTier.charAt(0).toUpperCase()+currentTier.slice(1)+" Tier":"Plan "+currentTier.charAt(0).toUpperCase()+currentTier.slice(1);
