@@ -429,6 +429,7 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
       document.getElementById('summary-term').textContent = `${currentTerm} Month${currentTerm > 1 ? 's' : ''}`;
       document.getElementById('summary-monthly-rate').textContent = `$${monthlyRate} / month equivalent`;
       document.getElementById('summary-total-price').textContent = `$${totalPrice.toFixed(2)}`;
+      if (currentLanguage === 'es') applyLanguage('es');
     }
 
     function requestTrial() {
