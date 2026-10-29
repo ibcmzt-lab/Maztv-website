@@ -110,27 +110,36 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
 @media(max-width:640px){main{padding-top:18px!important}main>div:first-child{min-height:400px;margin-bottom:28px!important;border-radius:20px;background-position:55% center!important}header .maztv-logo{width:43px!important;height:43px!important}header .text-2xl{font-size:24px!important}header a{padding:9px 10px!important;font-size:12px!important}#language-toggle{padding:9px 8px!important;font-size:12px!important}}
 
 
-  /* Centered MazTV branding and flag-based language switch */
-  header > div:first-child { position:relative; min-height:88px; }
-  header .maztv-brand { position:absolute; left:50%; transform:translateX(-50%); gap:12px!important; }
-  header .maztv-logo { width:68px!important; height:68px!important; max-width:none; }
-  header .brand-name { display:block; font-size:clamp(28px,3vw,38px)!important; line-height:1.05; }
-  header #brand-tagline { font-size:10px!important; letter-spacing:.12em!important; white-space:nowrap; }
+  /* Large centered logo, left-aligned service tagline, and prominent language toggle */
+  header > div:first-child { position:relative; min-height:158px; }
+  header .maztv-brand { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); gap:12px!important; }
+  header .maztv-logo { width:136px!important; height:136px!important; max-width:none; border-radius:18px!important; }
+  header .brand-copy { display:flex; align-items:center; }
+  header .brand-name { display:block; font-size:clamp(30px,3.5vw,42px)!important; line-height:1.05; }
+  header .header-tagline { position:absolute; left:16px; top:50%; transform:translateY(-50%); max-width:180px; font-size:12px!important; line-height:1.4; letter-spacing:.04em; font-weight:800; color:#b9d5ed; }
   header .header-actions { margin-left:auto; position:relative; z-index:2; }
-  header .language-flags { display:flex; align-items:center; gap:7px; border:1px solid rgba(69,226,255,.38); color:#f4f8ff; background:rgba(8,27,48,.9); font-size:14px; font-weight:800; min-height:44px; }
-  header .language-flags span:first-child { font-size:18px; white-space:nowrap; }
-  header .language-name { font-size:12px; }
-  @media(max-width:640px) {
-    header > div:first-child { min-height:76px; padding-top:10px!important; padding-bottom:10px!important; }
-    header .maztv-brand { gap:7px!important; }
-    header .maztv-logo { width:47px!important; height:47px!important; }
+  header .language-flags { display:flex; align-items:center; gap:10px; border:1px solid rgba(69,226,255,.5); color:#f4f8ff; background:rgba(8,27,48,.95); font-size:18px; font-weight:800; min-height:72px; padding:14px 18px!important; border-radius:16px!important; }
+  header .language-flags span:first-child { font-size:24px; white-space:nowrap; }
+  header .language-name { font-size:17px; }
+  @media(max-width:760px) {
+    header > div:first-child { min-height:112px; padding-top:8px!important; padding-bottom:8px!important; }
+    header .maztv-brand { left:50%; gap:5px!important; }
+    header .maztv-logo { width:78px!important; height:78px!important; border-radius:12px!important; }
     header .brand-name { font-size:24px!important; }
-    header #brand-tagline { font-size:8px!important; letter-spacing:.06em!important; }
-    header .language-flags { padding:7px 8px!important; min-height:40px; gap:4px; }
-    header .language-flags span:first-child { font-size:15px; }
-    header .language-name { font-size:10px; }
+    header .header-tagline { left:8px; top:auto; bottom:5px; transform:none; max-width:none; font-size:9px!important; }
+    header .language-flags { padding:8px 9px!important; min-height:52px; gap:5px; border-radius:12px!important; }
+    header .language-flags span:first-child { font-size:18px; }
+    header .language-name { font-size:12px; }
     header .header-actions { gap:6px!important; }
-    header #menu-toggle { width:40px!important; height:40px!important; flex-shrink:0; }
+    header #menu-toggle { width:42px!important; height:42px!important; flex-shrink:0; }
+  }
+  @media(max-width:390px) {
+    header > div:first-child { min-height:104px; }
+    header .maztv-logo { width:64px!important; height:64px!important; }
+    header .brand-name { font-size:21px!important; }
+    header .language-flags { padding:7px 6px!important; min-height:46px; }
+    header .language-name { font-size:10px; }
+    header .header-tagline { font-size:8px!important; }
   }
 
 </style>
@@ -140,11 +149,11 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
   <!-- TOP BRANDING & NAVIGATION -->
   <header class="border-b border-gray-800/80 bg-gray-900/50 backdrop-blur-md sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
+      <div class="header-tagline" id="brand-tagline">Powered by Mazatlan Media Services</div>
       <div class="maztv-brand flex items-center gap-3">
-        <img src="mztlogo.png" alt="MazTV logo" class="maztv-logo object-contain" width="68" height="68">
+        <img src="mztlogo.png" alt="MazTV logo" class="maztv-logo object-contain" width="136" height="136">
         <div class="brand-copy">
           <span class="brand-name text-3xl font-black tracking-tight bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">MazTV</span>
-          <span id="brand-tagline" class="block text-xs text-cyan-300 font-bold uppercase tracking-widest">Mazatlán-based TV support</span>
         </div>
       </div>
       <div class="header-actions flex items-center gap-2">
@@ -342,174 +351,228 @@ footer { background:#050e1b!important;border-color:#233b55!important;color:#8ea5
   <!-- CALCULATOR SCRIPT -->
   <script>
     let currentTier = 'silver';
-    let currentScreens = 2;
+    let currentScreens = 1;
     let currentTerm = 1;
+    let currentLanguage = 'en';
 
     const basePrices = {
       bronze: { 1: 15, 3: 40, 6: 70, 12: 120 },
       silver: { 1: 22, 3: 60, 6: 100, 12: 160 },
       gold:   { 1: 28, 3: 75, 6: 130, 12: 200 }
     };
-
     const addOnRates = { 1: 5, 3: 12, 6: 20, 12: 35 };
-    // Spanish-language prices use a fixed planning rate of MXN $18 per USD,
-    // rounded to clean customer-friendly amounts rather than cents.
-    function roundNice(amount) { const step = amount >= 1000 ? 100 : amount >= 300 ? 50 : amount >= 100 ? 20 : 10; return Math.round(amount / step) * step; }
-    function formatPesos(amount) { return '
+    const words = {
+      en: {
+        brand: 'Powered by Mazatlan Media Services',
+        kicker: '⚡ UPGRADED HIGH-SPEED SERVERS',
+        sub: 'Made in Mazatlán. Ready for your home.',
+        title: 'TV THAT FITS YOUR LIFE. ', accent: 'MADE SIMPLE.',
+        desc: 'Based in Mazatlán, Sinaloa, with subscribers in Mexico, the U.S., Canada, and beyond. Explore your options, choose a plan, and get friendly help setting up on a compatible device.',
+        plans: 'Find the Plan That Fits', step1: 'STEP 1 · CHOOSE A PLAN',
+        good: 'Good', better: 'Better', best: 'Best',
+        bronze: 'A straightforward option for one connection.',
+        silver: 'A flexible choice for everyday viewing.',
+        gold: 'For households that want more simultaneous connections.',
+        popular: 'Most Popular', step2: 'STEP 2 · SIMULTANEOUS CONNECTIONS',
+        help: 'You can install the app on multiple devices. Your connection limit controls how many can watch at the same time.',
+        step3: 'STEP 3 · CHOOSE A TERM', summary: 'Configured Summary',
+        total: 'Total Order', trial: 'Request Your Free Trial',
+        f1: 'No Hardware Required', f2: 'Use It Where You Live',
+        f3: 'Streaming Support', footer: 'MazTV — Powered by Mazatlan Media Services',
+        location: 'Based in Mazatlán, Sinaloa, Mexico', home: 'Home',
+        navplans: 'Plans & Pricing', features: 'Features', contact: 'Contact / WhatsApp',
+        connection: 'Connection', connections: 'Connections', month: 'Month', months: 'Months',
+        included: '1 Connection Included', unavailable: 'Not available',
+        save3: 'Save ~10% on 3-Month Plan', save6: 'Save ~15% on 6-Month Plan',
+        save12: 'Save ~25% on Annual Plan', monthly: ' / month equivalent'
+      },
+      es: {
+        brand: 'Con el respaldo de Mazatlan Media Services',
+        kicker: '⚡ SERVIDORES DE ALTA VELOCIDAD',
+        sub: 'Desde Mazatlán, listos para tu hogar.',
+        title: 'TELEVISIÓN A TU MANERA. ', accent: 'ASÍ DE FÁCIL.',
+        desc: 'Estamos en Mazatlán, Sinaloa, y atendemos a clientes en México, Estados Unidos, Canadá y otros lugares. Explora las opciones, elige un plan y recibe ayuda para configurar un dispositivo compatible.',
+        plans: 'Encuentra tu plan ideal', step1: 'PASO 1 · ELIGE UN PLAN',
+        good: 'Bueno', better: 'Mejor', best: 'Superior',
+        bronze: 'Una opción sencilla para una conexión.',
+        silver: 'Una opción flexible para el día a día.',
+        gold: 'Para hogares que necesitan más conexiones simultáneas.',
+        popular: 'Más popular', step2: 'PASO 2 · CONEXIONES SIMULTÁNEAS',
+        help: 'Puedes instalar la aplicación en varios dispositivos. El límite de tu plan determina cuántos pueden ver contenido al mismo tiempo.',
+        step3: 'PASO 3 · ELIGE LA DURACIÓN', summary: 'Resumen del plan',
+        total: 'Total del pedido', trial: 'Solicita tu prueba gratis',
+        f1: 'Sin equipo adicional', f2: 'Úsalo donde vivas',
+        f3: 'Ayuda con streaming', footer: 'MazTV — Con el respaldo de Mazatlan Media Services',
+        location: 'Desde Mazatlán, Sinaloa, México', home: 'Inicio',
+        navplans: 'Planes y precios', features: 'Características', contact: 'Contacto / WhatsApp',
+        connection: 'conexión', connections: 'conexiones', month: 'mes', months: 'meses',
+        included: '1 conexión incluida', unavailable: 'No disponible',
+        save3: 'Ahorra aprox. 10% en el plan de 3 meses', save6: 'Ahorra aprox. 15% en el plan de 6 meses',
+        save12: 'Ahorra aprox. 25% en el plan anual', monthly: ' / equivalente mensual'
+      }
+    };
 
-    function selectTier(tier) {
-      currentTier = tier;
-      
-      // Update UI selection
-      ['bronze', 'silver', 'gold'].forEach(t => {
-        const el = document.getElementById(`tier-${t}`);
-        if (t === tier) {
-          el.className = "cursor-pointer bg-gray-800/80 border-2 border-cyan-500 rounded-2xl p-6 transition-all duration-200 relative glow-cyan";
-        } else {
-          el.className = "cursor-pointer bg-gray-800/40 border-2 border-gray-700/60 hover:border-gray-600 rounded-2xl p-6 transition-all duration-200 relative group";
-        }
-      });
-
-      // Update Screen Dropdown options based on Tier
+    function roundNice(amount) {
+      const step = amount >= 1000 ? 100 : amount >= 300 ? 50 : amount >= 100 ? 20 : 10;
+      return Math.round(amount / step) * step;
+    }
+    function formatPesos(amount) {
+      return '$' + Math.round(amount).toLocaleString('es-MX') + ' MXN';
+    }
+    function displayPrice(usd) {
+      return currentLanguage === 'es' ? formatPesos(roundNice(usd * 18)) : '$' + Number(usd).toFixed(2) + ' USD';
+    }
+    function put(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = value;
+    }
+    function connectionOptions() {
       const select = document.getElementById('screens-select');
-      select.innerHTML = '';
-
-      if (tier === 'bronze') {
-        currentScreens = 1;
-        select.innerHTML = `<option value="1">${currentLanguage === 'es' ? 'No disponible' : 'Not available'}</option>`;
+      const t = words[currentLanguage];
+      if (currentTier === 'bronze') {
+        select.innerHTML = '<option value="1">' + t.unavailable + '</option>';
         select.disabled = true;
-      } else if (tier === 'silver') {
         currentScreens = 1;
-        select.disabled = false;
-        select.innerHTML = `
-          <option value="1">1 Connection (Included)</option>
-          <option value="2">2 Simultaneous Connections (+1)</option>
-          <option value="3">3 Simultaneous Connections (+2)</option>
-          <option value="4">4 Simultaneous Connections (+3)</option>
-        `;
-      } else if (tier === 'gold') {
-        currentScreens = 1;
-        select.disabled = false;
-        select.innerHTML = `
-          <option value="1">1 Connection (Included)</option>
-          <option value="2">2 Simultaneous Connections (+1)</option>
-          <option value="3">3 Simultaneous Connections (+2)</option>
-          <option value="4">4 Simultaneous Connections (+3)</option>
-        `;
-      }
-
-      updateCalculator();
-    }
-
-    function selectTerm(term) {
-      currentTerm = term;
-
-      [1, 3, 6, 12].forEach(t => {
-        const btn = document.getElementById(`term-${t}`);
-        if (t === term) {
-          btn.className = "py-2 rounded-lg text-xs font-bold text-black bg-cyan-500 transition shadow-lg shadow-cyan-500/20";
-        } else {
-          btn.className = "py-2 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition";
-        }
-      });
-
-      const badge = document.getElementById('savings-badge');
-      if (term === 3) {
-        badge.textContent = "Save ~10% on 3-Month Plan";
-        badge.classList.remove('hidden');
-      } else if (term === 6) {
-        badge.textContent = "Save ~15% on 6-Month Plan";
-        badge.classList.remove('hidden');
-      } else if (term === 12) {
-        badge.textContent = "Save ~25% on Annual Plan";
-        badge.classList.remove('hidden');
       } else {
-        badge.classList.add('hidden');
+        select.disabled = false;
+        select.innerHTML = [1,2,3,4].map(n => {
+          const label = n === 1 ? t.included : (currentLanguage === 'en'
+            ? n + ' Simultaneous Connections (+' + (n-1) + ')'
+            : n + ' conexiones simultáneas (+' + (n-1) + ')');
+          return '<option value="' + n + '">' + label + '</option>';
+        }).join('');
+        if (currentScreens < 1 || currentScreens > 4) currentScreens = 1;
+        select.value = String(currentScreens);
       }
-
+    }
+    function selectTier(tier) {
+      if (!basePrices[tier]) return;
+      currentTier = tier;
+      ['bronze','silver','gold'].forEach(name => {
+        const card = document.getElementById('tier-' + name);
+        const active = name === tier;
+        card.classList.toggle('glow-cyan', active);
+        card.style.borderColor = active ? (name === 'bronze' ? '#d97706' : name === 'gold' ? '#eab308' : '#06b6d4') : '#2a4564';
+        card.setAttribute('aria-pressed', String(active));
+      });
+      currentScreens = 1;
+      connectionOptions();
       updateCalculator();
     }
-
+    function selectTerm(term) {
+      if (!basePrices.silver[term]) return;
+      currentTerm = term;
+      [1,3,6,12].forEach(n => {
+        const button = document.getElementById('term-' + n);
+        button.classList.toggle('bg-cyan-500', n === term);
+        button.classList.toggle('text-black', n === term);
+        button.classList.toggle('text-white', n !== term);
+        button.classList.toggle('text-gray-400', n !== term);
+      });
+      const savings = document.getElementById('savings-badge');
+      if (term === 1) savings.classList.add('hidden');
+      else {
+        savings.classList.remove('hidden');
+        savings.textContent = term === 3 ? words[currentLanguage].save3 : term === 6 ? words[currentLanguage].save6 : words[currentLanguage].save12;
+      }
+      updateCalculator();
+    }
     function updateCalculator() {
       const select = document.getElementById('screens-select');
-      currentScreens = parseInt(select.value) || currentScreens;
-
-      const basePrice = basePrices[currentTier][currentTerm];
-      
-      let baseScreens = 1; // Every plan includes one simultaneous connection.
-      let extraScreens = Math.max(0, currentScreens - baseScreens);
-      let extraCost = extraScreens * addOnRates[currentTerm];
-
-      let totalPrice = basePrice + extraCost;
-      let monthlyRate = (totalPrice / currentTerm).toFixed(2);
-
-      // DOM Updates
-      document.getElementById('summary-tier-name').textContent = `${currentTier.charAt(0).toUpperCase() + currentTier.slice(1)} Tier`;
-      document.getElementById('summary-screens').textContent = `${currentScreens} Connection${currentScreens > 1 ? 's' : ''}`;
-      document.getElementById('summary-term').textContent = `${currentTerm} Month${currentTerm > 1 ? 's' : ''}`;
-      const monthlyDisplay = currentLanguage === 'es' ? formatPesos(roundNice(totalPrice / currentTerm * 18)) + ' / mes aprox.' : '
-      document.getElementById('summary-total-price').textContent = displayPrice(totalPrice);
-      if (currentLanguage === 'es') applyLanguage('es');
+      if (currentTier === 'bronze') currentScreens = 1;
+      else if (select && select.value) currentScreens = Math.max(1, Math.min(4, Number(select.value) || 1));
+      const extraScreens = Math.max(0, currentScreens - 1);
+      const totalPrice = basePrices[currentTier][currentTerm] + extraScreens * addOnRates[currentTerm];
+      const monthly = totalPrice / currentTerm;
+      const t = words[currentLanguage];
+      put('summary-tier-name', currentLanguage === 'en'
+        ? currentTier.charAt(0).toUpperCase() + currentTier.slice(1) + ' Tier'
+        : 'Plan ' + currentTier.charAt(0).toUpperCase() + currentTier.slice(1));
+      put('summary-screens', currentScreens + ' ' + (currentScreens === 1 ? t.connection : t.connections));
+      put('summary-term', currentTerm + ' ' + (currentTerm === 1 ? t.month : t.months));
+      put('summary-monthly-rate', (currentLanguage === 'es' ? formatPesos(roundNice(monthly * 18)) : '$' + monthly.toFixed(2) + ' USD') + t.monthly);
+      put('summary-total-price', displayPrice(totalPrice));
+      const currencyLabel = document.querySelector('#summary-total-price + span');
+      if (currencyLabel) currencyLabel.textContent = currentLanguage === 'es' ? 'Pesos mexicanos' : 'US dollars';
     }
-
-    function requestTrial() {
-      const message = `Hi MazTV! I want to claim my 1-Week Free Trial for the configured plan:\n\n` +
-                      `• Tier: ${currentTier.toUpperCase()}\n` +
-                      `• Simultaneous connections: ${currentScreens}\n` +
-                      `• Term: ${currentTerm} Month(s)\n` +
-                      `• Quoted Price: $${document.getElementById('summary-total-price').textContent} USD\n\n` +
-                      `Please let me know the next steps and how to get started.`;
-      
-      const whatsappUrl = `https://wa.me/526692442788?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, '_blank');
-    }
-
-    let currentLanguage = "en";
-    const bilingualText = {
-      en: {brand:"Mazatlán-based TV support",chat:"Chat with Us",kicker:"⚡ UPGRADED HIGH-SPEED SERVERS",sub:"Made in Mazatlán. Ready for your home.",title:"TV THAT FITS YOUR LIFE. ",accent:"MADE SIMPLE.",desc:"Based in Mazatlán, Sinaloa, with subscribers in Mexico, the U.S., Canada, and beyond. Explore your options, choose a plan, and get friendly help setting up on a compatible device.",plans:"Find the Plan That Fits",step1:"STEP 1 · CHOOSE A PLAN",good:"Good",better:"Better",best:"Best",bronze:"A straightforward option for one connection.",silver:"A flexible choice for everyday viewing.",gold:"For households that want more simultaneous connections.",popular:"Most Popular",step2:"STEP 2 · SIMULTANEOUS CONNECTIONS",help:"You can install the app on multiple devices. Your connection limit controls how many can watch at the same time.",step3:"STEP 3 · CHOOSE A TERM",summary:"Configured Summary",total:"Total Order",trial:"Request Your Free Trial",f1:"No Hardware Required",f2:"Use It Where You Live",f3:"Streaming Support",footer:"MazTV — Powered by Mazatlan Media Services",location:"Based in Mazatlán, Sinaloa, Mexico",home:"Home",navplans:"Plans & Pricing",features:"Features",contact:"Contact / WhatsApp"},
-      es: {brand:"Soporte de TV desde Mazatlán",chat:"Chatea con nosotros",kicker:"⚡ SERVIDORES DE ALTA VELOCIDAD",sub:"Desde Mazatlán, listos para tu hogar.",title:"TELEVISIÓN A TU MANERA. ",accent:"ASÍ DE FÁCIL.",desc:"Estamos en Mazatlán, Sinaloa, y atendemos a clientes en México, Estados Unidos, Canadá y otros lugares. Explora las opciones, elige un plan y recibe ayuda para configurar un dispositivo compatible.",plans:"Encuentra tu plan ideal",step1:"PASO 1 · ELIGE UN PLAN",good:"Bueno",better:"Mejor",best:"Superior",bronze:"Una opción sencilla para una conexión.",silver:"Una opción flexible para el día a día.",gold:"Para hogares que necesitan más conexiones simultáneas.",popular:"Más popular",step2:"PASO 2 · CONEXIONES SIMULTÁNEAS",help:"Puedes instalar la aplicación en varios dispositivos. El límite de tu plan determina cuántos pueden ver contenido al mismo tiempo.",step3:"PASO 3 · ELIGE LA DURACIÓN",summary:"Resumen del plan",total:"Total del pedido",trial:"Solicita tu prueba gratis",f1:"Sin equipo adicional",f2:"Úsalo donde vivas",f3:"Ayuda con streaming",footer:"MazTV — Con el respaldo de Mazatlan Media Services",location:"Desde Mazatlán, Sinaloa, México",home:"Inicio",navplans:"Planes y precios",features:"Características",contact:"Contacto / WhatsApp"}
-    };
     function applyLanguage(lang) {
-      currentLanguage=lang; const t=bilingualText[lang]; const put=(id,value)=>{const e=document.getElementById(id);if(e)e.textContent=value;};
-      put("silver-connections",lang==="en"?"1 Connection Included":"1 conexión incluida");put("gold-connections",lang==="en"?"1 Connection Included":"1 conexión incluida");
-      document.getElementById("bronze-points").innerHTML=lang==="en"?"<li>✓ Standard HD streaming</li><li>✓ Popular U.S. and Canadian programming</li><li>✓ 30,000+ Movies &amp; Series</li>":"<li>✓ Transmisión HD estándar</li><li>✓ Programación popular de EE. UU. y Canadá</li><li>✓ Más de 30,000 películas y series</li>";
-      document.getElementById("silver-points").innerHTML=lang==="en"?"<li>✓ <strong>Upgraded High-Speed Servers</strong></li><li>✓ Expanded channel and sports selection</li><li>✓ 60,000+ Movies &amp; Series</li>":"<li>✓ <strong>Servidores mejorados de alta velocidad</strong></li><li>✓ Más canales y deportes</li><li>✓ Más de 60,000 películas y series</li>";
-      document.getElementById("gold-points").innerHTML=lang==="en"?"<li>✓ <strong>VIP Direct Route Servers</strong></li><li>✓ Expanded international selection</li><li>✓ 90,000+ Movies &amp; Catch-Up TV</li>":"<li>✓ <strong>Servidores VIP de ruta directa</strong></li><li>✓ Mayor selección internacional</li><li>✓ Más de 90,000 películas y TV para ponerse al día</li>";
-      put("feature1-body",lang==="en"?"Available on supported smart TVs and streaming devices, plus compatible phones and tablets. Ask us if you’re unsure about your device.":"Disponible en televisores inteligentes y dispositivos de streaming compatibles, además de teléfonos y tabletas. Pregúntanos si no sabes si tu equipo es compatible.");
-      put("feature2-body",lang==="en"?"Options for customers in Mexico, the United States, Canada, and other locations. Ask us about compatibility where you live.":"Opciones para clientes en México, Estados Unidos, Canadá y otros lugares. Consúltanos sobre la compatibilidad en tu zona.");
-      put("feature3-body",lang==="en"?"Our service is supported from Mazatlán. Contact us for help with compatible devices, setup, and connection questions.":"Nuestro servicio recibe soporte desde Mazatlán. Contáctanos para recibir ayuda con dispositivos compatibles, configuración y conexiones.");
-      put("brand-tagline",t.brand);put("chat-label",t.chat);put("hero-kicker-main",t.kicker);put("hero-kicker-sub",t.sub);
-      const h=document.getElementById("hero-title");h.innerHTML=t.title+'<span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">'+t.accent+"</span>";
-      put("hero-description",t.desc);put("plans-title",t.plans);put("step-plan",t.step1);put("bronze-good",t.good);put("silver-better",t.better);put("gold-best",t.best);
-      put("term-1",lang==="en"?"1 Mo":"1 mes");put("term-3",lang==="en"?"3 Mo":"3 meses");put("term-6",lang==="en"?"6 Mo":"6 meses");put("term-12",lang==="en"?"12 Mo":"12 meses");
-      const savings=document.getElementById("savings-badge");if(!savings.classList.contains("hidden"))savings.textContent=lang==="en"?(currentTerm===3?"Save ~10% on 3-Month Plan":currentTerm===6?"Save ~15% on 6-Month Plan":"Save ~25% on Annual Plan"):(currentTerm===3?"Ahorra aprox. 10% en el plan de 3 meses":currentTerm===6?"Ahorra aprox. 15% en el plan de 6 meses":"Ahorra aprox. 25% en el plan anual");
-      put("bronze-note",t.bronze);put("silver-note",t.silver);put("gold-note",t.gold);put("silver-popular",t.popular);put("step-connections",t.step2);put("connection-help",t.help);put("step-term",t.step3);put("summary-label",t.summary);put("total-label",t.total);put("trial-button",t.trial);
-      put("feature1-title",t.f1);put("feature2-title",t.f2);put("feature3-title",t.f3);put("footer-title",t.footer);put("footer-location",t.location);
-      const pd=document.querySelector("#plans .text-center.mb-10 p");if(pd)pd.textContent=lang==="en"?"Choose a plan, tell us how many connections can watch at once, and select your subscription length. We’ll show your price before you contact us.":"Elige un plan, indica cuántas conexiones pueden ver contenido al mismo tiempo y selecciona la duración. Verás el precio antes de contactarnos."; 
-      const nav=[t.home,t.navplans,t.features,t.contact];document.querySelectorAll(".menu-link").forEach((e,i)=>e.textContent=nav[i]);
-      document.getElementById("language-toggle").innerHTML=lang==="en"?'<span aria-hidden="true">🇺🇸 🇨🇦</span><span class="language-name">English</span>':'<span aria-hidden="true">🇲🇽</span><span class="language-name">Español</span>';document.documentElement.lang=lang;
-      const sel=document.getElementById("screens-select");const n=Number(sel.value||1);sel.innerHTML=[1,2,3,4].slice(0,currentTier==="bronze"?1:4).map(v=>'<option value="'+v+'">'+(lang==="en"?(v===1?"1 Connection Included":v+" Simultaneous Connections (+"+(v-1)+")"):(v===1?"1 conexión incluida":v+" conexiones simultáneas (+"+(v-1)+")"))+"</option>").join("");sel.value=String(n);
-      document.getElementById("summary-screens").textContent=currentScreens+(lang==="en"?" Connection"+(currentScreens===1?"":"s"):" conexión"+(currentScreens===1?"":"es"));document.getElementById("summary-term").textContent=currentTerm+(lang==="en"?" Month"+(currentTerm===1?"":"s"):" mes"+(currentTerm===1?"":"es"));
-      document.getElementById("summary-tier-name").textContent=lang==="en"?currentTier.charAt(0).toUpperCase()+currentTier.slice(1)+" Tier":"Plan "+currentTier.charAt(0).toUpperCase()+currentTier.slice(1); updateCalculator();
+      if (!words[lang]) return;
+      currentLanguage = lang;
+      const t = words[lang];
+      put('brand-tagline', t.brand);
+      put('hero-kicker-main', t.kicker);
+      put('hero-kicker-sub', t.sub);
+      const heroTitle = document.getElementById('hero-title');
+      if (heroTitle) heroTitle.innerHTML = t.title + '<span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">' + t.accent + '</span>';
+      put('hero-description', t.desc);
+      put('plans-title', t.plans); put('step-plan', t.step1);
+      put('bronze-good', t.good); put('silver-better', t.better); put('gold-best', t.best);
+      put('bronze-note', t.bronze); put('silver-note', t.silver); put('gold-note', t.gold);
+      put('silver-popular', t.popular); put('step-connections', t.step2);
+      put('connection-help', t.help); put('step-term', t.step3);
+      put('summary-label', t.summary); put('total-label', t.total); put('trial-button', t.trial);
+      put('feature1-title', t.f1); put('feature2-title', t.f2); put('feature3-title', t.f3);
+      put('footer-title', t.footer); put('footer-location', t.location);
+      put('silver-connections', t.included); put('gold-connections', t.included);
+      const bronzeBadge = document.querySelector('#tier-bronze .font-semibold');
+      if (bronzeBadge) bronzeBadge.textContent = t.included;
+      const points = {
+        'bronze-points': lang === 'en'
+          ? '<li>✓ Standard HD streaming</li><li>✓ Popular U.S. and Canadian programming</li><li>✓ 30,000+ Movies &amp; Series</li>'
+          : '<li>✓ Transmisión HD estándar</li><li>✓ Programación popular de EE. UU. y Canadá</li><li>✓ Más de 30,000 películas y series</li>',
+        'silver-points': lang === 'en'
+          ? '<li>✓ <strong>Upgraded High-Speed Servers</strong></li><li>✓ Expanded channel and sports selection</li><li>✓ 60,000+ Movies &amp; Series</li>'
+          : '<li>✓ <strong>Servidores mejorados de alta velocidad</strong></li><li>✓ Más canales y deportes</li><li>✓ Más de 60,000 películas y series</li>',
+        'gold-points': lang === 'en'
+          ? '<li>✓ <strong>VIP Direct Route Servers</strong></li><li>✓ Expanded international selection</li><li>✓ 90,000+ Movies &amp; Catch-Up TV</li>'
+          : '<li>✓ <strong>Servidores VIP de ruta directa</strong></li><li>✓ Mayor selección internacional</li><li>✓ Más de 90,000 películas y TV para ponerse al día</li>'
+      };
+      Object.entries(points).forEach(([id, html]) => { const el = document.getElementById(id); if (el) el.innerHTML = html; });
+      put('feature1-body', lang === 'en' ? 'Available on supported smart TVs and streaming devices, plus compatible phones and tablets. Ask us if you’re unsure about your device.' : 'Disponible en televisores inteligentes y dispositivos de streaming compatibles, además de teléfonos y tabletas. Pregúntanos si no sabes si tu equipo es compatible.');
+      put('feature2-body', lang === 'en' ? 'Options for customers in Mexico, the United States, Canada, and other locations. Ask us about compatibility where you live.' : 'Opciones para clientes en México, Estados Unidos, Canadá y otros lugares. Consúltanos sobre la compatibilidad en tu zona.');
+      put('feature3-body', lang === 'en' ? 'Our service is supported from Mazatlán. Contact us for help with compatible devices, setup, and connection questions.' : 'Nuestro servicio recibe soporte desde Mazatlán. Contáctanos para recibir ayuda con dispositivos compatibles, configuración y conexiones.');
+      const description = document.querySelector('#plans .text-center.mb-10 p');
+      if (description) description.textContent = lang === 'en'
+        ? 'Choose a plan, tell us how many connections can watch at once, and select your subscription length. We’ll show your price before you contact us.'
+        : 'Elige un plan, indica cuántas conexiones pueden ver contenido al mismo tiempo y selecciona la duración. Verás el precio antes de contactarnos.';
+      put('term-1', lang === 'en' ? '1 Mo' : '1 mes');
+      put('term-3', lang === 'en' ? '3 Mo' : '3 meses');
+      put('term-6', lang === 'en' ? '6 Mo' : '6 meses');
+      put('term-12', lang === 'en' ? '12 Mo' : '12 meses');
+      const nav = [t.home, t.navplans, t.features, t.contact];
+      document.querySelectorAll('.menu-link').forEach((el, i) => { if (nav[i]) el.textContent = nav[i]; });
+      const toggle = document.getElementById('language-toggle');
+      toggle.innerHTML = lang === 'en'
+        ? '<span aria-hidden="true">🇺🇸 🇨🇦</span><span class="language-name">English</span>'
+        : '<span aria-hidden="true">🇲🇽</span><span class="language-name">Español</span>';
+      document.documentElement.lang = lang;
+      connectionOptions();
+      updateCalculator();
     }
-    document.getElementById("language-toggle").addEventListener("click",()=>applyLanguage(currentLanguage==="en"?"es":"en"));
-
-    // Compact navigation menu for phones, tablets, and desktop.
+    function requestTrial() {
+      const total = document.getElementById('summary-total-price').textContent;
+      const message = (currentLanguage === 'en' ? 'Hi MazTV! I want to claim my 1-Week Free Trial for the configured plan:' : '¡Hola MazTV! Quiero solicitar mi prueba gratis de una semana para este plan:') + '\n\n' +
+        '• Plan: ' + currentTier.toUpperCase() + '\n' +
+        '• ' + (currentLanguage === 'en' ? 'Simultaneous connections: ' : 'Conexiones simultáneas: ') + currentScreens + '\n' +
+        '• ' + (currentLanguage === 'en' ? 'Term: ' : 'Duración: ') + currentTerm + ' ' + (currentTerm === 1 ? words[currentLanguage].month : words[currentLanguage].months) + '\n' +
+        '• ' + (currentLanguage === 'en' ? 'Quoted price: ' : 'Precio indicado: ') + total + '\n\n' +
+        (currentLanguage === 'en' ? 'Please let me know the next steps and how to get started.' : 'Por favor, indíquenme los siguientes pasos para comenzar.');
+      window.open('https://wa.me/526692442788?text=' + encodeURIComponent(message), '_blank');
+    }
+    document.getElementById('language-toggle').addEventListener('click', () => applyLanguage(currentLanguage === 'en' ? 'es' : 'en'));
     const menuToggle = document.getElementById('menu-toggle');
     const siteMenu = document.getElementById('site-menu');
     menuToggle.addEventListener('click', () => {
-      const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
-      menuToggle.setAttribute('aria-expanded', String(!isOpen));
-      menuToggle.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
-      siteMenu.hidden = isOpen;
+      const open = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!open));
+      menuToggle.setAttribute('aria-label', open ? 'Open navigation menu' : 'Close navigation menu');
+      siteMenu.hidden = open;
     });
     siteMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
       siteMenu.hidden = true;
       menuToggle.setAttribute('aria-expanded', 'false');
       menuToggle.setAttribute('aria-label', 'Open navigation menu');
     }));
-
-    // Initialize defaults
     selectTier('silver');
   </script>
 </body>
