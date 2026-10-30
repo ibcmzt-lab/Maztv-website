@@ -184,11 +184,11 @@
     }
 
     function requestTrial() {
-      const message = 'Hi MazTV! I want to claim my 1-Week Free Trial for the configured plan:\\n\\n' +
-        '• Tier: ' + currentTier.toUpperCase() + '\\n' +
-        '• Screens: ' + currentScreens + '\\n' +
-        '• Term: ' + currentTerm + ' Month(s)\\n' +
-        '• Quoted Price: ' + document.getElementById('summary-total-price').textContent + ' USD\\n\\n' +
+      const message = 'Hi MazTV! I want to claim my 1-Week Free Trial for the configured plan:\n\n' +
+        '• Tier: ' + currentTier.toUpperCase() + '\n' +
+        '• Screens: ' + currentScreens + '\n' +
+        '• Term: ' + currentTerm + ' Month(s)\n' +
+        '• Quoted Price: ' + document.getElementById('summary-total-price').textContent + ' USD\n\n' +
         'Please send me my trial login details!';
       window.open('https://wa.me/526692448788?text=' + encodeURIComponent(message), '_blank', 'noopener,noreferrer');
     }
