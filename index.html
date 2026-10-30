@@ -16,19 +16,21 @@
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500 selection:text-black">
   <header class="border-b border-gray-800/80 bg-gray-900/50 backdrop-blur-md sticky top-0 z-50">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center font-black text-xl text-black shadow-lg shadow-cyan-500/20">M</div>
-        <div>
-          <span class="text-2xl font-black tracking-tight bg-gradient-to-r from-white via-gray-100 to-gray-400 bg-clip-text text-transparent">MazTV</span>
-          <span class="block text-[10px] text-cyan-400 font-bold tracking-widest -mt-1">powered by Mazatlan Media Services</span>
-        </div>
+      <div class="flex items-center gap-4 min-w-0">
+        <img src="mztlogo.png" alt="MazTV logo" class="h-14 sm:h-20 w-auto max-w-[55vw] object-contain object-left" />
+        <span class="hidden sm:block text-xs md:text-sm text-cyan-300 font-bold tracking-wide border-l border-gray-700 pl-4">powered by Mazatlan Media Services</span>
       </div>
       <a href="https://wa.me/526692448788" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3.5 py-1.5 rounded-full transition flex items-center space-x-1.5">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span><span>WhatsApp Direct</span>
       </a>
     </div>
   </header>
-  <main class="max-w-6xl mx-auto px-4 py-10 sm:py-16 flex-grow w-full">
+  <main class="max-w-6xl mx-auto px-4 py-8 sm:py-12 flex-grow w-full">
+    <!-- HERO IMAGE -->
+    <section class="relative w-full overflow-hidden rounded-3xl border border-gray-800 mb-10 sm:mb-14 bg-gray-900">
+      <img src="maztvhero2.webp" alt="MazTV home entertainment hero" class="block w-full h-56 sm:h-80 md:h-[26rem] object-cover object-center" fetchpriority="high" />
+      <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent pointer-events-none"></div>
+    </section>
     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
       <div class="inline-flex flex-wrap items-center justify-center gap-2 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-cyan-500/20 rounded-full px-4 py-1.5 mb-6 text-xs sm:text-sm font-medium text-cyan-300">
         <span>⚡ UPGRADED HIGH-SPEED SERVERS</span><span class="text-gray-600">•</span><span>Works Globally Anywhere</span>
