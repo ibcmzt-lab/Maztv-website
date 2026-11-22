@@ -54,12 +54,12 @@
           </div>
           <div id="tier-silver" onclick="selectTier('silver')" class="cursor-pointer bg-gray-800/40 border-2 border-cyan-500/80 rounded-2xl p-6 transition-all duration-200 relative glow-cyan">
             <div class="absolute -top-3 right-4 bg-cyan-500 text-black font-extrabold text-[10px] uppercase px-3 py-0.5 rounded-full shadow-md">Most Popular</div>
-            <div class="flex justify-between items-start mb-4"><div><span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Better</span><h3 class="text-xl font-bold text-white">Silver</h3></div><span class="text-xs bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 px-2.5 py-1 rounded-md font-semibold">2+ Screens</span></div>
+            <div class="flex justify-between items-start mb-4"><div><span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Better</span><h3 class="text-xl font-bold text-white">Silver</h3></div><span class="text-xs bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 px-2.5 py-1 rounded-md font-semibold">1 Screen Included</span></div>
             <ul class="text-xs text-gray-300 space-y-2 mb-4"><li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> <strong>Upgraded High-Speed Servers</strong></li><li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> Expanded Global &amp; Sports Channels</li><li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> 60,000+ Movies &amp; Series</li></ul>
             <p class="text-[11px] text-gray-400 italic">Best for living rooms &amp; sports priority.</p>
           </div>
           <div id="tier-gold" onclick="selectTier('gold')" class="cursor-pointer bg-gray-800/40 border-2 border-gray-700/60 hover:border-yellow-500/50 rounded-2xl p-6 transition-all duration-200 relative group">
-            <div class="flex justify-between items-start mb-4"><div><span class="text-xs font-bold text-yellow-500 uppercase tracking-widest">Best</span><h3 class="text-xl font-bold text-white">Gold</h3></div><span class="text-xs bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-md font-semibold">3+ Screens</span></div>
+            <div class="flex justify-between items-start mb-4"><div><span class="text-xs font-bold text-yellow-500 uppercase tracking-widest">Best</span><h3 class="text-xl font-bold text-white">Gold</h3></div><span class="text-xs bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-md font-semibold">1 Screen Included</span></div>
             <ul class="text-xs text-gray-400 space-y-2 mb-4"><li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> <strong>VIP Direct Route Servers</strong></li><li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> Complete Worldwide Vault</li><li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> 90,000+ Movies &amp; Catch-Up TV</li></ul>
             <p class="text-[11px] text-gray-500 italic">Best for multi-room &amp; global power users.</p>
           </div>
@@ -134,13 +134,13 @@
         select.innerHTML = '<option value="1">1 Screen (Included)</option>';
         select.disabled = true;
       } else if (tier === 'silver') {
-        currentScreens = 2;
+        currentScreens = 1;
         select.disabled = false;
-        select.innerHTML = '<option value="2">2 Screens (Included)</option><option value="3">3 Screens (+$5/mo)</option><option value="4">4 Screens (+$10/mo)</option><option value="5">5 Screens (+$15/mo)</option>';
+        select.innerHTML = '<option value="1">1 Screen (Included)</option><option value="2">2 Screens (+$5/mo)</option><option value="3">3 Screens (+$10/mo)</option><option value="4">4 Screens (+$15/mo)</option>';
       } else {
-        currentScreens = 3;
+        currentScreens = 1;
         select.disabled = false;
-        select.innerHTML = '<option value="3">3 Screens (Included)</option><option value="4">4 Screens (+$5/mo)</option><option value="5">5 Screens (+$10/mo)</option>';
+        select.innerHTML = '<option value="1">1 Screen (Included)</option><option value="2">2 Screens (+$5/mo)</option><option value="3">3 Screens (+$10/mo)</option><option value="4">4 Screens (+$15/mo)</option>';
       }
       updateCalculator();
     }
@@ -173,7 +173,7 @@
       const select = document.getElementById('screens-select');
       currentScreens = parseInt(select.value, 10) || currentScreens;
       const basePrice = basePrices[currentTier][currentTerm];
-      const baseScreens = currentTier === 'bronze' ? 1 : (currentTier === 'silver' ? 2 : 3);
+      const baseScreens = 1;
       const extraScreens = Math.max(0, currentScreens - baseScreens);
       const extraCost = extraScreens * addOnRates[currentTerm];
       const totalPrice = basePrice + extraCost;
