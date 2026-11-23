@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MazTV — All Your Home TV in Paradise</title>
+  <title id="page-title">MazTV — All Your Home TV in Paradise</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,139 +15,335 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500 selection:text-black">
   <header class="border-b border-gray-800/80 bg-gray-900/50 backdrop-blur-md sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-3">
       <div class="flex items-center gap-4 min-w-0">
         <img src="mztlogo.png" alt="MazTV logo" class="h-14 sm:h-20 w-auto max-w-[55vw] object-contain object-left" />
         <span class="hidden sm:block text-xs md:text-sm text-cyan-300 font-bold tracking-wide border-l border-gray-700 pl-4">powered by Mazatlan Media Services</span>
       </div>
-      <a href="https://wa.me/526692448788" target="_blank" rel="noopener noreferrer" class="text-xs sm:text-sm font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3.5 py-1.5 rounded-full transition flex items-center space-x-1.5">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span><span>WhatsApp Direct</span>
-      </a>
+      <div class="flex items-center gap-2 shrink-0">
+        <button id="language-toggle" onclick="toggleLanguage()" aria-label="Switch language" class="flex items-center gap-2 text-xs sm:text-sm font-bold bg-gray-800/90 hover:bg-gray-700 border border-gray-700 px-3 py-2 rounded-full transition">
+          <span id="flag-current">🇺🇸</span><span id="language-label">EN / USD</span><span class="text-gray-500">↔</span>
+        </button>
+        <a href="https://wa.me/526692448788" target="_blank" rel="noopener noreferrer" class="hidden sm:flex text-xs sm:text-sm font-semibold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-3.5 py-1.5 rounded-full transition items-center space-x-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span><span id="whatsapp-label">WhatsApp Direct</span>
+        </a>
+      </div>
     </div>
   </header>
+
   <main class="max-w-6xl mx-auto px-4 py-8 sm:py-12 flex-grow w-full">
-    <!-- HERO IMAGE -->
     <section class="relative w-full overflow-hidden rounded-3xl border border-gray-800 mb-10 sm:mb-14 bg-gray-900">
       <img src="maztvhero2.webp" alt="MazTV home entertainment hero" class="block w-full h-56 sm:h-80 md:h-[26rem] object-cover object-center" fetchpriority="high" />
       <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent pointer-events-none"></div>
     </section>
+
     <div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
       <div class="inline-flex flex-wrap items-center justify-center gap-2 bg-gradient-to-r from-cyan-500/10 via-blue-500/10 to-purple-500/10 border border-cyan-500/20 rounded-full px-4 py-1.5 mb-6 text-xs sm:text-sm font-medium text-cyan-300">
-        <span>⚡ UPGRADED HIGH-SPEED SERVERS</span><span class="text-gray-600">•</span><span>Works Globally Anywhere</span>
+        <span id="server-badge">⚡ UPGRADED HIGH-SPEED SERVERS</span><span class="text-gray-600">•</span><span id="global-badge">Works Globally Anywhere</span>
       </div>
-      <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-4 leading-none">All Your Home TV in <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Paradise</span></h1>
-      <p class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">Designed for the expat and snowbird community in Mazatlán. Stream live sports, news, and movies seamlessly on all your existing Smart TVs and mobile devices.</p>
+      <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-4 leading-none" id="hero-title">All Your Home TV in <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Paradise</span></h1>
+      <p class="text-gray-400 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto" id="hero-copy">Designed for the expat and snowbird community in Mazatlán. Stream live sports, news, and movies seamlessly on all your existing Smart TVs and mobile devices.</p>
     </div>
+
     <section class="bg-gray-900/80 border border-gray-800 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden backdrop-blur-xl mb-16">
       <div class="absolute -top-24 -right-24 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
       <div class="text-center mb-10">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">Design Your Own Plan</h2>
-        <p class="text-gray-400 text-sm">Select your server performance tier, simultaneous screens, and term length.</p>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2" id="builder-title">Design Your Own Plan</h2>
+        <p class="text-gray-400 text-sm" id="builder-copy">Select your server performance tier, simultaneous screens, and term length.</p>
       </div>
+
       <div class="mb-10">
-        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 text-center sm:text-left">Step 1: Choose Your Server Tier</label>
+        <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-4 text-center sm:text-left" id="step1-label">Step 1: Choose Your Server Tier</label>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div id="tier-bronze" onclick="selectTier('bronze')" class="cursor-pointer bg-gray-800/40 border-2 border-gray-700/60 hover:border-amber-600/50 rounded-2xl p-6 transition-all duration-200 relative group">
-            <div class="flex justify-between items-start mb-4"><div><span class="text-xs font-bold text-amber-500 uppercase tracking-widest">Good</span><h3 class="text-xl font-bold text-white">Bronze</h3></div><span class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-md font-semibold">1 Screen</span></div>
-            <ul class="text-xs text-gray-400 space-y-2 mb-4"><li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Standard HD Streams</li><li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> Core US &amp; Canadian Channels</li><li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span> 30,000+ Movies &amp; Series</li></ul>
-            <p class="text-[11px] text-gray-500 italic">Best for solo viewers &amp; mobile access.</p>
+            <div class="flex justify-between items-start mb-4"><div><span class="text-xs font-bold text-amber-500 uppercase tracking-widest" id="bronze-level">Good</span><h3 class="text-xl font-bold text-white">Bronze</h3></div><span id="bronze-screen-label" class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2.5 py-1 rounded-md font-semibold">1 Screen</span></div>
+            <ul class="text-xs text-gray-400 space-y-2 mb-4"><li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span><span id="bronze-feature1">Standard HD Streams</span></li><li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span><span id="bronze-feature2">Core US &amp; Canadian Channels</span></li><li class="flex items-center"><span class="text-emerald-400 mr-2">✓</span><span id="bronze-feature3">30,000+ Movies &amp; Series</span></li></ul>
+            <p class="text-[11px] text-gray-500 italic" id="bronze-note">Best for solo viewers &amp; mobile access.</p>
           </div>
+
           <div id="tier-silver" onclick="selectTier('silver')" class="cursor-pointer bg-gray-800/40 border-2 border-cyan-500/80 rounded-2xl p-6 transition-all duration-200 relative glow-cyan">
-            <div class="absolute -top-3 right-4 bg-cyan-500 text-black font-extrabold text-[10px] uppercase px-3 py-0.5 rounded-full shadow-md">Most Popular</div>
-            <div class="flex justify-between items-start mb-4"><div><span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Better</span><h3 class="text-xl font-bold text-white">Silver</h3></div><span class="text-xs bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 px-2.5 py-1 rounded-md font-semibold">1 Screen Included</span></div>
-            <ul class="text-xs text-gray-300 space-y-2 mb-4"><li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> <strong>Upgraded High-Speed Servers</strong></li><li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> Expanded Global &amp; Sports Channels</li><li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span> 60,000+ Movies &amp; Series</li></ul>
-            <p class="text-[11px] text-gray-400 italic">Best for living rooms &amp; sports priority.</p>
+            <div class="absolute -top-3 right-4 bg-cyan-500 text-black font-extrabold text-[10px] uppercase px-3 py-0.5 rounded-full shadow-md" id="popular-badge">Most Popular</div>
+            <div class="flex justify-between items-start mb-4"><div><span class="text-xs font-bold text-cyan-400 uppercase tracking-widest" id="silver-level">Better</span><h3 class="text-xl font-bold text-white">Silver</h3></div><span id="silver-screen-label" class="text-xs bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 px-2.5 py-1 rounded-md font-semibold">1 Screen Included</span></div>
+            <ul class="text-xs text-gray-300 space-y-2 mb-4"><li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span><span id="silver-feature1"><strong>Upgraded High-Speed Servers</strong></span></li><li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span><span id="silver-feature2">Expanded Global &amp; Sports Channels</span></li><li class="flex items-center"><span class="text-cyan-400 mr-2">✓</span><span id="silver-feature3">60,000+ Movies &amp; Series</span></li></ul>
+            <p class="text-[11px] text-gray-400 italic" id="silver-note">Best for living rooms &amp; sports priority.</p>
           </div>
+
           <div id="tier-gold" onclick="selectTier('gold')" class="cursor-pointer bg-gray-800/40 border-2 border-gray-700/60 hover:border-yellow-500/50 rounded-2xl p-6 transition-all duration-200 relative group">
-            <div class="flex justify-between items-start mb-4"><div><span class="text-xs font-bold text-yellow-500 uppercase tracking-widest">Best</span><h3 class="text-xl font-bold text-white">Gold</h3></div><span class="text-xs bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-md font-semibold">1 Screen Included</span></div>
-            <ul class="text-xs text-gray-400 space-y-2 mb-4"><li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> <strong>VIP Direct Route Servers</strong></li><li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> Complete Worldwide Vault</li><li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span> 90,000+ Movies &amp; Catch-Up TV</li></ul>
-            <p class="text-[11px] text-gray-500 italic">Best for multi-room &amp; global power users.</p>
+            <div class="flex justify-between items-start mb-4"><div><span class="text-xs font-bold text-yellow-500 uppercase tracking-widest" id="gold-level">Best</span><h3 class="text-xl font-bold text-white">Gold</h3></div><span id="gold-screen-label" class="text-xs bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 px-2.5 py-1 rounded-md font-semibold">1 Screen Included</span></div>
+            <ul class="text-xs text-gray-400 space-y-2 mb-4"><li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span><span id="gold-feature1"><strong>VIP Direct Route Servers</strong></span></li><li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span><span id="gold-feature2">Complete Worldwide Vault</span></li><li class="flex items-center"><span class="text-yellow-400 mr-2">✓</span><span id="gold-feature3">90,000+ Movies &amp; Catch-Up TV</span></li></ul>
+            <p class="text-[11px] text-gray-500 italic" id="gold-note">Best for multi-room &amp; global power users.</p>
           </div>
         </div>
       </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
         <div>
-          <label for="screens-select" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Step 2: Simultaneous Viewing Screens</label>
+          <label for="screens-select" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2" id="step2-label">Step 2: Simultaneous Viewing Screens</label>
           <select id="screens-select" onchange="updateCalculator()" class="w-full bg-gray-800 border border-gray-700 text-white rounded-xl px-4 py-3.5 focus:outline-none focus:border-cyan-500 text-sm font-semibold transition"></select>
-          <p class="text-[11px] text-gray-500 mt-2">*Install app on unlimited devices. This controls how many screens watch at the exact same time.</p>
+          <p class="text-[11px] text-gray-500 mt-2" id="screens-help">*Install app on unlimited devices. This controls how many screens watch at the exact same time.</p>
         </div>
         <div>
-          <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Step 3: Select Plan Duration</label>
+          <label class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2" id="step3-label">Step 3: Select Plan Duration</label>
           <div class="grid grid-cols-4 gap-2 bg-gray-800 p-1.5 rounded-xl border border-gray-700">
             <button id="term-1" onclick="selectTerm(1)" class="py-2 rounded-lg text-xs font-bold text-white bg-cyan-500 transition">1 Mo</button>
             <button id="term-3" onclick="selectTerm(3)" class="py-2 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition">3 Mo</button>
             <button id="term-6" onclick="selectTerm(6)" class="py-2 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition">6 Mo</button>
             <button id="term-12" onclick="selectTerm(12)" class="py-2 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition">12 Mo</button>
           </div>
-          <div id="savings-badge" class="mt-2 text-right text-xs font-bold text-emerald-400 hidden">Save 25% on Annual Plan</div>
+          <div id="savings-badge" class="mt-2 text-right text-xs font-bold text-emerald-400 hidden"></div>
         </div>
       </div>
+
       <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-6">
         <div>
-          <span class="text-xs text-gray-500 uppercase tracking-wider font-bold block mb-1">Configured Summary</span>
-          <div class="text-lg font-bold text-white flex flex-wrap items-center gap-2"><span id="summary-tier-name" class="text-cyan-400">Silver Tier</span><span>•</span><span id="summary-screens">2 Screens</span><span>•</span><span id="summary-term">1 Month</span></div>
-          <span class="text-xs text-gray-400" id="summary-monthly-rate">$22.00 / month</span>
+          <span class="text-xs text-gray-500 uppercase tracking-wider font-bold block mb-1" id="summary-label">Configured Summary</span>
+          <div class="text-lg font-bold text-white flex flex-wrap items-center gap-2"><span id="summary-tier-name" class="text-cyan-400">Silver Tier</span><span>•</span><span id="summary-screens">1 Screen</span><span>•</span><span id="summary-term">1 Month</span></div>
+          <span class="text-xs text-gray-400" id="summary-monthly-rate">$22.00 / month equivalent</span>
         </div>
         <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-          <div class="text-right"><span class="block text-xs text-gray-500 font-bold uppercase">Total Order</span><span id="summary-total-price" class="text-3xl font-black text-white">$22.00</span><span class="text-[10px] text-gray-400 block">USD</span></div>
-          <button onclick="requestTrial()" class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-extrabold px-8 py-4 rounded-xl shadow-lg shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5 text-center text-sm">Claim 1-Week Free Trial</button>
+          <div class="text-right"><span class="block text-xs text-gray-500 font-bold uppercase" id="total-order-label">Total Order</span><span id="summary-total-price" class="text-3xl font-black text-white">$22.00</span><span class="text-[10px] text-gray-400 block" id="currency-label">USD</span></div>
+          <button onclick="requestTrial()" class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-extrabold px-8 py-4 rounded-xl shadow-lg shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5 text-center text-sm" id="trial-button">Claim 1-Week Free Trial</button>
         </div>
       </div>
     </section>
+
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center sm:text-left">
-      <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl"><div class="text-cyan-400 text-2xl mb-3">📱</div><h4 class="text-white font-bold mb-1">No Hardware Required</h4><p class="text-xs text-gray-400 leading-relaxed">Runs natively on Smart TVs (Samsung, LG, Android TV), Fire Sticks, tablets, and phones.</p></div>
-      <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl"><div class="text-cyan-400 text-2xl mb-3">🌎</div><h4 class="text-white font-bold mb-1">Works Globally</h4><p class="text-xs text-gray-400 leading-relaxed">Take your subscription with you anywhere in the world when traveling or returning home.</p></div>
-      <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl"><div class="text-cyan-400 text-2xl mb-3">⚡</div><h4 class="text-white font-bold mb-1">Anti-Buffering Tech</h4><p class="text-xs text-gray-400 leading-relaxed">Dedicated high-speed server infrastructure tuned specifically for live sports events.</p></div>
+      <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl"><div class="text-cyan-400 text-2xl mb-3">📱</div><h4 class="text-white font-bold mb-1" id="feature-title1">No Hardware Required</h4><p class="text-xs text-gray-400 leading-relaxed" id="feature-copy1">Runs natively on Smart TVs (Samsung, LG, Android TV), Fire Sticks, tablets, and phones.</p></div>
+      <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl"><div class="text-cyan-400 text-2xl mb-3">🌎</div><h4 class="text-white font-bold mb-1" id="feature-title2">Works Globally</h4><p class="text-xs text-gray-400 leading-relaxed" id="feature-copy2">Take your subscription with you anywhere in the world when traveling or returning home.</p></div>
+      <div class="bg-gray-900/40 border border-gray-800/80 p-6 rounded-2xl"><div class="text-cyan-400 text-2xl mb-3">⚡</div><h4 class="text-white font-bold mb-1" id="feature-title3">Anti-Buffering Tech</h4><p class="text-xs text-gray-400 leading-relaxed" id="feature-copy3">Dedicated high-speed server infrastructure tuned specifically for live sports events.</p></div>
     </div>
   </main>
+
   <footer class="border-t border-gray-800/80 bg-gray-900/30 py-8 text-center text-xs text-gray-500">
     <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div><p class="font-bold text-gray-400">MazTV — Powered by Mazatlan Media Services</p><p class="text-[11px] text-gray-600 mt-0.5">Tellería, Mazatlán, Sinaloa, Mexico</p></div>
       <p>&copy; 2026 MazTV. All rights reserved.</p>
     </div>
   </footer>
+
   <script>
     let currentTier = 'silver';
-    let currentScreens = 2;
+    let currentScreens = 1;
     let currentTerm = 1;
-    const basePrices = {
-      bronze: { 1: 15, 3: 40, 6: 70, 12: 120 },
-      silver: { 1: 22, 3: 60, 6: 100, 12: 160 },
-      gold:   { 1: 28, 3: 75, 6: 130, 12: 200 }
+    let language = 'en';
+
+    const prices = {
+      en: {
+        currency: 'USD',
+        symbol: '$',
+        base: {
+          bronze: { 1: 15, 3: 40, 6: 70, 12: 120 },
+          silver: { 1: 22, 3: 60, 6: 100, 12: 160 },
+          gold:   { 1: 28, 3: 75, 6: 130, 12: 200 }
+        },
+        addOn: { 1: 5, 3: 12, 6: 20, 12: 35 }
+      },
+      es: {
+        currency: 'MXN',
+        symbol: '$',
+        base: {
+          bronze: { 1: 270, 3: 720, 6: 1260, 12: 2160 },
+          silver: { 1: 396, 3: 1080, 6: 1800, 12: 2880 },
+          gold:   { 1: 504, 3: 1350, 6: 2340, 12: 3600 }
+        },
+        addOn: { 1: 90, 3: 216, 6: 360, 12: 630 }
+      }
     };
-    const addOnRates = { 1: 5, 3: 12, 6: 20, 12: 35 };
+
+    const text = {
+      en: {
+        pageTitle: 'MazTV — All Your Home TV in Paradise',
+        whatsapp: 'WhatsApp Direct',
+        serverBadge: '⚡ UPGRADED HIGH-SPEED SERVERS',
+        globalBadge: 'Works Globally Anywhere',
+        heroTitle: 'All Your Home TV in <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Paradise</span>',
+        heroCopy: 'Designed for the expat and snowbird community in Mazatlán. Stream live sports, news, and movies seamlessly on all your existing Smart TVs and mobile devices.',
+        builderTitle: 'Design Your Own Plan',
+        builderCopy: 'Select your server performance tier, simultaneous screens, and term length.',
+        step1: 'Step 1: Choose Your Server Tier',
+        step2: 'Step 2: Simultaneous Viewing Screens',
+        step3: 'Step 3: Select Plan Duration',
+        screensHelp: '*Install app on unlimited devices. This controls how many screens watch at the exact same time.',
+        bronzeLevel: 'Good', silverLevel: 'Better', goldLevel: 'Best',
+        popular: 'Most Popular',
+        bronzeFeature1: 'Standard HD Streams',
+        bronzeFeature2: 'Core US & Canadian Channels',
+        bronzeFeature3: '30,000+ Movies & Series',
+        bronzeNote: 'Best for solo viewers & mobile access.',
+        silverFeature1: '<strong>Upgraded High-Speed Servers</strong>',
+        silverFeature2: 'Expanded Global & Sports Channels',
+        silverFeature3: '60,000+ Movies & Series',
+        silverNote: 'Best for living rooms & sports priority.',
+        goldFeature1: '<strong>VIP Direct Route Servers</strong>',
+        goldFeature2: 'Complete Worldwide Vault',
+        goldFeature3: '90,000+ Movies & Catch-Up TV',
+        goldNote: 'Best for multi-room & global power users.',
+        screenIncluded: 'Screen Included',
+        screens: 'Screens',
+        screen: 'Screen',
+        month: 'Month',
+        months: 'Months',
+        summary: 'Configured Summary',
+        total: 'Total Order',
+        monthly: 'month equivalent',
+        trial: 'Claim 1-Week Free Trial',
+        featureTitle1: 'No Hardware Required',
+        featureCopy1: 'Runs natively on Smart TVs (Samsung, LG, Android TV), Fire Sticks, tablets, and phones.',
+        featureTitle2: 'Works Globally',
+        featureCopy2: 'Take your subscription with you anywhere in the world when traveling or returning home.',
+        featureTitle3: 'Anti-Buffering Tech',
+        featureCopy3: 'Dedicated high-speed server infrastructure tuned specifically for live sports events.',
+        save3: 'Save ~10% on 3-Month Plan',
+        save6: 'Save ~15% on 6-Month Plan',
+        save12: 'Save ~25% on Annual Plan',
+        terms: {1:'1 Mo',3:'3 Mo',6:'6 Mo',12:'12 Mo'}
+      },
+      es: {
+        pageTitle: 'MazTV — Toda tu TV en el Paraíso',
+        whatsapp: 'WhatsApp Directo',
+        serverBadge: '⚡ SERVIDORES DE ALTA VELOCIDAD MEJORADOS',
+        globalBadge: 'Funciona en cualquier lugar',
+        heroTitle: 'Toda tu TV en el <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Paraíso</span>',
+        heroCopy: 'Diseñado para la comunidad de expatriados y snowbirds en Mazatlán. Disfruta deportes en vivo, noticias y películas en tus Smart TVs y dispositivos móviles.',
+        builderTitle: 'Diseña Tu Propio Plan',
+        builderCopy: 'Elige tu nivel de servidor, pantallas simultáneas y duración del plan.',
+        step1: 'Paso 1: Elige Tu Nivel de Servidor',
+        step2: 'Paso 2: Pantallas de Visualización Simultánea',
+        step3: 'Paso 3: Elige la Duración del Plan',
+        screensHelp: '*Puedes instalar la app en dispositivos ilimitados. Esto controla cuántas pantallas pueden ver al mismo tiempo.',
+        bronzeLevel: 'Bueno', silverLevel: 'Mejor', goldLevel: 'Premium',
+        popular: 'Más Popular',
+        bronzeFeature1: 'Streams HD estándar',
+        bronzeFeature2: 'Canales principales de EE. UU. y Canadá',
+        bronzeFeature3: '30,000+ películas y series',
+        bronzeNote: 'Ideal para una persona y acceso móvil.',
+        silverFeature1: '<strong>Servidores de alta velocidad mejorados</strong>',
+        silverFeature2: 'Más canales internacionales y deportes',
+        silverFeature3: '60,000+ películas y series',
+        silverNote: 'Ideal para sala y deportes.',
+        goldFeature1: '<strong>Servidores VIP de ruta directa</strong>',
+        goldFeature2: 'Catálogo mundial completo',
+        goldFeature3: '90,000+ películas y TV con Catch-Up',
+        goldNote: 'Ideal para varias habitaciones y usuarios intensivos.',
+        screenIncluded: 'Pantalla incluida',
+        screens: 'Pantallas',
+        screen: 'Pantalla',
+        month: 'Mes',
+        months: 'Meses',
+        summary: 'Resumen Configurado',
+        total: 'Total del Pedido',
+        monthly: 'equivalente mensual',
+        trial: 'Obtén 1 Semana de Prueba Gratis',
+        featureTitle1: 'Sin Hardware Necesario',
+        featureCopy1: 'Funciona directamente en Smart TVs (Samsung, LG, Android TV), Fire Sticks, tablets y teléfonos.',
+        featureTitle2: 'Funciona en Cualquier Lugar',
+        featureCopy2: 'Lleva tu suscripción contigo a cualquier parte del mundo cuando viajes o regreses a casa.',
+        featureTitle3: 'Tecnología Anti-Buffering',
+        featureCopy3: 'Infraestructura de servidores de alta velocidad optimizada especialmente para deportes en vivo.',
+        save3: 'Ahorra aproximadamente 10% en el plan de 3 meses',
+        save6: 'Ahorra aproximadamente 15% en el plan de 6 meses',
+        save12: 'Ahorra aproximadamente 25% en el plan anual',
+        terms: {1:'1 Mes',3:'3 Meses',6:'6 Meses',12:'12 Meses'}
+      }
+    };
+
+    function t(key) { return text[language][key]; }
+    function money(value) { return prices[language].symbol + Number(value).toFixed(2); }
+
+    function toggleLanguage() {
+      language = language === 'en' ? 'es' : 'en';
+      document.documentElement.lang = language;
+      renderLanguage();
+      updateCalculator();
+    }
+
+    function renderLanguage() {
+      const x = text[language];
+      document.getElementById('page-title').textContent = x.pageTitle;
+      document.getElementById('flag-current').textContent = language === 'en' ? '🇺🇸' : '🇲🇽';
+      document.getElementById('language-label').textContent = language === 'en' ? 'EN / USD' : 'ES / MXN';
+      document.getElementById('whatsapp-label').textContent = x.whatsapp;
+      document.getElementById('server-badge').textContent = x.serverBadge;
+      document.getElementById('global-badge').textContent = x.globalBadge;
+      document.getElementById('hero-title').innerHTML = x.heroTitle;
+      document.getElementById('hero-copy').textContent = x.heroCopy;
+      document.getElementById('builder-title').textContent = x.builderTitle;
+      document.getElementById('builder-copy').textContent = x.builderCopy;
+      document.getElementById('step1-label').textContent = x.step1;
+      document.getElementById('step2-label').textContent = x.step2;
+      document.getElementById('step3-label').textContent = x.step3;
+      document.getElementById('screens-help').textContent = x.screensHelp;
+      document.getElementById('bronze-level').textContent = x.bronzeLevel;
+      document.getElementById('silver-level').textContent = x.silverLevel;
+      document.getElementById('gold-level').textContent = x.goldLevel;
+      document.getElementById('popular-badge').textContent = x.popular;
+      document.getElementById('bronze-feature1').textContent = x.bronzeFeature1;
+      document.getElementById('bronze-feature2').textContent = x.bronzeFeature2;
+      document.getElementById('bronze-feature3').textContent = x.bronzeFeature3;
+      document.getElementById('bronze-note').textContent = x.bronzeNote;
+      document.getElementById('silver-feature1').innerHTML = x.silverFeature1;
+      document.getElementById('silver-feature2').textContent = x.silverFeature2;
+      document.getElementById('silver-feature3').textContent = x.silverFeature3;
+      document.getElementById('silver-note').textContent = x.silverNote;
+      document.getElementById('gold-feature1').innerHTML = x.goldFeature1;
+      document.getElementById('gold-feature2').textContent = x.goldFeature2;
+      document.getElementById('gold-feature3').textContent = x.goldFeature3;
+      document.getElementById('gold-note').textContent = x.goldNote;
+      document.getElementById('summary-label').textContent = x.summary;
+      document.getElementById('total-order-label').textContent = x.total;
+      document.getElementById('currency-label').textContent = prices[language].currency;
+      document.getElementById('trial-button').textContent = x.trial;
+      document.getElementById('feature-title1').textContent = x.featureTitle1;
+      document.getElementById('feature-copy1').textContent = x.featureCopy1;
+      document.getElementById('feature-title2').textContent = x.featureTitle2;
+      document.getElementById('feature-copy2').textContent = x.featureCopy2;
+      document.getElementById('feature-title3').textContent = x.featureTitle3;
+      document.getElementById('feature-copy3').textContent = x.featureCopy3;
+
+      [1,3,6,12].forEach(term => {
+        document.getElementById('term-' + term).textContent = x.terms[term];
+      });
+      refreshScreenOptions();
+    }
+
+    function refreshScreenOptions() {
+      const select = document.getElementById('screens-select');
+      const p = prices[language];
+      select.innerHTML = '';
+      const included = '<option value="1">1 ' + t('screen') + ' (' + t('screenIncluded') + ')</option>';
+      select.insertAdjacentHTML('beforeend', included);
+      if (currentTier !== 'bronze') {
+        [2,3,4].forEach(n => {
+          const extra = (n - 1) * p.addOn[currentTerm];
+          select.insertAdjacentHTML('beforeend',
+            '<option value="' + n + '">' + n + ' ' + t('screens') + ' (+' + money(extra) + ')</option>'
+          );
+        });
+        select.disabled = false;
+      } else {
+        select.disabled = true;
+      }
+      select.value = String(currentScreens);
+    }
 
     function selectTier(tier) {
       currentTier = tier;
-      ['bronze', 'silver', 'gold'].forEach(t => {
-        const el = document.getElementById('tier-' + t);
-        if (t === tier) {
+      currentScreens = 1;
+      ['bronze', 'silver', 'gold'].forEach(tierName => {
+        const el = document.getElementById('tier-' + tierName);
+        if (tierName === tier) {
           el.className = 'cursor-pointer bg-gray-800/80 border-2 border-cyan-500 rounded-2xl p-6 transition-all duration-200 relative glow-cyan';
         } else {
           el.className = 'cursor-pointer bg-gray-800/40 border-2 border-gray-700/60 hover:border-gray-600 rounded-2xl p-6 transition-all duration-200 relative group';
         }
       });
-      const select = document.getElementById('screens-select');
-      select.innerHTML = '';
-      if (tier === 'bronze') {
-        currentScreens = 1;
-        select.innerHTML = '<option value="1">1 Screen (Included)</option>';
-        select.disabled = true;
-      } else if (tier === 'silver') {
-        currentScreens = 1;
-        select.disabled = false;
-        select.innerHTML = '<option value="1">1 Screen (Included)</option><option value="2">2 Screens (+$5/mo)</option><option value="3">3 Screens (+$10/mo)</option><option value="4">4 Screens (+$15/mo)</option>';
-      } else {
-        currentScreens = 1;
-        select.disabled = false;
-        select.innerHTML = '<option value="1">1 Screen (Included)</option><option value="2">2 Screens (+$5/mo)</option><option value="3">3 Screens (+$10/mo)</option><option value="4">4 Screens (+$15/mo)</option>';
-      }
+      refreshScreenOptions();
       updateCalculator();
     }
 
     function selectTerm(term) {
       currentTerm = term;
-      [1, 3, 6, 12].forEach(t => {
+      [1,3,6,12].forEach(t => {
         const btn = document.getElementById('term-' + t);
         btn.className = t === term
           ? 'py-2 rounded-lg text-xs font-bold text-black bg-cyan-500 transition shadow-lg shadow-cyan-500/20'
@@ -155,46 +351,60 @@
       });
       const badge = document.getElementById('savings-badge');
       if (term === 3) {
-        badge.textContent = 'Save ~10% on 3-Month Plan';
+        badge.textContent = t('save3');
         badge.classList.remove('hidden');
       } else if (term === 6) {
-        badge.textContent = 'Save ~15% on 6-Month Plan';
+        badge.textContent = t('save6');
         badge.classList.remove('hidden');
       } else if (term === 12) {
-        badge.textContent = 'Save ~25% on Annual Plan';
+        badge.textContent = t('save12');
         badge.classList.remove('hidden');
       } else {
         badge.classList.add('hidden');
       }
+      refreshScreenOptions();
       updateCalculator();
     }
 
     function updateCalculator() {
       const select = document.getElementById('screens-select');
-      currentScreens = parseInt(select.value, 10) || currentScreens;
-      const basePrice = basePrices[currentTier][currentTerm];
-      const baseScreens = 1;
-      const extraScreens = Math.max(0, currentScreens - baseScreens);
-      const extraCost = extraScreens * addOnRates[currentTerm];
+      currentScreens = parseInt(select.value, 10) || 1;
+      if (currentTier === 'bronze') currentScreens = 1;
+
+      const p = prices[language];
+      const basePrice = p.base[currentTier][currentTerm];
+      const extraScreens = Math.max(0, currentScreens - 1);
+      const extraCost = extraScreens * p.addOn[currentTerm];
       const totalPrice = basePrice + extraCost;
       const monthlyRate = (totalPrice / currentTerm).toFixed(2);
+
       document.getElementById('summary-tier-name').textContent = currentTier.charAt(0).toUpperCase() + currentTier.slice(1) + ' Tier';
-      document.getElementById('summary-screens').textContent = currentScreens + ' Screen' + (currentScreens > 1 ? 's' : '');
-      document.getElementById('summary-term').textContent = currentTerm + ' Month' + (currentTerm > 1 ? 's' : '');
-      document.getElementById('summary-monthly-rate').textContent = '$' + monthlyRate + ' / month equivalent';
-      document.getElementById('summary-total-price').textContent = '$' + totalPrice.toFixed(2);
+      document.getElementById('summary-screens').textContent = currentScreens + ' ' + (currentScreens > 1 ? t('screens') : t('screen'));
+      document.getElementById('summary-term').textContent = currentTerm + ' ' + (currentTerm > 1 ? t('months') : t('month'));
+      document.getElementById('summary-monthly-rate').textContent = money(monthlyRate) + ' / ' + t('monthly');
+      document.getElementById('summary-total-price').textContent = money(totalPrice);
+      document.getElementById('currency-label').textContent = p.currency;
     }
 
     function requestTrial() {
-      const message = 'Hi MazTV! I want to claim my 1-Week Free Trial for the configured plan:\n\n' +
-        '• Tier: ' + currentTier.toUpperCase() + '\n' +
-        '• Screens: ' + currentScreens + '\n' +
-        '• Term: ' + currentTerm + ' Month(s)\n' +
-        '• Quoted Price: ' + document.getElementById('summary-total-price').textContent + ' USD\n\n' +
-        'Please send me my trial login details!';
+      const p = prices[language];
+      const message = language === 'en'
+        ? 'Hi MazTV! I want to claim my 1-Week Free Trial for the configured plan:\n\n' +
+          '• Tier: ' + currentTier.toUpperCase() + '\n' +
+          '• Screens: ' + currentScreens + '\n' +
+          '• Term: ' + currentTerm + ' Month(s)\n' +
+          '• Quoted Price: ' + document.getElementById('summary-total-price').textContent + ' ' + p.currency + '\n\n' +
+          'Please send me my trial login details!'
+        : 'Hola MazTV! Quiero obtener mi prueba gratis de 1 semana con el plan configurado:\n\n' +
+          '• Nivel: ' + currentTier.toUpperCase() + '\n' +
+          '• Pantallas: ' + currentScreens + '\n' +
+          '• Duración: ' + currentTerm + ' mes(es)\n' +
+          '• Precio cotizado: ' + document.getElementById('summary-total-price').textContent + ' ' + p.currency + '\n\n' +
+          '¡Por favor envíenme los datos de acceso para mi prueba!';
       window.open('https://wa.me/526692448788?text=' + encodeURIComponent(message), '_blank', 'noopener,noreferrer');
     }
 
+    renderLanguage();
     selectTier('silver');
   </script>
 </body>
