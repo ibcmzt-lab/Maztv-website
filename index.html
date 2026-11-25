@@ -122,33 +122,18 @@
 
     <section id="installation" class="bg-gray-900/80 border border-gray-800 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden backdrop-blur-xl mb-16">
       <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="relative">
-        <div class="text-center mb-8">
-          <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-1.5 mb-5 text-xs sm:text-sm font-bold text-emerald-300" id="install-badge">FOR CURRENT CUSTOMERS</div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2" id="install-title">Device Setup Center</h2>
-          <p class="text-gray-400 text-sm sm:text-base max-w-2xl mx-auto" id="install-copy">Choose your device to see the recommended player and step-by-step setup instructions. Have your MazTV login details ready.</p>
-        </div>
-        <div class="max-w-3xl mx-auto">
-          <label for="device-select" class="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-3" id="device-select-label">SELECT YOUR DEVICE</label>
-          <select id="device-select" onchange="renderInstallGuide()" class="w-full bg-gray-800 border border-gray-700 text-white rounded-xl px-4 py-4 focus:outline-none focus:border-cyan-500 text-base font-semibold transition">
-            <option value="fire">Amazon Fire Stick / Fire TV</option>
-            <option value="android">Android TV / Google TV</option>
-            <option value="apple">Apple TV</option>
-            <option value="ios">iPhone / iPad</option>
-            <option value="roku">Roku / Roku TV</option>
-            <option value="samsung">Samsung Smart TV</option>
-            <option value="lg">LG Smart TV</option>
-            <option value="hisense">Hisense Smart TV</option>
-            <option value="sony">Sony Smart TV</option>
-          </select>
-          <div id="device-guide" class="mt-5 bg-gray-800/50 border border-gray-700/70 rounded-2xl p-5 sm:p-6" aria-live="polite"></div>
-          <div class="mt-5 bg-amber-500/5 border border-amber-500/20 rounded-xl p-4 text-xs text-gray-400" id="player-disclaimer"></div>
-          <div class="mt-5 bg-gray-800/30 border border-gray-700/50 rounded-2xl p-5 text-center">
-            <p class="text-sm text-gray-300" id="install-help">Need a hand setting up your device?</p>
-            <p class="text-xs text-gray-500 mt-1" id="install-help-copy">Send us your device brand and model on WhatsApp and we'll walk you through it.</p>
-            <a href="https://wa.me/526692448788" target="_blank" rel="noopener noreferrer" class="inline-flex mt-4 items-center justify-center bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold px-6 py-3 rounded-xl transition text-sm" id="install-help-button">Get Installation Help on WhatsApp</a>
-          </div>
-        </div>
+      <div class="relative text-center max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full px-4 py-1.5 mb-5 text-xs sm:text-sm font-bold text-emerald-300" id="install-badge">FOR CURRENT CUSTOMERS</div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3" id="install-title">Device Setup Center</h2>
+        <p class="text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-7" id="install-copy">Choose your device to see the recommended player and step-by-step installation instructions.</p>
+        <a href="/install/" class="inline-flex items-center justify-center rounded-xl bg-cyan-500 hover:bg-cyan-400 px-7 py-4 text-sm sm:text-base font-extrabold text-gray-950 transition" id="install-help-button">Open Device Setup Guide</a>
+        <p class="mt-4 text-xs text-gray-500" id="install-help-copy">English and Spanish instructions for TVs, streaming devices, phones and tablets.</p>
+      </div>
+      <div class="hidden" aria-hidden="true">
+        <select id="device-select"><option value="fire">Fire TV</option></select>
+        <div id="device-guide"></div>
+        <div id="player-disclaimer"></div>
+        <span id="install-help"></span>
       </div>
     </section>
 
@@ -364,7 +349,7 @@
     const installGuides = {
       en: {
         badge: 'FOR CURRENT CUSTOMERS', title: 'Device Setup Center',
-        copy: 'Select your device to get the recommended app and exact installation steps. Use the MazTV app whenever it is supported.',
+        copy: 'Choose your device to see the recommended player and step-by-step installation instructions.',
         select: 'SELECT YOUR DEVICE', help: 'Having trouble after following the instructions?',
         helpCopy: 'Our WhatsApp team can help with an installation or login problem. Include your device model and the step where you got stuck.',
         helpButton: 'Get Technical Help on WhatsApp',
@@ -383,7 +368,7 @@
       },
       es: {
         badge: 'PARA CLIENTES ACTUALES', title: 'Centro de Configuración por Dispositivo',
-        copy: 'Selecciona tu dispositivo para ver la aplicación recomendada y los pasos exactos de instalación. Usa la app de MazTV siempre que sea compatible.',
+        copy: 'Elige tu dispositivo para ver el reproductor recomendado y las instrucciones paso a paso.',
         select: 'SELECCIONA TU DISPOSITIVO', help: '¿Tienes problemas después de seguir las instrucciones?',
         helpCopy: 'Nuestro equipo de WhatsApp puede ayudarte con un problema de instalación o acceso. Incluye la marca y modelo de tu dispositivo y el paso donde te quedaste.',
         helpButton: 'Obtener Soporte Técnico por WhatsApp',
