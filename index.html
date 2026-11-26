@@ -14,6 +14,9 @@
     .install-card summary { list-style: none; cursor: pointer; }
     .install-card summary::-webkit-details-marker { display: none; }
     .install-card[open] .install-chevron { transform: rotate(180deg); }
+    .black-friday { background: #050505; border-color: #ef4444; box-shadow: 0 0 55px rgba(239,68,68,.18); }
+    .bf-stripe { background: repeating-linear-gradient(-45deg,#facc15 0,#facc15 12px,#111 12px,#111 24px); }
+    .bf-red { background: linear-gradient(135deg,#7f1d1d,#dc2626 50%,#991b1b); }
   </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between antialiased selection:bg-cyan-500 selection:text-black">
@@ -36,15 +39,28 @@
 
   <main class="max-w-6xl mx-auto px-4 py-8 sm:py-12 flex-grow w-full">
 
-    <section class="relative overflow-hidden rounded-3xl border-2 border-cyan-400/40 bg-gradient-to-r from-cyan-950/80 via-blue-950/80 to-purple-950/80 p-6 sm:p-8 mb-10 shadow-2xl shadow-cyan-500/10">
-      <div class="absolute -top-20 -right-20 w-64 h-64 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none"></div>
+    <section class="black-friday relative overflow-hidden rounded-3xl border-2 p-5 sm:p-8 mb-10">
+      <div class="bf-stripe absolute top-0 left-0 right-0 h-3"></div>
+      <div class="absolute -top-24 -right-24 w-72 h-72 bg-red-600/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-yellow-400/10 rounded-full blur-3xl pointer-events-none"></div>
       <div class="relative text-center">
-        <div class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-1.5 mb-4 text-xs sm:text-sm font-black uppercase tracking-widest text-cyan-200">
-          <span>⚡</span><span id="promo-kicker">BLACK FRIDAY → CYBER MONDAY</span><span>⚡</span>
+        <div class="inline-flex items-center gap-3 rounded-lg bg-red-600 text-white px-5 py-2 mb-4 text-base sm:text-lg font-black uppercase tracking-[0.16em] shadow-lg transform -rotate-1">
+          <span>★</span><span id="promo-kicker">BLACK FRIDAY</span><span>★</span>
         </div>
-        <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-white mb-3" id="promo-title">BUY 1 MONTH, GET 1 MONTH FREE</h2>
-        <p class="text-base sm:text-lg text-gray-200 max-w-2xl mx-auto mb-5" id="promo-copy">Pay for one month of any MazTV plan and we'll give you the next month free. That's effectively 50% off.</p>
-        <div class="inline-flex items-center justify-center rounded-xl bg-cyan-400 text-gray-950 px-6 py-3 font-black text-sm sm:text-base" id="promo-dates">BLACK FRIDAY THROUGH CYBER MONDAY • NOV 27–30</div>
+        <div class="text-yellow-400 font-black text-5xl sm:text-7xl md:text-8xl leading-none tracking-tighter uppercase drop-shadow-lg" id="promo-title">DOUBLE DOUBLE</div>
+        <div class="text-white font-black text-xl sm:text-3xl md:text-4xl uppercase mt-3 leading-tight" id="promo-subtitle">BUY ANY PLAN — GET THE SAME PLAN FREE</div>
+        <p class="text-gray-200 text-sm sm:text-lg max-w-2xl mx-auto mt-4 mb-6 font-semibold" id="promo-copy">Whatever plan you buy, you get that exact same plan FREE. Buy 1 month → get 2. Buy 6 months → get 12. Buy 12 months → get 24.</p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto mb-6">
+          <div class="bf-red rounded-xl p-3 sm:p-4 border border-red-400/40 shadow-lg"><div class="text-white text-2xl sm:text-3xl font-black">1 → 2</div><div class="text-yellow-300 text-[11px] sm:text-xs font-black uppercase">MONTHS</div></div>
+          <div class="bf-red rounded-xl p-3 sm:p-4 border border-red-400/40 shadow-lg"><div class="text-white text-2xl sm:text-3xl font-black">3 → 6</div><div class="text-yellow-300 text-[11px] sm:text-xs font-black uppercase">MONTHS</div></div>
+          <div class="bf-red rounded-xl p-3 sm:p-4 border border-red-400/40 shadow-lg"><div class="text-white text-2xl sm:text-3xl font-black">6 → 12</div><div class="text-yellow-300 text-[11px] sm:text-xs font-black uppercase">MONTHS</div></div>
+          <div class="bf-red rounded-xl p-3 sm:p-4 border border-red-400/40 shadow-lg"><div class="text-white text-2xl sm:text-3xl font-black">12 → 24</div><div class="text-yellow-300 text-[11px] sm:text-xs font-black uppercase">MONTHS</div></div>
+        </div>
+
+        <div class="inline-flex items-center justify-center rounded-xl bg-yellow-400 text-black px-6 py-3 font-black text-sm sm:text-base shadow-lg mb-4" id="promo-dates">BLACK FRIDAY SPECIAL • NOV 27–30</div>
+        <div><button onclick="requestTrial()" class="inline-flex items-center justify-center rounded-xl bg-white hover:bg-gray-100 text-black px-8 py-4 font-black text-base sm:text-lg transition transform hover:-translate-y-0.5 shadow-xl" id="promo-button">CLAIM MY DOUBLE DEAL →</button></div>
+        <div class="mt-4 text-xs sm:text-sm text-gray-400 font-bold uppercase tracking-widest" id="promo-urgency">THE MORE YOU BUY, THE MORE YOU GET FREE.</div>
       </div>
     </section>
 
@@ -127,11 +143,10 @@
         </div>
         <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
           <div class="text-right"><span class="block text-xs text-gray-500 font-bold uppercase" id="total-order-label">Total Order</span><span id="summary-total-price" class="text-3xl font-black text-white">$22.00</span><span class="text-[10px] text-gray-400 block" id="currency-label">USD</span></div>
-          <button onclick="requestTrial()" class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-extrabold px-8 py-4 rounded-xl shadow-lg shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5 text-center text-sm" id="trial-button">Claim Cyber Monday Offer</button>
+          <button onclick="requestTrial()" class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-extrabold px-8 py-4 rounded-xl shadow-lg shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5 text-center text-sm" id="trial-button">CLAIM MY DOUBLE DEAL →</button>
         </div>
       </div>
     </section>
-
 
     <section id="installation" class="bg-gray-900/80 border border-gray-800 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden backdrop-blur-xl mb-16">
       <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -141,12 +156,6 @@
         <p class="text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto mb-7" id="install-copy">Choose your device to see the recommended player and step-by-step installation instructions.</p>
         <a href="/install/" class="inline-flex items-center justify-center rounded-xl bg-cyan-500 hover:bg-cyan-400 px-7 py-4 text-sm sm:text-base font-extrabold text-gray-950 transition" id="install-help-button">Open Device Setup Guide</a>
         <p class="mt-4 text-xs text-gray-500" id="install-help-copy">English and Spanish instructions for TVs, streaming devices, phones and tablets.</p>
-      </div>
-      <div class="hidden" aria-hidden="true">
-        <select id="device-select"><option value="fire">Fire TV</option></select>
-        <div id="device-guide"></div>
-        <div id="player-disclaimer"></div>
-        <span id="install-help"></span>
       </div>
     </section>
 
@@ -195,40 +204,14 @@
 
     const text = {
       en: {
-
-        installBadge: 'FOR CURRENT CUSTOMERS',
-        installTitle: 'How to Install MazTV',
-        installCopy: 'Already have your MazTV username and password? Follow the steps below to install the app and start watching.',
-        installFireLabel: 'Most common',
-        installFireTitle: 'Amazon Firestick / Fire TV',
-        fireStep1Title: 'Install Downloader',
-        fireStep1: 'From your Fire TV home screen, search for <strong>Downloader</strong> and install the Downloader app.',
-        fireStep2Title: 'Allow Downloader',
-        fireStep2: 'If your Fire TV asks for permission to install apps from Downloader, allow it. If needed, go to <strong>Settings → My Fire TV → Developer Options → Install Unknown Apps → Downloader</strong> and turn it on.',
-        fireStep3Title: 'Enter the MazTV code',
-        fireStep3: 'Open Downloader, select its address/search field, and enter the MazTV Downloader Code:',
-        fireStep4Title: 'Download and install',
-        fireStep4: 'Let the MazTV app download. Select <strong>Install</strong> when prompted. When installation is finished, select <strong>Open</strong>.',
-        fireStep5Title: 'Sign in',
-        fireStep5: 'Enter the <strong>username</strong> and <strong>password</strong> that MazTV provided to you. Enter them exactly as provided.',
-        fireStep6Title: 'Start watching',
-        fireStep6: 'Once your login is accepted, your MazTV service will load. You can then start watching the channels and content included with your plan.',
-        installNote: '<strong class="text-cyan-300">Tip:</strong> After installation, you can delete the downloaded installer file from Downloader if prompted. This does not uninstall MazTV.',
-        installAndroidLabel: 'Android TV',
-        installAndroidTitle: 'Android TV / Google TV',
-        androidStep1: 'Install <strong>Downloader</strong> from Google Play on your Android TV or Google TV device.',
-        androidStep2: 'Open Downloader and follow any permission prompts needed to allow it to install an app.',
-        androidStep3: 'Enter the MazTV Downloader Code <strong class="text-cyan-300">5130929</strong> in Downloader and select <strong>Go</strong>.',
-        androidStep4: 'Download and install the MazTV app, then open it.',
-        androidStep5: 'Enter the MazTV username and password provided to you.',
-        installHelp: 'Using a Samsung TV, LG TV, phone, tablet, or another device?',
-        installHelpCopy: "Contact us and we'll provide the correct installation instructions for your device.",
-        installHelpButton: 'Get Installation Help on WhatsApp',
         pageTitle: 'MazTV — Entertainment Your Way',
-        promoKicker: 'BLACK FRIDAY → CYBER MONDAY',
-        promoTitle: 'BUY 1 MONTH, GET 1 MONTH FREE',
-        promoCopy: "Pay for one month of any MazTV plan and we'll give you the next month free. That's effectively 50% off.",
-        promoDates: 'BLACK FRIDAY THROUGH CYBER MONDAY • NOV 27–30',
+        promoKicker: 'BLACK FRIDAY',
+        promoTitle: 'DOUBLE DOUBLE',
+        promoSubtitle: 'BUY ANY PLAN — GET THE SAME PLAN FREE',
+        promoCopy: 'Whatever plan you buy, you get that exact same plan FREE. Buy 1 month → get 2. Buy 6 months → get 12. Buy 12 months → get 24.',
+        promoDates: 'BLACK FRIDAY SPECIAL • NOV 27–30',
+        promoButton: 'CLAIM MY DOUBLE DEAL →',
+        promoUrgency: 'THE MORE YOU BUY, THE MORE YOU GET FREE.',
         whatsapp: 'WhatsApp Direct',
         serverBadge: '⚡ UPGRADED HIGH-SPEED SERVERS',
         globalBadge: 'Works Globally Anywhere',
@@ -245,184 +228,106 @@
         step3: 'Step 3: Select Plan Duration',
         screensHelp: '*Install app on unlimited devices. This controls how many screens watch at the exact same time.',
         bronzeName: 'Bronze', silverName: 'Silver', goldName: 'Gold',
-        bronzeLevel: 'Good', silverLevel: 'Better', goldLevel: 'Best',
-        popular: 'Most Popular',
-        bronzeFeature1: 'Standard HD Streams',
-        bronzeFeature2: 'Core US & Canadian Channels',
-        bronzeFeature3: '30,000+ Movies & Series',
+        bronzeLevel: 'Good', silverLevel: 'Better', goldLevel: 'Best', popular: 'Most Popular',
+        bronzeFeature1: 'Standard HD Streams', bronzeFeature2: 'Core US & Canadian Channels', bronzeFeature3: 'All Movies & Series',
         bronzeNote: 'Best for solo viewers & mobile access.',
-        silverFeature1: '<strong>Upgraded High-Speed Servers</strong>',
-        silverFeature2: 'Expanded Global & Sports Channels',
-        silverFeature3: '60,000+ Movies & Series',
+        silverFeature1: '<strong>Upgraded High-Speed Servers</strong>', silverFeature2: 'Expanded Global & Sports Channels', silverFeature3: 'All Movies & Series',
         silverNote: 'Best for living rooms & sports priority.',
-        goldFeature1: '<strong>VIP Direct Route Servers</strong>',
-        goldFeature2: 'Complete Worldwide Vault',
-        goldFeature3: '90,000+ Movies & Catch-Up TV',
+        goldFeature1: '<strong>VIP Direct Route Servers</strong>', goldFeature2: 'Complete Worldwide Vault', goldFeature3: 'All Movies & Catch-Up TV',
         goldNote: 'Best for multi-room & global power users.',
-        screenIncluded: 'Screen Included',
-        screens: 'Screens',
-        screen: 'Screen',
-        month: 'Month',
-        months: 'Months',
-        summary: 'Configured Summary',
-        total: 'Total Order',
-        monthly: 'month equivalent',
-        trial: 'Claim Cyber Monday Offer',
-        featureTitle1: 'No Hardware Required',
-        featureCopy1: 'Runs natively on Smart TVs (Samsung, LG, Android TV), Fire Sticks, tablets, and phones.',
-        featureTitle2: 'Works Globally',
-        featureCopy2: 'Take your subscription with you anywhere in the world when traveling or returning home.',
-        featureTitle3: 'Anti-Buffering Tech',
-        featureCopy3: 'Dedicated high-speed server infrastructure tuned specifically for live sports events.',
-        save3: 'Save ~10% on 3-Month Plan',
-        save6: 'Save ~15% on 6-Month Plan',
-        save12: 'Save ~25% on Annual Plan',
-        terms: {1:'1 Mo',3:'3 Mo',6:'6 Mo',12:'12 Mo'}
+        summary: 'Configured Summary', total: 'Total Order', trial: 'CLAIM MY DOUBLE DEAL →',
+        screen: 'Screen', screens: 'Screens', screenIncluded: 'Included', month: 'Month', months: 'Months', monthly: 'month equivalent',
+        save3: 'SAVE WITH 3 MONTHS', save6: 'SAVE WITH 6 MONTHS', save12: 'BEST VALUE WITH 12 MONTHS',
+        featureTitle1: 'No Hardware Required', featureCopy1: 'Runs natively on Smart TVs (Samsung, LG, Android TV), Fire Sticks, tablets, and phones.',
+        featureTitle2: 'Works Globally', featureCopy2: 'Take your subscription with you anywhere in the world when traveling or returning home.',
+        featureTitle3: 'Anti-Buffering Tech', featureCopy3: 'Dedicated high-speed server infrastructure tuned specifically for live sports events.'
       },
       es: {
-
-        installBadge: 'PARA CLIENTES ACTUALES',
-        installTitle: 'Cómo Instalar MazTV',
-        installCopy: '¿Ya tienes tu usuario y contraseña de MazTV? Sigue los pasos para instalar la app y comenzar a ver contenido.',
-        installFireLabel: 'Más común',
-        installFireTitle: 'Amazon Firestick / Fire TV',
-        fireStep1Title: 'Instala Downloader',
-        fireStep1: 'Desde la pantalla de inicio de tu Fire TV, busca <strong>Downloader</strong> e instala la aplicación Downloader.',
-        fireStep2Title: 'Permite Downloader',
-        fireStep2: 'Si tu Fire TV pide permiso para instalar aplicaciones desde Downloader, permítelo. Si es necesario, ve a <strong>Configuración → My Fire TV → Opciones de desarrollador → Instalar aplicaciones desconocidas → Downloader</strong> y actívalo.',
-        fireStep3Title: 'Ingresa el código de MazTV',
-        fireStep3: 'Abre Downloader, selecciona el campo de dirección/búsqueda e ingresa el Código Downloader de MazTV:',
-        fireStep4Title: 'Descarga e instala',
-        fireStep4: 'Espera a que se descargue la app de MazTV. Selecciona <strong>Instalar</strong> cuando aparezca. Al terminar, selecciona <strong>Abrir</strong>.',
-        fireStep5Title: 'Inicia sesión',
-        fireStep5: 'Ingresa el <strong>usuario</strong> y la <strong>contraseña</strong> que te proporcionó MazTV. Escríbelos exactamente como fueron enviados.',
-        fireStep6Title: 'Comienza a ver',
-        fireStep6: 'Cuando el inicio de sesión sea aceptado, se cargará tu servicio MazTV. Ya puedes comenzar a ver los canales y contenido incluidos en tu plan.',
-        installNote: '<strong class="text-cyan-300">Consejo:</strong> Después de instalar la app, puedes borrar el archivo de instalación descargado desde Downloader si te lo solicita. Esto no desinstala MazTV.<br><br><strong class="text-white">Importante:</strong> Dependiendo de la versión actual de la app, el ícono puede aparecer con el nombre o la marca del proveedor en lugar del nombre o logotipo de MazTV. Esto es normal. Selecciona ese ícono instalado para abrir tu servicio/panel de MazTV.',
-        installAndroidLabel: 'Android TV',
-        installAndroidTitle: 'Android TV / Google TV',
-        androidStep1: 'Instala <strong>Downloader</strong> desde Google Play en tu dispositivo Android TV o Google TV.',
-        androidStep2: 'Abre Downloader y acepta los permisos necesarios para permitir la instalación de una aplicación.',
-        androidStep3: 'Ingresa el Código Downloader de MazTV <strong class="text-cyan-300">5130929</strong> en Downloader y selecciona <strong>Go</strong>.',
-        androidStep4: 'Descarga e instala la app de MazTV y luego ábrela.',
-        androidStep5: 'Ingresa el usuario y la contraseña de MazTV que te proporcionamos.',
-        installHelp: '¿Usas una TV Samsung, TV LG, teléfono, tablet u otro dispositivo?',
-        installHelpCopy: 'Contáctanos y te proporcionaremos las instrucciones correctas para tu dispositivo.',
-        installHelpButton: 'Obtener Ayuda de Instalación por WhatsApp',
-        pageTitle: 'MazTV — Entretenimiento a Tu Manera',
-        promoKicker: 'BLACK FRIDAY → CYBER MONDAY',
-        promoTitle: 'COMPRA 1 MES, RECIBE 1 MES GRATIS',
-        promoCopy: 'Paga un mes de cualquier plan de MazTV y te regalamos el siguiente mes. Es un ahorro efectivo del 50%.',
-        promoDates: 'BLACK FRIDAY HASTA CYBER MONDAY • 27–30 DE NOVIEMBRE',
+        pageTitle: 'MazTV — Entretenimiento A Tu Manera',
+        promoKicker: 'BLACK FRIDAY',
+        promoTitle: '¡DOBLE, DOBLE!',
+        promoSubtitle: 'COMPRA CUALQUIER PLAN — RECIBE EL MISMO PLAN GRATIS',
+        promoCopy: 'El plan que compres te lo damos igual GRATIS. Compra 1 mes → recibe 2. Compra 6 meses → recibe 12. Compra 12 meses → recibe 24.',
+        promoDates: 'OFERTA BLACK FRIDAY • 27–30 DE NOVIEMBRE',
+        promoButton: 'APROVECHAR MI OFERTA DOBLE →',
+        promoUrgency: 'ENTRE MÁS COMPRAS, MÁS RECIBES GRATIS.',
         whatsapp: 'WhatsApp Directo',
         serverBadge: '⚡ SERVIDORES DE ALTA VELOCIDAD MEJORADOS',
-        globalBadge: 'Funciona en cualquier lugar',
-        heroTitle: 'Entretenimiento <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">a Tu Manera</span>',
+        globalBadge: 'Funciona En Todo El Mundo',
+        heroTitle: 'Entretenimiento <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">A Tu Manera</span>',
         heroCopy: 'Deportes en vivo, películas, series y entretenimiento en tus Smart TVs y dispositivos móviles.',
         allPlansLabel: 'TODOS LOS PLANES INCLUYEN',
         allPlansSports: 'Todos los deportes',
-        allPlansMovies: 'Todas las películas, incluyendo las que aún están en cartelera',
-        allPlansShows: 'Todas tus series favoritas de HBO, Apple TV+, Netflix, Hulu y más',
+        allPlansMovies: 'Todas las películas, incluso películas que todavía están en cines',
+        allPlansShows: 'Tus series favoritas de HBO, Apple TV+, Netflix, Hulu y más',
         builderTitle: 'Diseña Tu Propio Plan',
-        builderCopy: 'Elige tu nivel de servidor, pantallas simultáneas y duración del plan.',
+        builderCopy: 'Selecciona tu nivel de servidor, pantallas simultáneas y duración.',
         step1: 'Paso 1: Elige Tu Nivel de Servidor',
-        step2: 'Paso 2: Pantallas de Visualización Simultánea',
-        step3: 'Paso 3: Elige la Duración del Plan',
-        screensHelp: '*Puedes instalar la app en dispositivos ilimitados. Esto controla cuántas pantallas pueden ver al mismo tiempo.',
+        step2: 'Paso 2: Pantallas Simultáneas',
+        step3: 'Paso 3: Elige La Duración',
+        screensHelp: '*Instala la app en dispositivos ilimitados. Esto controla cuántas pantallas pueden ver al mismo tiempo.',
         bronzeName: 'Bronce', silverName: 'Plata', goldName: 'Oro',
-        bronzeLevel: 'Bueno', silverLevel: 'Mejor', goldLevel: 'Premium',
-        popular: 'Más Popular',
-        bronzeFeature1: 'Streams HD estándar',
-        bronzeFeature2: 'Canales principales de EE. UU. y Canadá',
-        bronzeFeature3: '30,000+ películas y series',
+        bronzeLevel: 'Bueno', silverLevel: 'Mejor', goldLevel: 'Máximo', popular: 'Más Popular',
+        bronzeFeature1: 'Streams HD Estándar', bronzeFeature2: 'Canales Principales de EE. UU. y Canadá', bronzeFeature3: 'Todas Las Películas y Series',
         bronzeNote: 'Ideal para una persona y acceso móvil.',
-        silverFeature1: '<strong>Servidores de alta velocidad mejorados</strong>',
-        silverFeature2: 'Más canales internacionales y deportes',
-        silverFeature3: '60,000+ películas y series',
-        silverNote: 'Ideal para sala y deportes.',
-        goldFeature1: '<strong>Servidores VIP de ruta directa</strong>',
-        goldFeature2: 'Catálogo mundial completo',
-        goldFeature3: '90,000+ películas y TV con Catch-Up',
+        silverFeature1: '<strong>Servidores Mejorados de Alta Velocidad</strong>', silverFeature2: 'Más Canales Globales y Deportes', silverFeature3: 'Todas Las Películas y Series',
+        silverNote: 'Ideal para sala y prioridad en deportes.',
+        goldFeature1: '<strong>Servidores VIP de Ruta Directa</strong>', goldFeature2: 'Catálogo Mundial Completo', goldFeature3: 'Todas Las Películas y TV de Catch-Up',
         goldNote: 'Ideal para varias habitaciones y usuarios intensivos.',
-        screenIncluded: 'Pantalla incluida',
-        screens: 'Pantallas',
-        screen: 'Pantalla',
-        month: 'Mes',
-        months: 'Meses',
-        summary: 'Resumen Configurado',
-        total: 'Total del Pedido',
-        monthly: 'equivalente mensual',
-        trial: 'Obtén 1 Semana de Prueba Gratis',
-        featureTitle1: 'Sin Hardware Necesario',
-        featureCopy1: 'Funciona directamente en Smart TVs (Samsung, LG, Android TV), Fire Sticks, tablets y teléfonos.',
-        featureTitle2: 'Funciona en Cualquier Lugar',
-        featureCopy2: 'Lleva tu suscripción contigo a cualquier parte del mundo cuando viajes o regreses a casa.',
-        featureTitle3: 'Tecnología Anti-Buffering',
-        featureCopy3: 'Infraestructura de servidores de alta velocidad optimizada especialmente para deportes en vivo.',
-        save3: 'Ahorra aproximadamente 10% en el plan de 3 meses',
-        save6: 'Ahorra aproximadamente 15% en el plan de 6 meses',
-        save12: 'Ahorra aproximadamente 25% en el plan anual',
-        terms: {1:'1 Mes',3:'3 Meses',6:'6 Meses',12:'12 Meses'}
+        summary: 'Resumen Configurado', total: 'Total del Pedido', trial: 'APROVECHAR MI OFERTA DOBLE →',
+        screen: 'Pantalla', screens: 'Pantallas', screenIncluded: 'Incluida', month: 'Mes', months: 'Meses', monthly: 'equivalente mensual',
+        save3: 'AHORRA CON 3 MESES', save6: 'AHORRA CON 6 MESES', save12: 'MEJOR VALOR CON 12 MESES',
+        featureTitle1: 'Sin Hardware Necesario', featureCopy1: 'Funciona directamente en Smart TVs, Fire Sticks, tablets y teléfonos.',
+        featureTitle2: 'Funciona En Todo El Mundo', featureCopy2: 'Lleva tu suscripción contigo a cualquier parte del mundo.',
+        featureTitle3: 'Tecnología Anti-Buffering', featureCopy3: 'Infraestructura de servidores de alta velocidad optimizada para deportes en vivo.'
       }
     };
 
-
     const installGuides = {
       en: {
-        badge: 'FOR CURRENT CUSTOMERS', title: 'Device Setup Center',
-        copy: 'Choose your device to see the recommended player and step-by-step installation instructions.',
-        select: 'SELECT YOUR DEVICE', help: 'Having trouble after following the instructions?',
-        helpCopy: 'English and Spanish instructions for TVs, streaming devices, phones and tablets.',
-        helpButton: 'Open Device Setup Guide',
-        disclaimer: 'Your MazTV subscription and the player app are separate. Some third-party players charge their own activation or subscription fee. Your MazTV welcome message includes either Xtream Codes details (server address, username and password), an M3U playlist link, or both. Choose the matching login option in your player. Keep these details private.',
+        badge:'FOR CURRENT CUSTOMERS', title:'How to Install MazTV', copy:'Already have your MazTV username and password? Follow the steps below to install the app and start watching.',
+        select:'Select your device', help:'Choose your device above for the correct installation steps.', helpButton:'Open Device Setup Guide', helpCopy:'English and Spanish instructions for TVs, streaming devices, phones and tablets.',
+        disclaimer:'MazTV provides service credentials and support. Third-party players may have separate activation fees. Keep your username, password and M3U link private.',
         guides: {
-          fire: ['Amazon Fire TV Stick / Fire TV Cube','MazTV App — Recommended','Use the MazTV-branded app installed with Downloader code 5130929 on compatible Fire TV devices running Fire OS.','1. Connect your Fire TV to the internet.<br>2. Open the <strong>Downloader</strong> app. If it is not installed, find Downloader in the Amazon Appstore and install it.<br>3. In Downloader, select the address/code field and enter <strong>5130929</strong>.<br>4. Follow the on-screen prompts to download and install the MazTV app. If Fire TV asks, allow Downloader to install this app.<br>5. Open the installed app. The icon or app name may show the service provider’s branding rather than the MazTV name; this is normal.<br>6. Sign in using the credentials supplied in your MazTV welcome message.','This installation is for Fire TV models that support Android apps (Fire OS). Newer Fire TV models using Vega OS do not support this Android app installation method. If the app will not install, use an Android/Google TV device instead.'],
-          android: ['Android TV Box / Android TV / Google TV','MazTV App — Recommended','Use the MazTV app on Android-based streaming boxes and compatible Android TV or Google TV televisions.','1. Connect your device to the internet.<br>2. Open Google Play Store and install the <strong>Downloader</strong> app, if it is available on your device.<br>3. Open Downloader and enter code <strong>5130929</strong> in its address/code field.<br>4. Follow the prompts to download and install the MazTV app. If Android asks, allow Downloader to install apps from this source.<br>5. Open the installed app. Its icon or displayed name may use the service provider’s branding; this is normal.<br>6. Sign in with the details in your MazTV welcome message.','The MazTV app is intended for Android-based devices. Google TV and Android TV are supported platform families, but menus and installation permissions can differ by manufacturer and model. TiviMate is an optional third-party alternative for Android devices.'],
-          apple: ['Apple TV','Smarters Player Lite','Install Smarters Player Lite from the Apple App Store. Use the M3U playlist option with the complete M3U link from your MazTV welcome message.','1. Open the <strong>App Store</strong> on your Apple TV.<br>2. Search for <strong>Smarters Player Lite</strong> and install it. Check that the developer is <strong>WHMCS SMARTERS</strong>.<br>3. Open the app and choose the option to add a playlist or load an <strong>M3U URL</strong>.<br>4. Copy the complete M3U playlist link from your MazTV welcome message and paste it into the playlist URL field.<br>5. Save the playlist and wait for the channels and categories to load.','Smarters Player Lite is a third-party player, not the MazTV service. The app is listed for Apple TV, iPhone and iPad and supports M3U playlists.'],
-          ios: ['iPhone / iPad','Smarters Player Lite','Install Smarters Player Lite from the Apple App Store and add your MazTV M3U playlist.','1. Open the <strong>App Store</strong> and search for <strong>Smarters Player Lite</strong>.<br>2. Check that the developer is <strong>WHMCS SMARTERS</strong>, then install the app.<br>3. Open it and choose the option to add a playlist or load an <strong>M3U URL</strong>.<br>4. Paste the complete M3U playlist link from your MazTV welcome message.<br>5. Save the playlist and wait for the channels and categories to load.','Keep your M3U link private. Anyone who has the complete link may be able to use your subscription.'],
-          roku: ['Roku / Roku TV','MazTV is not supported directly on Roku','Roku uses its own operating system and cannot install the MazTV Android app. MazTV does not currently have a verified Roku channel/player, so you cannot install MazTV directly on a Roku device.','1. You do not need to download anything or change settings on your Roku.<br>2. MazTV cannot currently be installed from the Roku Channel Store, and the Android installation code <strong>5130929</strong> will not work on Roku.<br>3. If you want to watch MazTV on the same television, connect a separate compatible <strong>Android TV / Google TV</strong> or <strong>Fire TV</strong> streaming device to an HDMI port. This is an optional alternative, not a Roku installation.<br>4. Select that device’s HDMI input and follow the matching Android TV / Google TV or Fire TV guide on this page.','Roku and Android/Fire TV are different platforms. Do not try to install the MazTV Android app on Roku or search for an unofficial MazTV Roku channel.'],
-          samsung: ['Samsung Smart TV','IBO Player (third-party app)','For compatible Samsung Smart TVs, search the Samsung app store for IBO Player. Add your MazTV M3U playlist.','1. Press <strong>Home</strong> on your Samsung remote and open <strong>Apps</strong>.<br>2. Search for <strong>IBO Player</strong> and install the official app if it appears for your TV.<br>3. Open IBO Player and follow its on-screen activation or device-registration instructions.<br>4. Add a playlist using the <strong>M3U</strong> option.<br>5. Enter the complete M3U playlist link from your MazTV welcome message and save it.<br>6. Return to the player and refresh or reload the playlist if prompted.','IBO Player is independent of MazTV and may require a separate trial or activation payment. App availability depends on your Samsung model, year and country. Check the app name and price before paying.'],
-          lg: ['LG Smart TV','IBO Player (third-party app)','For compatible LG Smart TVs, search the LG app store for IBO Player. Add your MazTV M3U playlist.','1. Press <strong>Home</strong> on your LG remote and open the <strong>Apps</strong> area or LG Content Store.<br>2. Search for <strong>IBO Player</strong> and install the official app if it appears for your TV.<br>3. Open IBO Player and follow its on-screen activation or device-registration instructions.<br>4. Add a playlist using the <strong>M3U</strong> option.<br>5. Enter the complete M3U playlist link from your MazTV welcome message and save it.<br>6. Return to the player and refresh or reload the playlist if prompted.','IBO Player is independent of MazTV and may require a separate trial or activation payment. App availability depends on your LG model, webOS version and country. Check the app name and price before paying.'],
-          hisense: ['Hisense Smart TV','Choose by your TV operating system','Hisense TVs use different operating systems. Android TV / Google TV models can use the MazTV app. VIDAA models need a player available in the VIDAA app store or an external streaming device.','1. Open <strong>Settings</strong> on your Hisense TV and look under <strong>About</strong> or <strong>System Information</strong> to identify its operating system.<br>2. If it says <strong>Google TV</strong> or <strong>Android TV</strong>, follow the Android TV / Google TV instructions and install the MazTV app with code <strong>5130929</strong>.<br>3. If it says <strong>VIDAA</strong>, open the VIDAA app store and search for an M3U-compatible player such as <strong>IBOCAST IPTV Player</strong>, if listed for your model.<br>4. If you install a VIDAA player, choose its M3U playlist option and enter the complete M3U link from your MazTV welcome message.<br>5. If no compatible player is listed, connect a Fire TV Stick or Google TV streaming device by HDMI and follow its instructions on this page.','Do not try to install the Android MazTV app directly on a VIDAA television. VIDAA and Android/Google TV are different systems. Third-party VIDAA players may charge their own activation fee.'],
-          sony: ['Sony Smart TV','MazTV App — Recommended','Use the MazTV app on Sony televisions running Android TV or Google TV.','1. On your Sony TV, open <strong>Settings → About</strong> and confirm it runs Android TV or Google TV.<br>2. Open Google Play Store and install the <strong>Downloader</strong> app, if available.<br>3. Open Downloader and enter code <strong>5130929</strong>.<br>4. Follow the prompts to download and install the MazTV app. Allow installation from Downloader if Android asks.<br>5. Open the app and sign in using the details in your MazTV welcome message.','These instructions apply to Sony Android TV and Google TV models. For a Sony television using a different operating system, connect a Fire TV Stick or Google TV streaming device by HDMI.']
+          fire:['Amazon Firestick / Fire TV','MazTV App','Install the MazTV app on compatible Fire TV devices using the current downloader code shown in your welcome instructions.','1. Open the Downloader app on your Fire TV.<br>2. Enter the MazTV Downloader Code <strong>5130929</strong>.<br>3. Follow the prompts to download and install the MazTV app.<br>4. If Fire TV asks for permission to install from Downloader, allow it.<br>5. Open the installed app and sign in with the credentials in your MazTV welcome message.','These instructions are for compatible Fire OS devices. New Fire TV models using Vega OS do not support this Android-app installation method.'],
+          android:['Android TV / Google TV Box','MazTV App — Recommended','Use the MazTV app on compatible Android TV and Google TV devices.','1. Connect your device to the internet.<br>2. Open Google Play Store and install Downloader if available.<br>3. Open Downloader and enter code <strong>5130929</strong>.<br>4. Follow the prompts to download and install MazTV. If Android asks, allow installation from this source.<br>5. Open the installed app and sign in with the credentials in your welcome message.','Google TV and Android TV are compatible platforms; menus and permissions vary by model.'],
+          apple:['Apple TV','Smarters Player Lite','Install Smarters Player Lite from the Apple App Store and add your MazTV M3U playlist.','1. Open the App Store.<br>2. Search for Smarters Player Lite and install it.<br>3. Add a playlist using the M3U URL option.<br>4. Paste the complete M3U link from your MazTV welcome message.<br>5. Save the playlist and wait for the channels to load.','Smarters Player Lite is a third-party player, not MazTV.'],
+          ios:['iPhone / iPad','Smarters Player Lite','Install Smarters Player Lite from the Apple App Store and add your MazTV M3U playlist.','1. Open the App Store and search for Smarters Player Lite.<br>2. Install the app.<br>3. Add a playlist using the M3U URL option.<br>4. Paste the complete M3U link from your MazTV welcome message.<br>5. Save the playlist.','Keep your M3U link private.'],
+          roku:['Roku / Roku TV','MazTV is not directly compatible with Roku','Roku uses a different operating system and cannot install the Android MazTV app.','1. Do not enter the Android installation code on Roku.<br>2. Use a compatible Android/Google TV or Fire TV device connected by HDMI if you want MazTV on that television.','Roku and Android/Fire TV are different platforms.'],
+          samsung:['Samsung Smart TV','IBO Player (third-party app)','On compatible Samsung Smart TVs, search for IBO Player in the Samsung app store and add your MazTV M3U playlist.','1. Open Apps on your Samsung TV.<br>2. Search for IBO Player and install it if available.<br>3. Open IBO Player and follow its activation instructions.<br>4. Add your M3U URL from the MazTV welcome message.<br>5. Save and reload the playlist.','IBO Player is independent of MazTV and may have a separate activation fee.'],
+          lg:['LG Smart TV','IBO Player (third-party app)','On compatible LG Smart TVs, search for IBO Player in the LG app store and add your MazTV M3U playlist.','1. Open Apps or LG Content Store.<br>2. Search for IBO Player and install it if available.<br>3. Open IBO Player and follow its activation instructions.<br>4. Add your M3U URL from the MazTV welcome message.<br>5. Save and reload the playlist.','IBO Player is independent of MazTV and may have a separate activation fee.'],
+          hisense:['Hisense Smart TV','Choose based on your TV operating system','Hisense models use different operating systems. Android TV / Google TV models can use the MazTV app; VIDAA models require a compatible third-party player or external device.','1. Check your TV system in Settings → About.<br>2. If it uses Google TV or Android TV, follow the Android TV instructions and use code <strong>5130929</strong>.<br>3. If it uses VIDAA, search its app store for a compatible M3U player if available.<br>4. If needed, connect a Fire TV Stick or Google TV device by HDMI.','Do not install the Android app directly on a VIDAA TV.'],
+          sony:['Sony Smart TV','MazTV App — Recommended','Use the MazTV app on compatible Sony Android TV and Google TV models.','1. Confirm your Sony uses Android TV or Google TV.<br>2. Open Google Play Store and install Downloader if available.<br>3. Open Downloader and enter <strong>5130929</strong>.<br>4. Follow the prompts to install MazTV.<br>5. Sign in with the credentials in your welcome message.','These instructions are for compatible Sony Android TV and Google TV models.']
         }
       },
       es: {
-        badge: 'PARA CLIENTES ACTUALES', title: 'Centro de Configuración por Dispositivo',
-        copy: 'Elige tu dispositivo para ver el reproductor recomendado y las instrucciones paso a paso.',
-        select: 'SELECCIONA TU DISPOSITIVO', help: '¿Tienes problemas después de seguir las instrucciones?',
-        helpCopy: 'Instrucciones en inglés y español para televisores, dispositivos de streaming, teléfonos y tablets.',
-        helpButton: 'Abrir la Guía de Dispositivos',
-        disclaimer: 'Tu suscripción de MazTV y la aplicación reproductora son servicios separados. Algunas aplicaciones de terceros cobran su propia activación o suscripción. Tu mensaje de bienvenida de MazTV incluye datos Xtream Codes (dirección del servidor, usuario y contraseña), un enlace M3U o ambos. Selecciona el método de acceso correspondiente en tu reproductor. Mantén estos datos privados.',
+        badge:'PARA CLIENTES ACTUALES', title:'Cómo Instalar MazTV', copy:'¿Ya tienes tu usuario y contraseña de MazTV? Sigue los pasos para instalar la app y comenzar a ver.',
+        select:'Selecciona tu dispositivo', help:'Elige tu dispositivo arriba para ver los pasos correctos.', helpButton:'Abrir Guía de Instalación', helpCopy:'Instrucciones en español e inglés para TVs, dispositivos, teléfonos y tablets.',
+        disclaimer:'MazTV proporciona las credenciales y soporte. Los reproductores de terceros pueden cobrar activación por separado. Mantén privados tu usuario, contraseña y enlace M3U.',
         guides: {
-          fire: ['Amazon Fire TV Stick / Fire TV Cube','App de MazTV — Recomendada','Usa la app de MazTV instalada con el código 5130929 de Downloader en dispositivos Fire TV compatibles con Fire OS.','1. Conecta tu Fire TV a internet.<br>2. Abre la aplicación <strong>Downloader</strong>. Si no está instalada, búscala en Amazon Appstore e instálala.<br>3. En Downloader, selecciona el campo de dirección/código e ingresa <strong>5130929</strong>.<br>4. Sigue las indicaciones para descargar e instalar la app de MazTV. Si Fire TV lo solicita, permite que Downloader instale esta aplicación.<br>5. Abre la app instalada. El ícono o nombre puede mostrar la marca del proveedor del servicio en lugar de MazTV; esto es normal.<br>6. Inicia sesión con los datos incluidos en tu mensaje de bienvenida de MazTV.','Esta instalación es para modelos Fire TV compatibles con aplicaciones Android (Fire OS). Los modelos nuevos de Fire TV que usan Vega OS no admiten este método de instalación de apps Android. Si no se instala, utiliza un dispositivo Android/Google TV.'],
-          android: ['Caja Android TV / Android TV / Google TV','App de MazTV — Recomendada','Usa la app de MazTV en cajas de streaming Android y televisores compatibles con Android TV o Google TV.','1. Conecta tu dispositivo a internet.<br>2. Abre Google Play Store e instala la aplicación <strong>Downloader</strong>, si está disponible en tu dispositivo.<br>3. Abre Downloader e ingresa el código <strong>5130929</strong> en el campo de dirección/código.<br>4. Sigue las indicaciones para descargar e instalar la app de MazTV. Si Android lo solicita, permite la instalación de apps desde esta fuente.<br>5. Abre la app instalada. El ícono o nombre puede mostrar la marca del proveedor del servicio; esto es normal.<br>6. Inicia sesión con los datos incluidos en tu mensaje de bienvenida de MazTV.','La app de MazTV está diseñada para dispositivos Android. Google TV y Android TV son plataformas compatibles, aunque los menús y permisos pueden variar según la marca y el modelo. TiviMate es una alternativa opcional de terceros para dispositivos Android.'],
-          apple: ['Apple TV','Smarters Player Lite','Instala Smarters Player Lite desde Apple App Store. Usa la opción de lista M3U con el enlace completo incluido en tu mensaje de bienvenida de MazTV.','1. Abre <strong>App Store</strong> en tu Apple TV.<br>2. Busca <strong>Smarters Player Lite</strong> e instálala. Verifica que el desarrollador sea <strong>WHMCS SMARTERS</strong>.<br>3. Abre la app y selecciona la opción para agregar una lista o cargar una <strong>URL M3U</strong>.<br>4. Copia el enlace M3U completo de tu mensaje de bienvenida de MazTV y pégalo en el campo de URL de la lista.<br>5. Guarda la lista y espera a que carguen los canales y las categorías.','Smarters Player Lite es un reproductor de terceros, no el servicio de MazTV. La app está disponible para Apple TV, iPhone y iPad y admite listas M3U.'],
-          ios: ['iPhone / iPad','Smarters Player Lite','Instala Smarters Player Lite desde Apple App Store y agrega tu lista M3U de MazTV.','1. Abre <strong>App Store</strong> y busca <strong>Smarters Player Lite</strong>.<br>2. Verifica que el desarrollador sea <strong>WHMCS SMARTERS</strong> e instala la app.<br>3. Ábrela y selecciona la opción para agregar una lista o cargar una <strong>URL M3U</strong>.<br>4. Pega el enlace M3U completo de tu mensaje de bienvenida de MazTV.<br>5. Guarda la lista y espera a que carguen los canales y las categorías.','Mantén privado tu enlace M3U. Cualquier persona que tenga el enlace completo podría utilizar tu suscripción.'],
-          roku: ['Roku / Roku TV','MazTV no es compatible directamente con Roku','Roku utiliza su propio sistema operativo y no puede instalar la aplicación Android de MazTV. Actualmente MazTV no cuenta con un canal o reproductor Roku verificado, por lo que no se puede instalar directamente en un dispositivo Roku.','1. No necesitas descargar nada ni cambiar la configuración de tu Roku.<br>2. Actualmente MazTV no se puede instalar desde Roku Channel Store, y el código de instalación Android <strong>5130929</strong> no funciona en Roku.<br>3. Si deseas ver MazTV en ese mismo televisor, puedes conectar por HDMI un dispositivo externo compatible con <strong>Android TV / Google TV</strong> o <strong>Fire TV</strong>. Esta es una alternativa opcional, no una instalación en Roku.<br>4. Selecciona la entrada HDMI de ese dispositivo y sigue la guía correspondiente de Android TV / Google TV o Fire TV en esta página.','Roku y Android/Fire TV son plataformas diferentes. No intentes instalar la app Android de MazTV en Roku ni busques un canal Roku no oficial de MazTV.'],
-          samsung: ['Samsung Smart TV','IBO Player (app de terceros)','En televisores Samsung Smart TV compatibles, busca IBO Player en la tienda de aplicaciones Samsung. Agrega tu lista M3U de MazTV.','1. Presiona <strong>Home</strong> en tu control Samsung y abre <strong>Apps</strong>.<br>2. Busca <strong>IBO Player</strong> e instala la app oficial si aparece para tu televisor.<br>3. Abre IBO Player y sigue sus instrucciones de activación o registro del dispositivo.<br>4. Agrega una lista usando la opción <strong>M3U</strong>.<br>5. Ingresa el enlace M3U completo de tu mensaje de bienvenida de MazTV y guárdalo.<br>6. Regresa al reproductor y actualiza o vuelve a cargar la lista si te lo solicita.','IBO Player es independiente de MazTV y puede requerir una prueba o pago de activación por separado. La disponibilidad depende del modelo, año y país de tu Samsung. Verifica el nombre y el precio antes de pagar.'],
-          lg: ['LG Smart TV','IBO Player (app de terceros)','En televisores LG Smart TV compatibles, busca IBO Player en la tienda de aplicaciones LG. Agrega tu lista M3U de MazTV.','1. Presiona <strong>Home</strong> en tu control LG y abre el área de <strong>Apps</strong> o LG Content Store.<br>2. Busca <strong>IBO Player</strong> e instala la app oficial si aparece para tu televisor.<br>3. Abre IBO Player y sigue sus instrucciones de activación o registro del dispositivo.<br>4. Agrega una lista usando la opción <strong>M3U</strong>.<br>5. Ingresa el enlace M3U completo de tu mensaje de bienvenida de MazTV y guárdalo.<br>6. Regresa al reproductor y actualiza o vuelve a cargar la lista si te lo solicita.','IBO Player es independiente de MazTV y puede requerir una prueba o pago de activación por separado. La disponibilidad depende del modelo, versión de webOS y país de tu LG. Verifica el nombre y el precio antes de pagar.'],
-          hisense: ['Hisense Smart TV','Elige según el sistema operativo de tu TV','Los televisores Hisense utilizan distintos sistemas. Los modelos Android TV / Google TV pueden usar la app de MazTV. Los modelos VIDAA necesitan un reproductor disponible en su tienda de apps o un dispositivo externo.','1. Abre <strong>Configuración</strong> en tu Hisense y busca <strong>Acerca de</strong> o <strong>Información del sistema</strong> para identificar el sistema operativo.<br>2. Si dice <strong>Google TV</strong> o <strong>Android TV</strong>, sigue las instrucciones de Android TV / Google TV e instala la app de MazTV con el código <strong>5130929</strong>.<br>3. Si dice <strong>VIDAA</strong>, abre la tienda de apps VIDAA y busca un reproductor compatible con M3U, como <strong>IBOCAST IPTV Player</strong>, si aparece para tu modelo.<br>4. Si instalas un reproductor VIDAA, selecciona la opción de lista M3U e ingresa el enlace completo de tu mensaje de bienvenida de MazTV.<br>5. Si no aparece un reproductor compatible, conecta un Fire TV Stick o dispositivo Google TV por HDMI y sigue sus instrucciones en esta página.','No intentes instalar directamente la app Android de MazTV en un televisor VIDAA. VIDAA y Android/Google TV son sistemas diferentes. Los reproductores VIDAA de terceros pueden cobrar su propia activación.'],
-          sony: ['Sony Smart TV','App de MazTV — Recomendada','Usa la app de MazTV en televisores Sony con Android TV o Google TV.','1. En tu Sony, abre <strong>Configuración → Acerca de</strong> y confirma que utiliza Android TV o Google TV.<br>2. Abre Google Play Store e instala la aplicación <strong>Downloader</strong>, si está disponible.<br>3. Abre Downloader e ingresa el código <strong>5130929</strong>.<br>4. Sigue las indicaciones para descargar e instalar la app de MazTV. Si Android lo solicita, permite la instalación desde Downloader.<br>5. Abre la app e inicia sesión con los datos incluidos en tu mensaje de bienvenida de MazTV.','Estas instrucciones son para modelos Sony Android TV y Google TV. Si tu Sony utiliza otro sistema, conecta un Fire TV Stick o dispositivo Google TV por HDMI.']
+          fire:['Amazon Firestick / Fire TV','App de MazTV','Instala la app de MazTV en dispositivos Fire TV compatibles usando el código actual de Downloader de tus instrucciones de bienvenida.','1. Abre Downloader en tu Fire TV.<br>2. Ingresa el código de MazTV <strong>5130929</strong>.<br>3. Sigue las instrucciones para descargar e instalar la app.<br>4. Si Fire TV solicita permiso para instalar desde Downloader, permítelo.<br>5. Abre la app e inicia sesión con los datos de tu mensaje de bienvenida.','Estas instrucciones son para dispositivos Fire OS compatibles. Los modelos nuevos con Vega OS no admiten este método.'],
+          android:['Caja Android TV / Google TV','App de MazTV — Recomendada','Usa la app de MazTV en dispositivos compatibles con Android TV y Google TV.','1. Conecta el dispositivo a internet.<br>2. Abre Google Play Store e instala Downloader si está disponible.<br>3. Abre Downloader e ingresa el código <strong>5130929</strong>.<br>4. Sigue las instrucciones para descargar e instalar MazTV.<br>5. Inicia sesión con los datos de tu mensaje de bienvenida.','Google TV y Android TV son plataformas compatibles; los menús pueden variar.'],
+          apple:['Apple TV','Smarters Player Lite','Instala Smarters Player Lite desde App Store y agrega tu lista M3U de MazTV.','1. Abre App Store.<br>2. Busca Smarters Player Lite e instálalo.<br>3. Agrega una lista usando la opción de URL M3U.<br>4. Pega el enlace M3U completo de tu mensaje de bienvenida.<br>5. Guarda la lista.','Smarters Player Lite es un reproductor de terceros, no MazTV.'],
+          ios:['iPhone / iPad','Smarters Player Lite','Instala Smarters Player Lite y agrega tu lista M3U.','1. Abre App Store y busca Smarters Player Lite.<br>2. Instala la app.<br>3. Agrega una lista mediante URL M3U.<br>4. Pega el enlace completo de tu mensaje de bienvenida.<br>5. Guarda la lista.','Mantén privado tu enlace M3U.'],
+          roku:['Roku / Roku TV','MazTV no es compatible directamente con Roku','Roku utiliza otro sistema operativo y no puede instalar la app Android de MazTV.','1. No ingreses el código de instalación Android en Roku.<br>2. Usa un dispositivo Android/Google TV o Fire TV por HDMI si deseas ver MazTV en ese televisor.','Roku y Android/Fire TV son plataformas diferentes.'],
+          samsung:['Samsung Smart TV','IBO Player (app de terceros)','En Samsung compatibles, busca IBO Player en la tienda de apps y agrega tu lista M3U.','1. Abre Apps en tu Samsung.<br>2. Busca IBO Player e instálalo si está disponible.<br>3. Abre IBO Player y sigue sus instrucciones de activación.<br>4. Agrega tu URL M3U.<br>5. Guarda y recarga la lista.','IBO Player es independiente de MazTV y puede tener un costo de activación separado.'],
+          lg:['LG Smart TV','IBO Player (app de terceros)','En LG compatibles, busca IBO Player en la tienda de apps y agrega tu lista M3U.','1. Abre Apps o LG Content Store.<br>2. Busca IBO Player e instálalo si está disponible.<br>3. Abre IBO Player y sigue sus instrucciones de activación.<br>4. Agrega tu URL M3U.<br>5. Guarda y recarga la lista.','IBO Player es independiente de MazTV y puede tener un costo de activación separado.'],
+          hisense:['Hisense Smart TV','Elige según el sistema operativo','Los modelos Hisense usan distintos sistemas. Android TV / Google TV puede usar la app de MazTV; VIDAA necesita un reproductor compatible o un dispositivo externo.','1. Revisa el sistema en Configuración → Acerca de.<br>2. Si usa Google TV o Android TV, sigue esas instrucciones y usa <strong>5130929</strong>.<br>3. Si usa VIDAA, busca un reproductor M3U compatible en su tienda.<br>4. Si es necesario, conecta Fire TV Stick o Google TV por HDMI.','No instales directamente la app Android en un TV VIDAA.'],
+          sony:['Sony Smart TV','App de MazTV — Recomendada','Usa la app de MazTV en modelos Sony compatibles con Android TV o Google TV.','1. Confirma que tu Sony use Android TV o Google TV.<br>2. Abre Google Play Store e instala Downloader si está disponible.<br>3. Abre Downloader e ingresa <strong>5130929</strong>.<br>4. Sigue las instrucciones para instalar MazTV.<br>5. Inicia sesión con tus datos de bienvenida.','Estas instrucciones son para modelos Sony Android TV y Google TV compatibles.']
         }
       }
     };
 
     function renderInstallGuide() {
       const g = installGuides[language];
-      const key = document.getElementById('device-select').value;
+      const key = document.getElementById('device-select')?.value || 'fire';
       const item = g.guides[key] || g.guides.fire;
       document.getElementById('install-badge').textContent = g.badge;
       document.getElementById('install-title').textContent = g.title;
       document.getElementById('install-copy').textContent = g.copy;
-      document.getElementById('device-select-label').textContent = g.select;
-      document.getElementById('install-help').textContent = g.help;
       document.getElementById('install-help-copy').textContent = g.helpCopy;
-      document.getElementById('install-help-button').textContent = g.helpButton;
-      document.getElementById('device-guide').innerHTML =
-        '<div class="flex flex-wrap items-start justify-between gap-3 mb-5"><div><div class="text-xs uppercase tracking-widest text-cyan-400 font-bold mb-1">' + (key === 'roku' ? (language === 'en' ? 'ROKU COMPATIBILITY' : 'COMPATIBILIDAD CON ROKU') : (language === 'en' ? 'RECOMMENDED PLAYER' : 'REPRODUCTOR RECOMENDADO')) + '</div><h3 class="text-xl font-extrabold text-white">' + item[1] + '</h3></div><span class="text-xs rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 px-3 py-1">' + (language === 'en' ? 'Device-specific information' : 'Información por dispositivo') + '</span></div>' +
-        '<p class="text-sm text-gray-400 mb-5">' + item[2] + '</p><div class="text-xs uppercase tracking-widest text-gray-400 font-bold mb-3">' + (key === 'roku' ? (language === 'en' ? 'COMPATIBILITY & OPTIONS' : 'COMPATIBILIDAD Y OPCIONES') : (language === 'en' ? 'INSTALLATION & LOGIN' : 'INSTALACIÓN E INICIO DE SESIÓN')) + '</div><ol class="list-decimal pl-5 space-y-3 text-sm leading-relaxed text-gray-300">' + item[3].split(/<br>/).map(x => '<li class="pl-1">' + x + '</li>').join('') + '</ol><div class="mt-5 rounded-xl border border-cyan-500/20 bg-cyan-500/5 p-4 text-xs text-gray-400"><strong class="text-cyan-300">' + (language === 'en' ? 'Device note: ' : 'Nota del dispositivo: ') + '</strong>' + item[4] + '</div>';
-      document.getElementById('player-disclaimer').textContent = g.disclaimer;
+      const hidden = document.getElementById('device-guide');
+      if (hidden) hidden.innerHTML = '<div><h3>'+item[1]+'</h3><p>'+item[2]+'</p><ol>'+item[3].split(/<br>/).map(x=>'<li>'+x+'</li>').join('')+'</ol><p>'+item[4]+'</p></div>';
     }
 
     function t(key) { return text[language][key]; }
@@ -440,8 +345,11 @@
       document.getElementById('page-title').textContent = x.pageTitle;
       document.getElementById('promo-kicker').textContent = x.promoKicker;
       document.getElementById('promo-title').textContent = x.promoTitle;
+      document.getElementById('promo-subtitle').textContent = x.promoSubtitle;
       document.getElementById('promo-copy').textContent = x.promoCopy;
       document.getElementById('promo-dates').textContent = x.promoDates;
+      document.getElementById('promo-button').textContent = x.promoButton;
+      document.getElementById('promo-urgency').textContent = x.promoUrgency;
       document.getElementById('flag-current').textContent = language === 'en' ? '🇺🇸' : '🇲🇽';
       document.getElementById('language-label').textContent = language === 'en' ? 'EN / USD' : 'ES / MXN';
       document.getElementById('whatsapp-label').textContent = x.whatsapp;
@@ -477,7 +385,6 @@
       document.getElementById('gold-feature1').innerHTML = x.goldFeature1;
       document.getElementById('gold-feature2').textContent = x.goldFeature2;
       document.getElementById('gold-feature3').textContent = x.goldFeature3;
-      document.getElementById('gold-note').textContent = x.goldNote;
       document.getElementById('summary-label').textContent = x.summary;
       document.getElementById('total-order-label').textContent = x.total;
       document.getElementById('currency-label').textContent = prices[language].currency;
@@ -488,11 +395,7 @@
       document.getElementById('feature-copy2').textContent = x.featureCopy2;
       document.getElementById('feature-title3').textContent = x.featureTitle3;
       document.getElementById('feature-copy3').textContent = x.featureCopy3;
-
-      [1,3,6,12].forEach(term => {
-        document.getElementById('term-' + term).textContent = x.terms[term];
-      });
-      refreshScreenOptions();
+      [1,3,6,12].forEach(term => { document.getElementById('term-' + term).textContent = x.terms?.[term] || (term + (term === 1 ? ' Mo' : ' Mo')); });
       renderInstallGuide();
     }
 
@@ -500,102 +403,65 @@
       const select = document.getElementById('screens-select');
       const p = prices[language];
       select.innerHTML = '';
-      const included = '<option value="1">1 ' + t('screen') + ' (' + t('screenIncluded') + ')</option>';
-      select.insertAdjacentHTML('beforeend', included);
+      select.insertAdjacentHTML('beforeend','<option value="1">1 '+t('screen')+' ('+t('screenIncluded')+')</option>');
       if (currentTier !== 'bronze') {
         [2,3,4].forEach(n => {
           const extra = (n - 1) * p.addOn[currentTerm];
-          select.insertAdjacentHTML('beforeend',
-            '<option value="' + n + '">' + n + ' ' + t('screens') + ' (+' + money(extra) + ')</option>'
-          );
+          select.insertAdjacentHTML('beforeend','<option value="'+n+'">'+n+' '+t('screens')+' (+'+money(extra)+')</option>');
         });
         select.disabled = false;
-      } else {
-        select.disabled = true;
-      }
+      } else { select.disabled = true; }
       select.value = String(currentScreens);
     }
 
     function selectTier(tier) {
-      currentTier = tier;
-      currentScreens = 1;
-      ['bronze', 'silver', 'gold'].forEach(tierName => {
-        const el = document.getElementById('tier-' + tierName);
-        if (tierName === tier) {
-          el.className = 'cursor-pointer bg-gray-800/80 border-2 border-cyan-500 rounded-2xl p-6 transition-all duration-200 relative glow-cyan';
-        } else {
-          el.className = 'cursor-pointer bg-gray-800/40 border-2 border-gray-700/60 hover:border-gray-600 rounded-2xl p-6 transition-all duration-200 relative group';
-        }
+      currentTier = tier; currentScreens = 1;
+      ['bronze','silver','gold'].forEach(name => {
+        const el = document.getElementById('tier-'+name);
+        if (name === tier) el.className='cursor-pointer bg-gray-800/80 border-2 border-cyan-500 rounded-2xl p-6 transition-all duration-200 relative glow-cyan';
+        else el.className='cursor-pointer bg-gray-800/40 border-2 border-gray-700/60 hover:border-gray-600 rounded-2xl p-6 transition-all duration-200 relative group';
       });
-      refreshScreenOptions();
-      updateCalculator();
+      refreshScreenOptions(); updateCalculator();
     }
 
     function selectTerm(term) {
       currentTerm = term;
       [1,3,6,12].forEach(t => {
-        const btn = document.getElementById('term-' + t);
-        btn.className = t === term
-          ? 'py-2 rounded-lg text-xs font-bold text-black bg-cyan-500 transition shadow-lg shadow-cyan-500/20'
-          : 'py-2 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition';
+        const btn=document.getElementById('term-'+t);
+        btn.className=t===term?'py-2 rounded-lg text-xs font-bold text-black bg-cyan-500 transition shadow-lg shadow-cyan-500/20':'py-2 rounded-lg text-xs font-bold text-gray-400 hover:text-white transition';
       });
-      const badge = document.getElementById('savings-badge');
-      if (term === 3) {
-        badge.textContent = t('save3');
-        badge.classList.remove('hidden');
-      } else if (term === 6) {
-        badge.textContent = t('save6');
-        badge.classList.remove('hidden');
-      } else if (term === 12) {
-        badge.textContent = t('save12');
-        badge.classList.remove('hidden');
-      } else {
-        badge.classList.add('hidden');
-      }
-      refreshScreenOptions();
-      updateCalculator();
+      const badge=document.getElementById('savings-badge');
+      if(term===3){badge.textContent=t('save3');badge.classList.remove('hidden');}
+      else if(term===6){badge.textContent=t('save6');badge.classList.remove('hidden');}
+      else if(term===12){badge.textContent=t('save12');badge.classList.remove('hidden');}
+      else badge.classList.add('hidden');
+      refreshScreenOptions(); updateCalculator();
     }
 
     function updateCalculator() {
-      const select = document.getElementById('screens-select');
-      currentScreens = parseInt(select.value, 10) || 1;
-      if (currentTier === 'bronze') currentScreens = 1;
-
-      const p = prices[language];
-      const basePrice = p.base[currentTier][currentTerm];
-      const extraScreens = Math.max(0, currentScreens - 1);
-      const extraCost = extraScreens * p.addOn[currentTerm];
-      const totalPrice = basePrice + extraCost;
-      const monthlyRate = (totalPrice / currentTerm).toFixed(2);
-
-      document.getElementById('summary-tier-name').textContent = xTierName();
-      document.getElementById('summary-screens').textContent = currentScreens + ' ' + (currentScreens > 1 ? t('screens') : t('screen'));
-      document.getElementById('summary-term').textContent = currentTerm + ' ' + (currentTerm > 1 ? t('months') : t('month'));
-      document.getElementById('summary-monthly-rate').textContent = money(monthlyRate) + ' / ' + t('monthly');
-      document.getElementById('summary-total-price').textContent = money(totalPrice);
-      document.getElementById('currency-label').textContent = p.currency;
-    }
-
-    function xTierName() {
-      return text[language][currentTier + 'Name'] + (language === 'en' ? ' Tier' : '');
+      const select=document.getElementById('screens-select');
+      currentScreens=parseInt(select.value,10)||1;
+      if(currentTier==='bronze') currentScreens=1;
+      const p=prices[language];
+      const basePrice=p.base[currentTier][currentTerm];
+      const extraScreens=Math.max(0,currentScreens-1);
+      const totalPrice=basePrice+(extraScreens*p.addOn[currentTerm]);
+      const monthlyRate=(totalPrice/currentTerm).toFixed(2);
+      document.getElementById('summary-tier-name').textContent=text[language][currentTier+'Name']+(language==='en'?' Tier':'');
+      document.getElementById('summary-screens').textContent=currentScreens+' '+(currentScreens>1?t('screens'):t('screen'));
+      document.getElementById('summary-term').textContent=currentTerm+' '+(currentTerm>1?t('months'):t('month'));
+      document.getElementById('summary-monthly-rate').textContent=money(monthlyRate)+' / '+t('monthly');
+      document.getElementById('summary-total-price').textContent=money(totalPrice);
+      document.getElementById('currency-label').textContent=p.currency;
     }
 
     function requestTrial() {
-      const p = prices[language];
-      const message = language === 'en'
-        ? 'Hi MazTV! I want to claim my 1-Week Free Trial for the configured plan:\n\n' +
-          '• Tier: ' + currentTier.toUpperCase() + '\n' +
-          '• Screens: ' + currentScreens + '\n' +
-          '• Term: ' + currentTerm + ' Month(s)\n' +
-          '• Quoted Price: ' + document.getElementById('summary-total-price').textContent + ' ' + p.currency + '\n\n' +
-          'Please send me the Cyber Monday Buy 1, Get 1 Free offer details!'
-        : 'Hola MazTV! Quiero obtener mi prueba gratis de 1 semana con el plan configurado:\n\n' +
-          '• Nivel: ' + currentTier.toUpperCase() + '\n' +
-          '• Pantallas: ' + currentScreens + '\n' +
-          '• Duración: ' + currentTerm + ' mes(es)\n' +
-          '• Precio cotizado: ' + document.getElementById('summary-total-price').textContent + ' ' + p.currency + '\n\n' +
-          '¡Por favor envíenme los detalles de la oferta de Cyber Monday: compra 1 mes y recibe 1 mes gratis!';
-      window.open('https://wa.me/526692448788?text=' + encodeURIComponent(message), '_blank', 'noopener,noreferrer');
+      const p=prices[language];
+      const price=document.getElementById('summary-total-price').textContent+' '+p.currency;
+      const message=language==='en'
+        ? 'Hi MazTV! I want to claim the BLACK FRIDAY DOUBLE DOUBLE deal.\n\n• Tier: '+currentTier.toUpperCase()+'\n• Screens: '+currentScreens+'\n• I pay for: '+currentTerm+' month(s)\n• I receive FREE: another '+currentTerm+' month(s)\n• Total paid: '+price+'\n\nPlease send me the details to complete my Double Double Black Friday deal!'
+        : 'Hola MazTV! Quiero aprovechar la oferta BLACK FRIDAY DOBLE, DOBLE.\n\n• Nivel: '+currentTier.toUpperCase()+'\n• Pantallas: '+currentScreens+'\n• Pago por: '+currentTerm+' mes(es)\n• RECIBO GRATIS: otros '+currentTerm+' mes(es)\n• Total a pagar: '+price+'\n\n¡Por favor envíenme los detalles para completar mi oferta Black Friday!';
+      window.open('https://wa.me/526692448788?text='+encodeURIComponent(message),'_blank','noopener,noreferrer');
     }
 
     renderLanguage();
