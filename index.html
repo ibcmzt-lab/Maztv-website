@@ -35,6 +35,19 @@
   </header>
 
   <main class="max-w-6xl mx-auto px-4 py-8 sm:py-12 flex-grow w-full">
+
+    <section class="relative overflow-hidden rounded-3xl border-2 border-cyan-400/40 bg-gradient-to-r from-cyan-950/80 via-blue-950/80 to-purple-950/80 p-6 sm:p-8 mb-10 shadow-2xl shadow-cyan-500/10">
+      <div class="absolute -top-20 -right-20 w-64 h-64 bg-cyan-400/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="relative text-center">
+        <div class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-1.5 mb-4 text-xs sm:text-sm font-black uppercase tracking-widest text-cyan-200">
+          <span>⚡</span><span id="promo-kicker">BLACK FRIDAY → CYBER MONDAY</span><span>⚡</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-black tracking-tight text-white mb-3" id="promo-title">BUY 1 MONTH, GET 1 MONTH FREE</h2>
+        <p class="text-base sm:text-lg text-gray-200 max-w-2xl mx-auto mb-5" id="promo-copy">Pay for one month of any MazTV plan and we'll give you the next month free. That's effectively 50% off.</p>
+        <div class="inline-flex items-center justify-center rounded-xl bg-cyan-400 text-gray-950 px-6 py-3 font-black text-sm sm:text-base" id="promo-dates">BLACK FRIDAY THROUGH CYBER MONDAY • NOV 27–30</div>
+      </div>
+    </section>
+
     <section class="relative w-full overflow-hidden rounded-3xl border border-gray-800 mb-10 sm:mb-14 bg-gray-900">
       <img src="maztvhero2.webp" alt="MazTV home entertainment hero" class="block w-full h-56 sm:h-80 md:h-[26rem] object-cover object-center" fetchpriority="high" />
       <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent pointer-events-none"></div>
@@ -114,7 +127,7 @@
         </div>
         <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
           <div class="text-right"><span class="block text-xs text-gray-500 font-bold uppercase" id="total-order-label">Total Order</span><span id="summary-total-price" class="text-3xl font-black text-white">$22.00</span><span class="text-[10px] text-gray-400 block" id="currency-label">USD</span></div>
-          <button onclick="requestTrial()" class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-extrabold px-8 py-4 rounded-xl shadow-lg shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5 text-center text-sm" id="trial-button">Claim 1-Week Free Trial</button>
+          <button onclick="requestTrial()" class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-black font-extrabold px-8 py-4 rounded-xl shadow-lg shadow-cyan-500/25 transition-all transform hover:-translate-y-0.5 text-center text-sm" id="trial-button">Claim Cyber Monday Offer</button>
         </div>
       </div>
     </section>
@@ -212,6 +225,10 @@
         installHelpCopy: "Contact us and we'll provide the correct installation instructions for your device.",
         installHelpButton: 'Get Installation Help on WhatsApp',
         pageTitle: 'MazTV — Entertainment Your Way',
+        promoKicker: 'BLACK FRIDAY → CYBER MONDAY',
+        promoTitle: 'BUY 1 MONTH, GET 1 MONTH FREE',
+        promoCopy: "Pay for one month of any MazTV plan and we'll give you the next month free. That's effectively 50% off.",
+        promoDates: 'BLACK FRIDAY THROUGH CYBER MONDAY • NOV 27–30',
         whatsapp: 'WhatsApp Direct',
         serverBadge: '⚡ UPGRADED HIGH-SPEED SERVERS',
         globalBadge: 'Works Globally Anywhere',
@@ -250,7 +267,7 @@
         summary: 'Configured Summary',
         total: 'Total Order',
         monthly: 'month equivalent',
-        trial: 'Claim 1-Week Free Trial',
+        trial: 'Claim Cyber Monday Offer',
         featureTitle1: 'No Hardware Required',
         featureCopy1: 'Runs natively on Smart TVs (Samsung, LG, Android TV), Fire Sticks, tablets, and phones.',
         featureTitle2: 'Works Globally',
@@ -293,6 +310,10 @@
         installHelpCopy: 'Contáctanos y te proporcionaremos las instrucciones correctas para tu dispositivo.',
         installHelpButton: 'Obtener Ayuda de Instalación por WhatsApp',
         pageTitle: 'MazTV — Entretenimiento a Tu Manera',
+        promoKicker: 'BLACK FRIDAY → CYBER MONDAY',
+        promoTitle: 'COMPRA 1 MES, RECIBE 1 MES GRATIS',
+        promoCopy: 'Paga un mes de cualquier plan de MazTV y te regalamos el siguiente mes. Es un ahorro efectivo del 50%.',
+        promoDates: 'BLACK FRIDAY HASTA CYBER MONDAY • 27–30 DE NOVIEMBRE',
         whatsapp: 'WhatsApp Directo',
         serverBadge: '⚡ SERVIDORES DE ALTA VELOCIDAD MEJORADOS',
         globalBadge: 'Funciona en cualquier lugar',
@@ -417,6 +438,10 @@
     function renderLanguage() {
       const x = text[language];
       document.getElementById('page-title').textContent = x.pageTitle;
+      document.getElementById('promo-kicker').textContent = x.promoKicker;
+      document.getElementById('promo-title').textContent = x.promoTitle;
+      document.getElementById('promo-copy').textContent = x.promoCopy;
+      document.getElementById('promo-dates').textContent = x.promoDates;
       document.getElementById('flag-current').textContent = language === 'en' ? '🇺🇸' : '🇲🇽';
       document.getElementById('language-label').textContent = language === 'en' ? 'EN / USD' : 'ES / MXN';
       document.getElementById('whatsapp-label').textContent = x.whatsapp;
@@ -563,13 +588,13 @@
           '• Screens: ' + currentScreens + '\n' +
           '• Term: ' + currentTerm + ' Month(s)\n' +
           '• Quoted Price: ' + document.getElementById('summary-total-price').textContent + ' ' + p.currency + '\n\n' +
-          'Please send me my trial login details!'
+          'Please send me the Cyber Monday Buy 1, Get 1 Free offer details!'
         : 'Hola MazTV! Quiero obtener mi prueba gratis de 1 semana con el plan configurado:\n\n' +
           '• Nivel: ' + currentTier.toUpperCase() + '\n' +
           '• Pantallas: ' + currentScreens + '\n' +
           '• Duración: ' + currentTerm + ' mes(es)\n' +
           '• Precio cotizado: ' + document.getElementById('summary-total-price').textContent + ' ' + p.currency + '\n\n' +
-          '¡Por favor envíenme los datos de acceso para mi prueba!';
+          '¡Por favor envíenme los detalles de la oferta de Cyber Monday: compra 1 mes y recibe 1 mes gratis!';
       window.open('https://wa.me/526692448788?text=' + encodeURIComponent(message), '_blank', 'noopener,noreferrer');
     }
 
